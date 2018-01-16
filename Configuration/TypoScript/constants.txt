@@ -1,3 +1,4 @@
+#customsubcategory=dev=Development Settings
 plugin.tx_rkwdigikit {
     view {
         templateRootPath = EXT:rkw_digi_kit/Resources/Private/Templates/
@@ -5,5 +6,9 @@ plugin.tx_rkwdigikit {
         layoutRootPath = EXT:rkw_digi_kit/Resources/Private/Layouts/
     }
     settings {
+        develop {
+            #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
+            isDev = 0
+        }
     }
 }

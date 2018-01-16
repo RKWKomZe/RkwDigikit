@@ -11,5 +11,13 @@ plugin.tx_rkwdigikit {
         }
     }
     settings {
+        develop {
+            isDev = {$plugin.tx_rkwdigikit.settings.develop.isDev}
+        }
     }
 }
+
+
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.develop.isDev}]
+    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s" extensions="t3s">
+[global]
