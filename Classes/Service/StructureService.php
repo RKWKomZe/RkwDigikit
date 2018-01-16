@@ -82,6 +82,11 @@ class StructureService extends AbstractService
         $this->cachingUtility = $this->objectManager->get(CachingUtility::class,self::CACHING_KEY);
     }
 
+    /**
+     * Return JSON output for RKW Vue DigiKit application
+     *
+     * @return string
+     */
     public function getJsonOutput()
     {
         $cache = $this->cachingUtility->loadCache([self::CACHING_KEY]);

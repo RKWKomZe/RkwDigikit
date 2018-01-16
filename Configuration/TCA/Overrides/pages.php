@@ -152,6 +152,14 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
 );
 
 /**
+ * Add new fields to search fields
+ */
+$GLOBALS['TCA']['pages']['ctrl']['searchFields'] .= trim('
+    ,digikit_meta_company,digikit_meta_business,digikit_meta_employee,digikit_meta_place
+    ,digikit_meta_website,digikit_meta_map,digikit_category
+');
+
+/**
  * New page type
  */
 call_user_func(
