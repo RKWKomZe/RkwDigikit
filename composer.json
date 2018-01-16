@@ -1,0 +1,21 @@
+{
+  "name": "bm/rkw-digi-kit",
+  "type": "typo3-cms-extension",
+  "description": "Bergisch Media - RKW - DigiKit",
+  "homepage": "http://www.bergisch-media.de/",
+  "license": [
+    "GPL-2.0+"
+  ],
+  "require": {
+    "typo3/cms-core": ">=7.5.0,<9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bm\\RkwDigiKit\\": "Classes/"
+    }
+  },
+  "replace": {
+    "rkw_digi_kit": "self.version",
+    "typo3-ter/rkw_digi_kit" : "self.version"
+  }
+}
