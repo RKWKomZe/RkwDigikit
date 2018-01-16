@@ -1,0 +1,16 @@
+config.tx_extbase {
+    persistence {
+        classes {
+            Bm\RkwDigiKit\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+            Bm\RkwDigiKit\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                }
+            }
+        }
+    }
+}

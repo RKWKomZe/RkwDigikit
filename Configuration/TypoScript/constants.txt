@@ -1,4 +1,5 @@
 #customsubcategory=dev=Development Settings
+#customsubcategory=menu=Navigation Settings
 plugin.tx_rkwdigikit {
     view {
         templateRootPath = EXT:rkw_digi_kit/Resources/Private/Templates/
@@ -6,6 +7,10 @@ plugin.tx_rkwdigikit {
         layoutRootPath = EXT:rkw_digi_kit/Resources/Private/Layouts/
     }
     settings {
+        navigation {
+            #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Root category id for DigiKit
+            rootCategoryId =
+        }
         develop {
             #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
             isDev = 0

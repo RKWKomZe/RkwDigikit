@@ -11,12 +11,16 @@ plugin.tx_rkwdigikit {
         }
     }
     settings {
+        navigation {
+            rootCategoryId = {$plugin.tx_rkwdigikit.settings.navigation.rootCategoryId}
+        }
         develop {
             isDev = {$plugin.tx_rkwdigikit.settings.develop.isDev}
         }
     }
 }
 
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.t3s" extensions="t3s">
 
 [globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.develop.isDev}]
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s" extensions="t3s">

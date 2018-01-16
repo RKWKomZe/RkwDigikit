@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2018-01-16T15:26:42Z"
+          product-name="rkw_digi_kit">
+        <header/>
+        <body>
+            <trans-unit id="page_types.digikit">
+                <source>DigiKit</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

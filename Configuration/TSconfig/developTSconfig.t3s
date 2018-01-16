@@ -1,4 +1,4 @@
-<INCLUDE_TYPOSCRIPT: source="DIR:typo3conf/ext/rkw_digi_kit/Configuration/TSconfig/Backend" extensions="t3s">
+<INCLUDE_TYPOSCRIPT: source="DIR:typo3conf/ext/rkw_digi_kit/Configuration/TSconfig/Develop" extensions="t3s">
 
 #Backend-Layout Einstellungen ++++++++++++++++++++++++++++++++
 TCEFORM.pages{
