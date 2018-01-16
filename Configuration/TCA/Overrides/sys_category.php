@@ -7,6 +7,16 @@ $ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
  * Additional columns
  */
 $additionalColumns = [
+    'digikit_level_one_title_override' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_level_three_title_override',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'max' => 20,
+            'eval' => 'trim'
+        ]
+    ],
     'digikit_level_one_image' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_level_one_image',
@@ -53,7 +63,7 @@ $additionalColumns = [
         'label' => $ll . 'digikit_level_two_title_override',
         'config' => [
             'type' => 'input',
-            'size' => 20,
+            'size' => 50,
             'eval' => 'trim'
         ]
     ],
@@ -78,7 +88,7 @@ $additionalColumns = [
         'label' => $ll . 'digikit_level_three_title_override',
         'config' => [
             'type' => 'input',
-            'size' => 20,
+            'size' => 50,
             'eval' => 'trim'
         ]
     ],
@@ -97,6 +107,50 @@ $additionalColumns = [
             ],
             'size' => 1
         ]
+    ],
+    'digikit_info_image' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_info_image',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_info_image',
+            [
+                'maxitems' => 1,
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                ],
+                'foreign_types' => [
+                    '0' => [
+                        'showitem' => '
+							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;;filePalette'
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                        'showitem' => '
+							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;;filePalette'
+                    ],
+                ]
+            ],
+            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+        )
+    ],
+    'digikit_info_title' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_info_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_info_text' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_info_text',
+        'config' => [
+            'type' => 'text',
+            'cols' => '40',
+            'rows' => '15'
+        ]
     ]
 ];
 
@@ -108,6 +162,7 @@ $additionalColumns = [
 $palettes = [
     'DigiKitLevelOne' => [
         'showitem' => '
+            digikit_level_one_title_override,
             digikit_level_one_settings,
             --linebreak--,
             digikit_level_one_image
@@ -124,6 +179,15 @@ $palettes = [
             digikit_level_three_title_override,
             digikit_level_three_position
         '
+    ],
+    'DigiKitInfo' => [
+        'showitem' => '
+            digikit_info_title,
+            --linebreak--,
+            digikit_info_text,
+            --linebreak--,
+            digikit_info_image
+        '
     ]
 ];
 
@@ -135,8 +199,9 @@ $GLOBALS['TCA']['sys_category']['palettes'] = array_merge($GLOBALS['TCA']['sys_c
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'sys_category',
     '--div--;DigiKit,
-        --palette--;Menu First Level;DigiKitLevelOne,
-        --palette--;Menu Second Level;DigiKitLevelTwo,
-        --palette--;Menu Third Level;DigiKitLevelThree
+        --palette--;Menu: First Level;DigiKitLevelOne,
+        --palette--;Menu: Second Level;DigiKitLevelTwo,
+        --palette--;Menu: Third Level;DigiKitLevelThree,
+        --palette--;Information for Third Menu Level;DigiKitInfo
     '
 );

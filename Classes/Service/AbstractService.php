@@ -1,6 +1,6 @@
 <?php
 
-namespace Bm\RkwDigiKit\Domain\Repository;
+namespace Bm\RkwDigiKit\Service;
 
 /***************************************************************
  *
@@ -26,26 +26,36 @@ namespace Bm\RkwDigiKit\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
- * Class CategoryRepository
- * @package Bm\RkwDigiKit\Domain\Repository
+ * Class AbstractService
+ * @package Bm\RkwDigiKit\Service
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+abstract class AbstractService implements SingletonInterface
 {
     /**
-     * @param int $rootId
-     *
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @var null|object|ObjectManager
      */
-    public function findChildrenByParentId($rootId)
+    protected $objectManager = null;
+
+    /**
+     * @var array
+     */
+    protected $settings = [];
+
+    /**
+     * AbstractService constructor.
+     */
+    public function __construct()
     {
-        $query = $this->createQuery();
+        /** @var ObjectManager objectManager */
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
-        $query->matching(
-            $query->equals('parent', $rootId)
-        );
-
-        return $query->execute();
+        $this->settings = $this->objectManager->get(ConfigurationManagerInterface::class)
+            ->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,'rkwDigiKit');
     }
 }

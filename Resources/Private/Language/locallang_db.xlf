@@ -9,17 +9,51 @@
 		    <trans-unit id="digikit_level_one_settings">
                 <source>Position</source>
             </trans-unit>
+
 		    <trans-unit id="digikit_level_two_title_override">
                 <source>Override Navigation Title</source>
             </trans-unit>
 		    <trans-unit id="digikit_level_two_position">
                 <source>Position</source>
             </trans-unit>
+
 		    <trans-unit id="digikit_level_three_title_override">
                 <source>Override Navigation Title</source>
             </trans-unit>
 		    <trans-unit id="digikit_level_three_position">
                 <source>Position</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_info_image">
+                <source>Image</source>
+            </trans-unit>
+		    <trans-unit id="digikit_info_title">
+                <source>Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_info_text">
+                <source>Text</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_meta_company">
+                <source>Firma</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_business">
+                <source>Branche</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_employee">
+                <source>Mitarbeiter</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_place">
+                <source>Ort</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_website">
+                <source>Website</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_map">
+                <source>Karte</source>
+            </trans-unit>
+		    <trans-unit id="digikit_category">
+                <source>Navigation Point</source>
             </trans-unit>
 		</body>
     </file>
