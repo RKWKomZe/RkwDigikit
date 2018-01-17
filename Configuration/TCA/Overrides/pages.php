@@ -7,6 +7,68 @@ $ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
  * Additional columns
  */
 $additionalColumns = [
+    'digikit_slider_images' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_slider_images',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_slider_images',
+            [
+                'maxitems' => 99,
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                ],
+                'foreign_types' => [
+                    '0' => [
+                        'showitem' => '
+							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;;filePalette'
+                    ],
+                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                        'showitem' => '
+							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+							--palette--;;filePalette'
+                    ],
+                ]
+            ],
+            'gif,jpg,jpeg,bmp,png'
+        )
+    ],
+    'digikit_main_header' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_main_header',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim,required'
+        ]
+    ],
+    'digikit_main_subheader' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_main_subheader',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim,required'
+        ]
+    ],
+    'digikit_main_teaser' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_main_teaser',
+        'config' => [
+            'type' => 'text',
+            'cols' => '40',
+            'rows' => '10',
+            'eval' => 'trim,required'
+        ]
+    ],
+    'digikit_main_text' => [
+        'exclude' => 1,
+        'label' => $ll . 'digikit_main_text',
+        'config' => [
+            'type' => 'text',
+            'enableRichtext' => true
+        ]
+    ],
     'digikit_meta_company' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_company',
@@ -14,7 +76,7 @@ $additionalColumns = [
         'config' => [
             'type' => 'input',
             'size' => 50,
-            'eval' => 'trim'
+            'eval' => 'trim,required'
         ]
     ],
     'digikit_meta_business' => [
@@ -24,7 +86,7 @@ $additionalColumns = [
         'config' => [
             'type' => 'input',
             'size' => 50,
-            'eval' => 'trim'
+            'eval' => 'trim,required'
         ]
     ],
     'digikit_meta_employee' => [
@@ -34,7 +96,7 @@ $additionalColumns = [
         'config' => [
             'type' => 'input',
             'size' => 50,
-            'eval' => 'trim'
+            'eval' => 'trim,required'
         ]
     ],
     'digikit_meta_place' => [
@@ -44,7 +106,7 @@ $additionalColumns = [
         'config' => [
             'type' => 'input',
             'size' => 50,
-            'eval' => 'trim'
+            'eval' => 'trim,required'
         ]
     ],
     'digikit_meta_website' => [
@@ -54,7 +116,7 @@ $additionalColumns = [
         'config' => [
             'type' => 'input',
             'size' => 50,
-            'eval' => 'trim'
+            'eval' => 'trim,required'
         ]
     ],
     'digikit_meta_map' => [
@@ -80,7 +142,7 @@ $additionalColumns = [
                     ],
                 ]
             ],
-            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            'gif,jpg,jpeg,bmp,png'
         )
     ],
     'digikit_category' => [
@@ -107,7 +169,8 @@ $additionalColumns = [
                 ],
                 'parentField' => 'parent',
             ],
-            'type' => 'select'
+            'type' => 'select',
+            'eval' => 'required'
         ]
     ]
 ];
@@ -118,6 +181,20 @@ $additionalColumns = [
  * Palettes
  */
 $palettes = [
+    'DigiKitSlider' => [
+        'showitem' => '
+            digikit_slider_images
+        '
+    ],
+    'DigiKitMain' => [
+        'showitem' => '
+            digikit_main_header,
+            digikit_main_subheader,
+            --linebreak--,
+            digikit_main_teaser,
+            digikit_main_text
+        '
+    ],
     'DigiKitMeta' => [
         'showitem' => '
             digikit_meta_company,
@@ -146,8 +223,10 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
     '--div--;DigiKit,
-        --palette--;Meta Informations;DigiKitMeta,
-        --palette--;Bind Page to navigation endpoint;DigiKitMenu 
+        --palette--;Slider Settings;DigiKitSlider,
+        --palette--;Main Information;DigiKitMain,
+        --palette--;Meta Information;DigiKitMeta,
+        --palette--;Bind Page to navigation endpoint (Category Level 4);DigiKitMenu 
     '
 );
 
@@ -156,7 +235,8 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
  */
 $GLOBALS['TCA']['pages']['ctrl']['searchFields'] .= trim('
     ,digikit_meta_company,digikit_meta_business,digikit_meta_employee,digikit_meta_place
-    ,digikit_meta_website,digikit_meta_map,digikit_category
+    ,digikit_meta_website,digikit_meta_map,digikit_category,digikit_main_header,digikit_main_subheader
+    ,digikit_main_teaser,digikit_main_text
 ');
 
 /**

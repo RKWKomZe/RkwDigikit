@@ -131,7 +131,7 @@ $additionalColumns = [
                     ],
                 ]
             ],
-            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            'gif,jpg,jpeg,bmp,png'
         )
     ],
     'digikit_info_title' => [
@@ -148,8 +148,7 @@ $additionalColumns = [
         'label' => $ll . 'digikit_info_text',
         'config' => [
             'type' => 'text',
-            'cols' => '40',
-            'rows' => '15'
+            'enableRichtext' => true
         ]
     ]
 ];

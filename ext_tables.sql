@@ -18,6 +18,11 @@ CREATE TABLE sys_category (
 # TABLE structure FOR TABLE 'pages'
 #
 CREATE TABLE pages (
+  digikit_slider_images INT(11) unsigned DEFAULT '0' NOT NULL,
+  digikit_main_header VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_main_subheader VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_main_teaser text,
+  digikit_main_text text,
   digikit_meta_company VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_meta_business VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_meta_employee VARCHAR(255) DEFAULT '' NOT NULL,

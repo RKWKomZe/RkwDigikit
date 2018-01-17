@@ -29,6 +29,7 @@ namespace Bm\RkwDigiKit\Service;
 
 use Bm\RkwDigiKit\Domain\Model\Category;
 use Bm\RkwDigiKit\Domain\Repository\CategoryRepository;
+use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 
@@ -44,6 +45,11 @@ class StructureService extends AbstractService
      * @var CategoryRepository|null|object
      */
     protected $categoryRepository = null;
+
+    /**
+     * @var PageRepository|null|object
+     */
+    protected $pageRepository = null;
 
     /**
      * @var CachingUtility|null|object
@@ -78,6 +84,8 @@ class StructureService extends AbstractService
         parent::__construct();
         /** @var CategoryRepository categoryRepository */
         $this->categoryRepository = $this->objectManager->get(CategoryRepository::class);
+        /** @var PageRepository pageRepository */
+        $this->pageRepository = $this->objectManager->get(PageRepository::class);
         /** @var CachingUtility cachingUtility */
         $this->cachingUtility = $this->objectManager->get(CachingUtility::class,self::CACHING_KEY);
     }

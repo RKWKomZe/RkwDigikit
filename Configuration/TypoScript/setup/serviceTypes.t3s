@@ -7,7 +7,7 @@ jsonStructureService {
         xhtml_cleaning = 0
         admPanel = 0
         debug = 0
-        no_cache = 0
+        no_cache = 1
         additionalHeaders = Content-type:application/json
     }
     10 = USER

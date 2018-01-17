@@ -26,7 +26,9 @@ namespace Bm\RkwDigiKit\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Class Page
@@ -35,6 +37,31 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Page extends AbstractEntity
 {
     const DIGI_KIT_TYPE = 130;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $digikitSliderImages = null;
+
+    /**
+     * @var string
+     */
+    protected $digikitMainHeader = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitMainSubheader = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitMainTeaser = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitMainText = '';
 
     /**
      * @var string
@@ -70,6 +97,110 @@ class Page extends AbstractEntity
      * @var \Bm\RkwDigiKit\Domain\Model\Category
      */
     protected $digikitCategory;
+
+    /**
+     * Page constructor.
+     */
+    public function __construct()
+    {
+        $this->digikitSliderImages = new ObjectStorage();
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getDigikitSliderImages(): ObjectStorage
+    {
+        return $this->digikitSliderImages;
+    }
+
+    /**
+     * @param ObjectStorage $digikitSliderImages
+     */
+    public function setDigikitSliderImages(ObjectStorage $digikitSliderImages): void
+    {
+        $this->digikitSliderImages = $digikitSliderImages;
+    }
+
+    /**
+     * @param FileReference $imageToAdd
+     */
+    public function addDigikitSliderImage(FileReference $imageToAdd): void
+    {
+        $this->digikitSliderImages->attach($imageToAdd);
+    }
+
+    /**
+     * @param FileReference $imageToRemove
+     */
+    public function removeDigikitSliderImage(FileReference $imageToRemove): void
+    {
+        $this->digikitSliderImages->detach($imageToRemove);
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitMainHeader(): string
+    {
+        return $this->digikitMainHeader;
+    }
+
+    /**
+     * @param string $digikitMainHeader
+     */
+    public function setDigikitMainHeader(string $digikitMainHeader): void
+    {
+        $this->digikitMainHeader = $digikitMainHeader;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitMainSubheader(): string
+    {
+        return $this->digikitMainSubheader;
+    }
+
+    /**
+     * @param string $digikitMainSubheader
+     */
+    public function setDigikitMainSubheader(string $digikitMainSubheader): void
+    {
+        $this->digikitMainSubheader = $digikitMainSubheader;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitMainTeaser(): string
+    {
+        return $this->digikitMainTeaser;
+    }
+
+    /**
+     * @param string $digikitMainTeaser
+     */
+    public function setDigikitMainTeaser(string $digikitMainTeaser): void
+    {
+        $this->digikitMainTeaser = $digikitMainTeaser;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitMainText(): string
+    {
+        return $this->digikitMainText;
+    }
+
+    /**
+     * @param string $digikitMainText
+     */
+    public function setDigikitMainText(string $digikitMainText): void
+    {
+        $this->digikitMainText = $digikitMainText;
+    }
 
     /**
      * @return string
@@ -152,17 +283,17 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @return FileReference
      */
-    public function getDigikitMetaMap(): \TYPO3\CMS\Extbase\Domain\Model\FileReference
+    public function getDigikitMetaMap(): FileReference
     {
         return $this->digikitMetaMap;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitMetaMap
+     * @param FileReference $digikitMetaMap
      */
-    public function setDigikitMetaMap(\TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitMetaMap): void
+    public function setDigikitMetaMap(FileReference $digikitMetaMap): void
     {
         $this->digikitMetaMap = $digikitMetaMap;
     }
@@ -181,5 +312,32 @@ class Page extends AbstractEntity
     public function setDigikitCategory(Category $digikitCategory): void
     {
         $this->digikitCategory = $digikitCategory;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDigiKitCompanyInformation(): array
+    {
+        return [
+            'header' => $this->digikitMainHeader,
+            'subheader' => $this->digikitMainSubheader,
+            'teaser' => $this->digikitMainTeaser,
+            'text' => $this->digikitMainText
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getDigiKitMetaInformation(): array
+    {
+        return [
+            'company' => $this->digikitMetaCompany,
+            'business' => $this->digikitMetaBusiness,
+            'employee' => $this->digikitMetaEmployee,
+            'place' => $this->digikitMetaPlace,
+            'website' => $this->digikitMetaWebsite
+        ];
     }
 }

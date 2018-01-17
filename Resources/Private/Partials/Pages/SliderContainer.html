@@ -1,0 +1,28 @@
+<div class="c-rkw-content__slider c-rkw-slider">
+    <f:for each="{items}" as="item" iteration="sliderItemIteration">
+        <f:render partial="Content/SliderItem" arguments="{item:item}" />
+    </f:for>
+    <f:if condition="{f:count(subject: items)} > 1">
+        <div class="c-rkw-slider__nav">
+            <f:for each="{items}" as="item" iteration="sliderNavigationIteration">
+                <span class="c-rkw-slider__bullet"></span>
+            </f:for>
+        </div>
+    </f:if>
+</div>
+
+<f:comment>
+    <div class="c-rkw-slider__item">
+        <figure class="c-rkw-slider__image"></figure>
+    </div>
+    <div class="c-rkw-slider__item">
+        <figure class="c-rkw-slider__image"></figure>
+    </div>
+    <div class="c-rkw-slider__item">
+        <figure class="c-rkw-slider__image"></figure>
+    </div>
+    <div class="c-rkw-slider__nav">
+        <span class="c-rkw-slider__bullet"></span>
+        <span class="c-rkw-slider__bullet"></span>
+    </div>
+</f:comment>

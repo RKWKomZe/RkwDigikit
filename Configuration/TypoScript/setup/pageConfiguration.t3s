@@ -1,0 +1,35 @@
+page.200 = FLUIDTEMPLATE
+page.200 {
+    layoutRootPaths {
+        0 = EXT:rkw_digi_kit/Resources/Private/Layouts/
+    }
+    partialRootPaths {
+        0 = EXT:rkw_digi_kit/Resources/Private/Partials/
+    }
+    file.cObject = CASE
+    file.cObject {
+        key.data = levelfield:-1, backend_layout_next_level, slide
+        key.override.field = backend_layout
+        pagets__DigiKitDetail = TEXT
+        pagets__DigiKitDetail.value = EXT:rkw_digi_kit/Resources/Private/Templates/Pages/DigiKitDetail.html
+    }
+    variables {
+        content < styles.content.get
+    }
+
+    dataProcessing.100 = Bm\RkwDigiKit\DataProcessing\PageProcessor
+    dataProcessing.100 {
+        type = Bm\RkwDigiKit\Domain\Model\Page
+        doktype = 130
+        as = page
+    }
+}
+
+#page.headerData.2000 = CASE
+#page.headerData.2000 {
+#    stdWrap.wrap = <link rel="stylesheet" type="text/css" href="|" media="all" />
+#    key.data = levelfield:-1, backend_layout_next_level, slide
+#    key.override.field = backend_layout
+#    pagets__DigiKitDetail = TEXT
+#    pagets__DigiKitDetail.value = /typo3conf/ext/rkw_digi_kit/Resources/Public/dist/all.css
+#}
