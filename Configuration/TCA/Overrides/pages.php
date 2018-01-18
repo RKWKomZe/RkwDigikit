@@ -9,6 +9,7 @@ $ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
 $additionalColumns = [
     'digikit_slider_images' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_slider_images',
         'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
             'digikit_slider_images',
@@ -35,6 +36,7 @@ $additionalColumns = [
     ],
     'digikit_main_header' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_main_header',
         'config' => [
             'type' => 'input',
@@ -44,6 +46,7 @@ $additionalColumns = [
     ],
     'digikit_main_subheader' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_main_subheader',
         'config' => [
             'type' => 'input',
@@ -53,6 +56,7 @@ $additionalColumns = [
     ],
     'digikit_main_teaser' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_main_teaser',
         'config' => [
             'type' => 'text',
@@ -63,6 +67,7 @@ $additionalColumns = [
     ],
     'digikit_main_text' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_main_text',
         'config' => [
             'type' => 'text',
@@ -72,7 +77,7 @@ $additionalColumns = [
     'digikit_meta_company' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_company',
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_TYPE,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -82,7 +87,7 @@ $additionalColumns = [
     'digikit_meta_business' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_business',
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_TYPE,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -92,7 +97,7 @@ $additionalColumns = [
     'digikit_meta_employee' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_employee',
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_TYPE,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -102,7 +107,7 @@ $additionalColumns = [
     'digikit_meta_place' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_place',
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_TYPE,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -112,7 +117,7 @@ $additionalColumns = [
     'digikit_meta_website' => [
         'exclude' => 1,
         'label' => $ll . 'digikit_meta_website',
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_TYPE,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'config' => [
             'type' => 'input',
             'size' => 50,
@@ -147,6 +152,7 @@ $additionalColumns = [
     ],
     'digikit_category' => [
         'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_category',
         'config' => [
             'foreign_table' => 'sys_category',

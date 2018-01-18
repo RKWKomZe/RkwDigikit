@@ -26,6 +26,7 @@ namespace Bm\RkwDigiKit\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use Bm\RkwDigiKit\Domain\Model\Page;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -34,4 +35,21 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class PageRepository extends Repository
 {
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByDoktype()
+    {
+        $query = $this->createQuery();
+
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        $query->matching(
+            $query->equals(
+                'doktype', Page::DIGI_KIT_DOKTYPE
+            )
+        );
+
+        return $query->execute();
+    }
 }

@@ -26,12 +26,14 @@ namespace Bm\RkwDigiKit\Service;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 use Bm\RkwDigiKit\Domain\Model\Category;
+use Bm\RkwDigiKit\Domain\Model\Page;
 use Bm\RkwDigiKit\Domain\Repository\CategoryRepository;
 use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
+use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Class StructureService
@@ -52,6 +54,11 @@ class StructureService extends AbstractService
     protected $pageRepository = null;
 
     /**
+     * @var StandaloneViewUtility|null|object
+     */
+    protected $standaloneViewUtility = null;
+
+    /**
      * @var CachingUtility|null|object
      */
     protected $cachingUtility = null;
@@ -63,6 +70,7 @@ class StructureService extends AbstractService
         'models' => [],
         'mechanisms' => [],
         'tasks' => [],
+        'instances' => [],
         'status' => false
     ];
 
@@ -86,8 +94,10 @@ class StructureService extends AbstractService
         $this->categoryRepository = $this->objectManager->get(CategoryRepository::class);
         /** @var PageRepository pageRepository */
         $this->pageRepository = $this->objectManager->get(PageRepository::class);
+        /** @var StandaloneViewUtility standaloneViewUtility */
+        $this->standaloneViewUtility = $this->objectManager->get(StandaloneViewUtility::class);
         /** @var CachingUtility cachingUtility */
-        $this->cachingUtility = $this->objectManager->get(CachingUtility::class,self::CACHING_KEY);
+        $this->cachingUtility = $this->objectManager->get(CachingUtility::class, self::CACHING_KEY);
     }
 
     /**
@@ -105,20 +115,24 @@ class StructureService extends AbstractService
 
             if (!empty($categories->toArray())) {
 
-                self::fillModels($categories);
+                self::createModels($categories);
 
                 if (!empty($this->modelIds)) {
-                    self::fillMechanisms();
+                    self::createMechanisms();
                 }
 
                 if (!empty($this->mechanismIds)) {
-                    self::fillTasks();
+                    self::createTasks();
+                }
+
+                if (!empty($this->output['tasks'])) {
+                    self::renderContent();
                 }
 
                 $this->output['status'] = true;
 
                 if (!empty($this->output)) {
-                    $this->cachingUtility->cache([self::CACHING_KEY],$this->output);
+                    $this->cachingUtility->cache([self::CACHING_KEY], $this->output);
                 }
 
                 return json_encode($this->output);
@@ -133,35 +147,20 @@ class StructureService extends AbstractService
     /**
      * @param QueryResult $models
      */
-    private function fillModels(QueryResult $models)
+    private function createModels(QueryResult $models)
     {
         /** @var Category $model */
         foreach ($models as $model) {
-            $modelSettings = explode(';', $model->getDigikitLevelOneSettings());
+            array_push($this->modelIds, $model->getUid());
 
-            $uid = $model->getUid();
-
-            $array = [
-                'id' => $uid,
-                'title' => $model->getTitle(),
-                'overrideTitle' => $model->getDigikitLevelOneTitleOverride(),
-                'color' => $modelSettings[0],
-                'order' => $modelSettings[1],
-                'category' => $modelSettings[2],
-                'position' => $modelSettings[3],
-                'mechanisms' => []
-            ];
-
-            array_push($this->modelIds, $uid);
-
-            $this->output['models'][$uid] = $array;
+            $this->output['models'][$model->getUid()] = $model->getModelInformation();
         }
     }
 
     /**
      * Fill mechanisms array with data from categories tree
      */
-    private function fillMechanisms()
+    private function createMechanisms()
     {
         foreach ($this->modelIds as $modelId) {
             $mechanisms = $this->categoryRepository->findChildrenByParentId($modelId);
@@ -170,19 +169,11 @@ class StructureService extends AbstractService
             foreach ($mechanisms as $mechanism) {
                 $uid = $mechanism->getUid();
 
-                $array = [
-                    'id' => $uid,
-                    'title' => $mechanism->getTitle(),
-                    'overrideTitle' => $mechanism->getDigikitLevelTwoTitleOverride(),
-                    'position' => $mechanism->getDigikitLevelTwoPosition(),
-                    'tasks' => []
-                ];
-
                 $this->output['models'][$modelId]['mechanisms'][] = $uid;
 
-                array_push($this->mechanismIds,$uid);
+                array_push($this->mechanismIds, $uid);
 
-                $this->output['mechanisms'][$uid] = $array;
+                $this->output['mechanisms'][$uid] = $mechanism->getMechanismInformation();
             }
 
             array_flip($this->output['models'][$modelId]['mechanisms']);
@@ -192,7 +183,7 @@ class StructureService extends AbstractService
     /**
      * Fill tasks array with data from categories tree
      */
-    private function fillTasks()
+    private function createTasks()
     {
         foreach ($this->mechanismIds as $mechanismId) {
             $tasks = $this->categoryRepository->findChildrenByParentId($mechanismId);
@@ -201,20 +192,47 @@ class StructureService extends AbstractService
             foreach ($tasks as $task) {
                 $uid = $task->getUid();
 
-                $array = [
-                    'id' => $uid,
-                    'title' => $task->getTitle(),
-                    'overrideTitle' => $task->getDigikitLevelThreeTitleOverride(),
-                    'position' => $task->getDigikitLevelThreePosition(),
-                    'instances' => []
-                ];
-
                 $this->output['mechanisms'][$mechanismId]['tasks'][] = $uid;
 
-                $this->output['tasks'][$uid] = $array;
+                $this->output['tasks'][$uid] = $task->getTaskInformation();
             }
 
             array_flip($this->output['mechanisms'][$mechanismId]['tasks']);
+        }
+    }
+
+    /**
+     * Render Page Content for each Task
+     */
+    private function renderContent()
+    {
+        /** @var QueryResult $pages */
+        $pages = $this->pageRepository->findByDoktype();
+        if (!empty($pages->toArray())) {
+            /** @var StandaloneView|bool $pageDetailView */
+            $pageDetailView = $this->standaloneViewUtility->createStandaloneView('rkwDigiKit', 'DigiKitDetail',
+                'Pages');
+
+            if ($pageDetailView !== false) {
+                $taskIds = [];
+
+                /** @var Page $page */
+                foreach ($pages as $page) {
+                    $pageDetailView->assignMultiple([
+                        'page' => $page
+                    ]);
+
+                    $this->output['instances'][$page->getUid()] = $pageDetailView->render();
+
+                    $taskId = $page->getDigikitCategory()->getUid();
+                    array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
+                    array_push($taskIds, $taskId);
+                }
+
+                foreach ($taskIds as $taskId) {
+                    array_flip($this->output['tasks'][$taskId]['instances']);
+                }
+            }
         }
     }
 }

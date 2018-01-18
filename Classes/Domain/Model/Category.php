@@ -258,4 +258,51 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     {
         $this->digikitInfoText = $digikitInfoText;
     }
+
+    /**
+     * @return array
+     */
+    public function getModelInformation(): array
+    {
+        $modelSettings = explode(';', $this->digikitLevelOneSettings);
+
+        return [
+            'id' => $this->uid,
+            'title' => $this->title,
+            'overrideTitle' => $this->digikitLevelOneTitleOverride,
+            'color' => $modelSettings[0],
+            'order' => $modelSettings[1],
+            'category' => $modelSettings[2],
+            'position' => $modelSettings[3],
+            'mechanisms' => []
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getMechanismInformation(): array
+    {
+        return [
+            'id' => $this->uid,
+            'title' => $this->title,
+            'overrideTitle' => $this->digikitLevelTwoTitleOverride,
+            'position' => $this->digikitLevelTwoPosition,
+            'tasks' => []
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getTaskInformation(): array
+    {
+        return [
+            'id' => $this->uid,
+            'title' => $this->title,
+            'overrideTitle' => $this->digikitLevelThreeTitleOverride,
+            'position' => $this->digikitLevelThreePosition,
+            'instances' => []
+        ];
+    }
 }

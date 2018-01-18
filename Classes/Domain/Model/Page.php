@@ -36,7 +36,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Page extends AbstractEntity
 {
-    const DIGI_KIT_TYPE = 130;
+    const DIGI_KIT_DOKTYPE = 130;
+
+    /**
+     * @var int
+     */
+    protected $doktype = 0;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
@@ -104,6 +109,22 @@ class Page extends AbstractEntity
     public function __construct()
     {
         $this->digikitSliderImages = new ObjectStorage();
+    }
+
+    /**
+     * @return int
+     */
+    public function getDoktype(): int
+    {
+        return $this->doktype;
+    }
+
+    /**
+     * @param int $doktype
+     */
+    public function setDoktype(int $doktype): void
+    {
+        $this->doktype = $doktype;
     }
 
     /**

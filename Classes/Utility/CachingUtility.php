@@ -26,23 +26,15 @@ namespace Bm\RkwDigiKit\Utility;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
-
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * Class CachingUtility
  * @package Bm\RkwDigiKit\Utility
  */
-class CachingUtility
+class CachingUtility extends AbstractUtility
 {
-    /**
-     * @var null|object|ObjectManager
-     */
-    protected $objectManager = null;
 
     /**
      * @var null|object|CacheManager
@@ -63,7 +55,7 @@ class CachingUtility
      */
     public function __construct($key)
     {
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        parent::__construct();
         $this->cacheManager = $this->objectManager->get(CacheManager::class);
         $this->cacheInstance = $this->cacheManager->getCache($key);
     }
