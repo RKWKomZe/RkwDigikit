@@ -122,7 +122,7 @@ class Page extends AbstractEntity
     /**
      * @param int $doktype
      */
-    public function setDoktype(int $doktype): void
+    public function setDoktype(int $doktype)
     {
         $this->doktype = $doktype;
     }
@@ -130,7 +130,7 @@ class Page extends AbstractEntity
     /**
      * @return ObjectStorage
      */
-    public function getDigikitSliderImages(): ObjectStorage
+    public function getDigikitSliderImages()
     {
         return $this->digikitSliderImages;
     }
@@ -138,7 +138,7 @@ class Page extends AbstractEntity
     /**
      * @param ObjectStorage $digikitSliderImages
      */
-    public function setDigikitSliderImages(ObjectStorage $digikitSliderImages): void
+    public function setDigikitSliderImages(ObjectStorage $digikitSliderImages)
     {
         $this->digikitSliderImages = $digikitSliderImages;
     }
@@ -146,7 +146,7 @@ class Page extends AbstractEntity
     /**
      * @param FileReference $imageToAdd
      */
-    public function addDigikitSliderImage(FileReference $imageToAdd): void
+    public function addDigikitSliderImage(FileReference $imageToAdd)
     {
         $this->digikitSliderImages->attach($imageToAdd);
     }
@@ -154,7 +154,7 @@ class Page extends AbstractEntity
     /**
      * @param FileReference $imageToRemove
      */
-    public function removeDigikitSliderImage(FileReference $imageToRemove): void
+    public function removeDigikitSliderImage(FileReference $imageToRemove)
     {
         $this->digikitSliderImages->detach($imageToRemove);
     }
@@ -162,7 +162,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMainHeader(): string
+    public function getDigikitMainHeader()
     {
         return $this->digikitMainHeader;
     }
@@ -170,7 +170,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMainHeader
      */
-    public function setDigikitMainHeader(string $digikitMainHeader): void
+    public function setDigikitMainHeader(string $digikitMainHeader)
     {
         $this->digikitMainHeader = $digikitMainHeader;
     }
@@ -178,7 +178,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMainSubheader(): string
+    public function getDigikitMainSubheader()
     {
         return $this->digikitMainSubheader;
     }
@@ -186,7 +186,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMainSubheader
      */
-    public function setDigikitMainSubheader(string $digikitMainSubheader): void
+    public function setDigikitMainSubheader(string $digikitMainSubheader)
     {
         $this->digikitMainSubheader = $digikitMainSubheader;
     }
@@ -194,7 +194,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMainTeaser(): string
+    public function getDigikitMainTeaser()
     {
         return $this->digikitMainTeaser;
     }
@@ -202,7 +202,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMainTeaser
      */
-    public function setDigikitMainTeaser(string $digikitMainTeaser): void
+    public function setDigikitMainTeaser(string $digikitMainTeaser)
     {
         $this->digikitMainTeaser = $digikitMainTeaser;
     }
@@ -210,7 +210,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMainText(): string
+    public function getDigikitMainText()
     {
         return $this->digikitMainText;
     }
@@ -218,7 +218,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMainText
      */
-    public function setDigikitMainText(string $digikitMainText): void
+    public function setDigikitMainText(string $digikitMainText)
     {
         $this->digikitMainText = $digikitMainText;
     }
@@ -226,7 +226,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMetaCompany(): string
+    public function getDigikitMetaCompany()
     {
         return $this->digikitMetaCompany;
     }
@@ -234,7 +234,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMetaCompany
      */
-    public function setDigikitMetaCompany(string $digikitMetaCompany): void
+    public function setDigikitMetaCompany(string $digikitMetaCompany)
     {
         $this->digikitMetaCompany = $digikitMetaCompany;
     }
@@ -242,7 +242,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMetaBusiness(): string
+    public function getDigikitMetaBusiness()
     {
         return $this->digikitMetaBusiness;
     }
@@ -250,7 +250,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMetaBusiness
      */
-    public function setDigikitMetaBusiness(string $digikitMetaBusiness): void
+    public function setDigikitMetaBusiness(string $digikitMetaBusiness)
     {
         $this->digikitMetaBusiness = $digikitMetaBusiness;
     }
@@ -258,7 +258,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMetaEmployee(): string
+    public function getDigikitMetaEmployee()
     {
         return $this->digikitMetaEmployee;
     }
@@ -266,7 +266,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMetaEmployee
      */
-    public function setDigikitMetaEmployee(string $digikitMetaEmployee): void
+    public function setDigikitMetaEmployee(string $digikitMetaEmployee)
     {
         $this->digikitMetaEmployee = $digikitMetaEmployee;
     }
@@ -274,7 +274,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMetaPlace(): string
+    public function getDigikitMetaPlace()
     {
         return $this->digikitMetaPlace;
     }
@@ -282,7 +282,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMetaPlace
      */
-    public function setDigikitMetaPlace(string $digikitMetaPlace): void
+    public function setDigikitMetaPlace(string $digikitMetaPlace)
     {
         $this->digikitMetaPlace = $digikitMetaPlace;
     }
@@ -290,7 +290,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDigikitMetaWebsite(): string
+    public function getDigikitMetaWebsite()
     {
         return $this->digikitMetaWebsite;
     }
@@ -298,7 +298,7 @@ class Page extends AbstractEntity
     /**
      * @param string $digikitMetaWebsite
      */
-    public function setDigikitMetaWebsite(string $digikitMetaWebsite): void
+    public function setDigikitMetaWebsite(string $digikitMetaWebsite)
     {
         $this->digikitMetaWebsite = $digikitMetaWebsite;
     }
@@ -306,7 +306,7 @@ class Page extends AbstractEntity
     /**
      * @return FileReference
      */
-    public function getDigikitMetaMap(): FileReference
+    public function getDigikitMetaMap()
     {
         return $this->digikitMetaMap;
     }
@@ -314,7 +314,7 @@ class Page extends AbstractEntity
     /**
      * @param FileReference $digikitMetaMap
      */
-    public function setDigikitMetaMap(FileReference $digikitMetaMap): void
+    public function setDigikitMetaMap(FileReference $digikitMetaMap)
     {
         $this->digikitMetaMap = $digikitMetaMap;
     }
@@ -322,7 +322,7 @@ class Page extends AbstractEntity
     /**
      * @return Category
      */
-    public function getDigikitCategory(): Category
+    public function getDigikitCategory()
     {
         return $this->digikitCategory;
     }
@@ -330,15 +330,17 @@ class Page extends AbstractEntity
     /**
      * @param Category $digikitCategory
      */
-    public function setDigikitCategory(Category $digikitCategory): void
+    public function setDigikitCategory(Category $digikitCategory)
     {
         $this->digikitCategory = $digikitCategory;
     }
 
     /**
+     * Summarized properties
+     *
      * @return array
      */
-    public function getDigiKitCompanyInformation(): array
+    public function getDigiKitCompanyInformation()
     {
         return [
             'header' => $this->digikitMainHeader,
@@ -349,9 +351,30 @@ class Page extends AbstractEntity
     }
 
     /**
+     * Summarized properties
+     *
      * @return array
      */
-    public function getDigiKitMetaInformation(): array
+    public function getDigiKitImages()
+    {
+        $images = [];
+        if (!empty($this->digikitSliderImages->toArray())) {
+            /** @var FileReference $sliderImage */
+            foreach ($this->digikitSliderImages as $sliderImage) {
+                array_push($images,$sliderImage->getOriginalResource()->getPublicUrl());
+            }
+
+            return $images;
+        }
+        return [];
+    }
+
+    /**
+     * Summarized properties
+     *
+     * @return array
+     */
+    public function getDigiKitMetaInformation()
     {
         return [
             'company' => $this->digikitMetaCompany,

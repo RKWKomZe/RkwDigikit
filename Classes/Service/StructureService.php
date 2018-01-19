@@ -107,9 +107,9 @@ class StructureService extends AbstractService
      */
     public function getJsonOutput()
     {
-        $cache = $this->cachingUtility->loadCache([self::CACHING_KEY]);
-
-        if (!$cache) {
+//        $cache = $this->cachingUtility->loadCache([self::CACHING_KEY]);
+//
+//        if (!$cache) {
             /** @var QueryResult $categories */
             $categories = $this->categoryRepository->findChildrenByParentId($this->settings['navigation']['rootCategoryId']);
 
@@ -139,9 +139,9 @@ class StructureService extends AbstractService
             }
 
             return json_encode($this->output);
-        } else {
-            return json_encode($cache['data']);
-        }
+//        } else {
+//            return json_encode($cache['data']);
+//        }
     }
 
     /**
@@ -209,29 +209,23 @@ class StructureService extends AbstractService
         /** @var QueryResult $pages */
         $pages = $this->pageRepository->findByDoktype();
         if (!empty($pages->toArray())) {
-            /** @var StandaloneView|bool $pageDetailView */
-            $pageDetailView = $this->standaloneViewUtility->createStandaloneView('rkwDigiKit', 'DigiKitDetail',
-                'Pages');
+            $taskIds = [];
 
-            if ($pageDetailView !== false) {
-                $taskIds = [];
+            /** @var Page $page */
+            foreach ($pages as $page) {
+                $this->output['instances'][$page->getUid()] = [
+                    'content' => $page->getDigiKitCompanyInformation(),
+                    'metaContent' => $page->getDigiKitMetaInformation(),
+                    'sliderImages' => $page->getDigiKitImages()
+                ];
 
-                /** @var Page $page */
-                foreach ($pages as $page) {
-                    $pageDetailView->assignMultiple([
-                        'page' => $page
-                    ]);
+                $taskId = $page->getDigikitCategory()->getUid();
+                array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
+                array_push($taskIds, $taskId);
+            }
 
-                    $this->output['instances'][$page->getUid()] = $pageDetailView->render();
-
-                    $taskId = $page->getDigikitCategory()->getUid();
-                    array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
-                    array_push($taskIds, $taskId);
-                }
-
-                foreach ($taskIds as $taskId) {
-                    array_flip($this->output['tasks'][$taskId]['instances']);
-                }
+            foreach ($taskIds as $taskId) {
+                array_flip($this->output['tasks'][$taskId]['instances']);
             }
         }
     }

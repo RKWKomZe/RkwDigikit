@@ -1,1 +1,7 @@
-<INCLUDE_TYPOSCRIPT: source="DIR:typo3conf/ext/rkw_digi_kit/Configuration/TSconfig/Backend" extensions="t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/Layouts.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/RTE.t3s">
+
+[page|doktype = 130]
+    TCEFORM.pages.backend_layout.keepItems = pagets__DigiKitDetail
+    TCAdefaults.pages.backend_layout = pagets__DigiKitDetail
+[end]

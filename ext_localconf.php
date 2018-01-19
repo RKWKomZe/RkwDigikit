@@ -2,6 +2,11 @@
 defined('TYPO3_MODE') or die('Access denied!');
 
 /**
+ * Register CK Editor presets
+ */
+$GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['digikittext'] = 'EXT:rkw_digi_kit/Configuration/RTE/DigikitText.yaml';
+
+/**
  * Page TSconfig
  */
 $pageTSconfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
@@ -9,6 +14,18 @@ $pageTSconfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
     . 'Configuration/TSconfig/pageTSconfig.t3s'
 );
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig($pageTSconfig);
+
+/**
+ * Configure plugins
+ */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Bm.' . $_EXTKEY,
+    'DigiKit',
+    [
+        'DigiKit' => 'index'
+    ],
+    []
+);
 
 /**
  * Configure Caching Framework

@@ -27,6 +27,9 @@ namespace Bm\RkwDigiKit\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use Doctrine\Common\Util\Debug;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 /**
  * Class Category
  * @package Bm\RkwDigiKit\Domain\Model
@@ -86,7 +89,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return int
      */
-    public function getUid(): int
+    public function getUid()
     {
         return $this->uid;
     }
@@ -94,7 +97,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -102,7 +105,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelOneTitleOverride(): string
+    public function getDigikitLevelOneTitleOverride()
     {
         return $this->digikitLevelOneTitleOverride;
     }
@@ -110,7 +113,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelOneTitleOverride
      */
-    public function setDigikitLevelOneTitleOverride(string $digikitLevelOneTitleOverride): void
+    public function setDigikitLevelOneTitleOverride(string $digikitLevelOneTitleOverride)
     {
         $this->digikitLevelOneTitleOverride = $digikitLevelOneTitleOverride;
     }
@@ -118,7 +121,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getDigikitLevelOneImage(): \TYPO3\CMS\Extbase\Domain\Model\FileReference
+    public function getDigikitLevelOneImage()
     {
         return $this->digikitLevelOneImage;
     }
@@ -126,7 +129,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitLevelOneImage
      */
-    public function setDigikitLevelOneImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitLevelOneImage): void
+    public function setDigikitLevelOneImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitLevelOneImage)
     {
         $this->digikitLevelOneImage = $digikitLevelOneImage;
     }
@@ -134,7 +137,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelOneSettings(): string
+    public function getDigikitLevelOneSettings()
     {
         return $this->digikitLevelOneSettings;
     }
@@ -142,7 +145,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelOneSettings
      */
-    public function setDigikitLevelOneSettings(string $digikitLevelOneSettings): void
+    public function setDigikitLevelOneSettings(string $digikitLevelOneSettings)
     {
         $this->digikitLevelOneSettings = $digikitLevelOneSettings;
     }
@@ -150,7 +153,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelTwoTitleOverride(): string
+    public function getDigikitLevelTwoTitleOverride()
     {
         return $this->digikitLevelTwoTitleOverride;
     }
@@ -158,7 +161,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelTwoTitleOverride
      */
-    public function setDigikitLevelTwoTitleOverride(string $digikitLevelTwoTitleOverride): void
+    public function setDigikitLevelTwoTitleOverride(string $digikitLevelTwoTitleOverride)
     {
         $this->digikitLevelTwoTitleOverride = $digikitLevelTwoTitleOverride;
     }
@@ -166,7 +169,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelTwoPosition(): string
+    public function getDigikitLevelTwoPosition()
     {
         return $this->digikitLevelTwoPosition;
     }
@@ -174,7 +177,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelTwoPosition
      */
-    public function setDigikitLevelTwoPosition(string $digikitLevelTwoPosition): void
+    public function setDigikitLevelTwoPosition(string $digikitLevelTwoPosition)
     {
         $this->digikitLevelTwoPosition = $digikitLevelTwoPosition;
     }
@@ -182,7 +185,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelThreeTitleOverride(): string
+    public function getDigikitLevelThreeTitleOverride()
     {
         return $this->digikitLevelThreeTitleOverride;
     }
@@ -190,7 +193,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelThreeTitleOverride
      */
-    public function setDigikitLevelThreeTitleOverride(string $digikitLevelThreeTitleOverride): void
+    public function setDigikitLevelThreeTitleOverride(string $digikitLevelThreeTitleOverride)
     {
         $this->digikitLevelThreeTitleOverride = $digikitLevelThreeTitleOverride;
     }
@@ -198,7 +201,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitLevelThreePosition(): string
+    public function getDigikitLevelThreePosition()
     {
         return $this->digikitLevelThreePosition;
     }
@@ -206,7 +209,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitLevelThreePosition
      */
-    public function setDigikitLevelThreePosition(string $digikitLevelThreePosition): void
+    public function setDigikitLevelThreePosition(string $digikitLevelThreePosition)
     {
         $this->digikitLevelThreePosition = $digikitLevelThreePosition;
     }
@@ -222,7 +225,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitInfoImage
      */
-    public function setDigikitInfoImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitInfoImage): void
+    public function setDigikitInfoImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $digikitInfoImage)
     {
         $this->digikitInfoImage = $digikitInfoImage;
     }
@@ -230,7 +233,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitInfoTitle(): string
+    public function getDigikitInfoTitle()
     {
         return $this->digikitInfoTitle;
     }
@@ -238,7 +241,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitInfoTitle
      */
-    public function setDigikitInfoTitle(string $digikitInfoTitle): void
+    public function setDigikitInfoTitle(string $digikitInfoTitle)
     {
         $this->digikitInfoTitle = $digikitInfoTitle;
     }
@@ -246,7 +249,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @return string
      */
-    public function getDigikitInfoText(): string
+    public function getDigikitInfoText()
     {
         return $this->digikitInfoText;
     }
@@ -254,17 +257,20 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * @param string $digikitInfoText
      */
-    public function setDigikitInfoText(string $digikitInfoText): void
+    public function setDigikitInfoText(string $digikitInfoText)
     {
         $this->digikitInfoText = $digikitInfoText;
     }
 
     /**
+     * Summarized properties
+     *
      * @return array
      */
-    public function getModelInformation(): array
+    public function getModelInformation()
     {
         $modelSettings = explode(';', $this->digikitLevelOneSettings);
+        $image = ($this->digikitLevelOneImage) ? $this->digikitLevelOneImage->getOriginalResource()->getPublicUrl() : false;
 
         return [
             'id' => $this->uid,
@@ -274,14 +280,17 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
             'order' => $modelSettings[1],
             'category' => $modelSettings[2],
             'position' => $modelSettings[3],
+            'image' => $image,
             'mechanisms' => []
         ];
     }
 
     /**
+     * Summarized properties
+     *
      * @return array
      */
-    public function getMechanismInformation(): array
+    public function getMechanismInformation()
     {
         return [
             'id' => $this->uid,
@@ -293,15 +302,22 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     }
 
     /**
+     * Summarized properties
+     *
      * @return array
      */
-    public function getTaskInformation(): array
+    public function getTaskInformation()
     {
+        $image = ($this->digikitInfoImage) ? $this->digikitInfoImage->getOriginalResource()->getPublicUrl() : false;
+
         return [
             'id' => $this->uid,
             'title' => $this->title,
             'overrideTitle' => $this->digikitLevelThreeTitleOverride,
             'position' => $this->digikitLevelThreePosition,
+            'infoTitle' => $this->digikitInfoTitle,
+            'infoText' => $this->digikitInfoText,
+            'infoImage' => $image,
             'instances' => []
         ];
     }

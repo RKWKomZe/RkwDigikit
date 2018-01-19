@@ -27,20 +27,22 @@ $additionalColumns = [
                 'appearance' => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
                 ],
-                'foreign_types' => [
-                    '0' => [
-                        'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-							--palette--;;filePalette'
-                    ],
-                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                        'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-							--palette--;;filePalette'
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
                     ],
                 ]
             ],
-            $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+            'gif,jpg,jpeg,bmp,png,svg'
         )
     ],
     'digikit_level_one_settings' => [
@@ -51,7 +53,7 @@ $additionalColumns = [
             'renderType' => 'selectSingle',
             'items' => [
                 ['Top Left', '--color-1;c-tile-nav__column--order-1;--category-1;--top-left'],
-                ['Top Right', '--color-2;c-tile-nav__column--order-2;--category-1;--top-right'],
+                ['Top Right', '--color-2;c-tile-nav__column--order-2;--category-2;--top-right'],
                 ['Bottom Left', '--color-4;c-tile-nav__column--order-3;--category-4;--bottom-left'],
                 ['Bottom Right', '--color-3;c-tile-nav__column--order-4;--category-3;--bottom-right']
             ],
@@ -75,10 +77,10 @@ $additionalColumns = [
             'renderType' => 'selectSingle',
             'items' => [
                 ['Default', ''],
-                ['Top', '--x'],
-                ['Right', '--y'],
-                ['Left', '--x2'],
-                ['Bottom', '--y2']
+                ['Horizontal x1', '--x'],
+                ['Vertical x1', '--y'],
+                ['Horizontal x2', '--x2'],
+                ['Vertical x2', '--y2']
             ],
             'size' => 1
         ]
@@ -100,10 +102,10 @@ $additionalColumns = [
             'renderType' => 'selectSingle',
             'items' => [
                 ['Default', ''],
-                ['Top', '--x'],
-                ['Right', '--y'],
-                ['Left', '--x2'],
-                ['Bottom', '--y2']
+                ['Horizontal x1', '--x'],
+                ['Vertical x1', '--y'],
+                ['Horizontal x2', '--x2'],
+                ['Vertical x2', '--y2']
             ],
             'size' => 1
         ]
@@ -118,20 +120,22 @@ $additionalColumns = [
                 'appearance' => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
                 ],
-                'foreign_types' => [
-                    '0' => [
-                        'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-							--palette--;;filePalette'
-                    ],
-                    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
-                        'showitem' => '
-							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-							--palette--;;filePalette'
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
                     ],
                 ]
             ],
-            'gif,jpg,jpeg,bmp,png'
+            'gif,jpg,jpeg,bmp,png,svg'
         )
     ],
     'digikit_info_title' => [
