@@ -1,5 +1,6 @@
 #customsubcategory=dev=Development Settings
 #customsubcategory=menu=Navigation Settings
+#customsubcategory=pages=Pages Settings
 plugin.tx_rkwdigikit {
     view {
         templateRootPath = EXT:rkw_digi_kit/Resources/Private/Templates/
@@ -10,6 +11,10 @@ plugin.tx_rkwdigikit {
         navigation {
             #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Root category id for DigiKit
             rootCategoryId =
+        }
+        pages {
+            #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Load Page Configuration for Fluid Template
+            loadPageConfiguration = 0
         }
         develop {
             #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
