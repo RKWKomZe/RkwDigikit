@@ -33,6 +33,7 @@ use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -152,8 +153,7 @@ class StructureService extends AbstractService
         /** @var Category $model */
         foreach ($models as $model) {
             array_push($this->modelIds, $model->getUid());
-
-            $this->output['models'][$model->getUid()] = $model->getModelInformation();
+            $this->output['models']['uid'.$model->getUid()] = $model->getModelInformation();
         }
     }
 
@@ -169,14 +169,14 @@ class StructureService extends AbstractService
             foreach ($mechanisms as $mechanism) {
                 $uid = $mechanism->getUid();
 
-                $this->output['models'][$modelId]['mechanisms'][] = $uid;
+                $this->output['models']['uid'.$modelId]['mechanisms'][] = $uid;
 
                 array_push($this->mechanismIds, $uid);
 
                 $this->output['mechanisms'][$uid] = $mechanism->getMechanismInformation();
             }
 
-            array_flip($this->output['models'][$modelId]['mechanisms']);
+            array_flip($this->output['models']['uid'.$modelId]['mechanisms']);
         }
     }
 

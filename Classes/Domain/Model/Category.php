@@ -87,6 +87,19 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     protected $digikitInfoText = '';
 
     /**
+     * @var int
+     */
+    protected $sorting = 0;
+
+    /**
+     * @return int
+     */
+    public function getSorting()
+    {
+        return $this->sorting;
+    }
+
+    /**
      * @return int
      */
     public function getUid()
@@ -273,6 +286,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
         $image = ($this->digikitLevelOneImage) ? $this->digikitLevelOneImage->getOriginalResource()->getPublicUrl() : false;
 
         return [
+            'sorting' => $this->sorting,
             'id' => $this->uid,
             'title' => $this->title,
             'overrideTitle' => $this->digikitLevelOneTitleOverride,

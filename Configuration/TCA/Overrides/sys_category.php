@@ -154,7 +154,17 @@ $additionalColumns = [
             'type' => 'text',
             'enableRichtext' => true
         ]
-    ]
+    ],
+    'sorting' => [
+        'exclude'	=> 1,
+        'label'		=> 'sorting',
+        'config'	=> [
+            'type' => 'input',
+            'size' => 6,
+            'eval' => '',
+            'readOnly' => 1
+        ],
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_category', $additionalColumns);
