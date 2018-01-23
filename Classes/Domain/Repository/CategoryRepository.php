@@ -27,12 +27,18 @@ namespace Bm\RkwDigiKit\Domain\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /**
  * Class CategoryRepository
  * @package Bm\RkwDigiKit\Domain\Repository
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
 {
+    protected $defaultOrderings = array(
+        'sorting' => QueryInterface::ORDER_ASCENDING
+    );
+
     /**
      * @param int $rootId
      *
