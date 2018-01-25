@@ -33,8 +33,6 @@ use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * Class StructureService

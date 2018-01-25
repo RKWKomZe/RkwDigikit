@@ -27,9 +27,6 @@ namespace Bm\RkwDigiKit\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Doctrine\Common\Util\Debug;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
 /**
  * Class Category
  * @package Bm\RkwDigiKit\Domain\Model
