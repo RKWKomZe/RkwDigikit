@@ -94,9 +94,104 @@ class Page extends AbstractEntity
     protected $digikitMetaWebsite = '';
 
     /**
+     * @var string
+     */
+    protected $digikitLinkOneTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkTwoTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkThreeTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkFourTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkFiveTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkOne = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkTwo = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkThree = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkFour = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkFive = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitDownloadOneTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitDownloadTwoTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitDownloadThreeTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitDownloadFourTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitDownloadFiveTitle = '';
+
+    /**
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected $digikitMetaMap = null;
+    protected $digikitDownloadOne = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $digikitDownloadTwo = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $digikitDownloadThree = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $digikitDownloadFour = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $digikitDownloadFive = null;
 
     /**
      * @var \Bm\RkwDigiKit\Domain\Model\Category
@@ -304,19 +399,323 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return FileReference
+     * @return string
      */
-    public function getDigikitMetaMap()
+    public function getDigikitLinkOneTitle()
     {
-        return $this->digikitMetaMap;
+        return $this->digikitLinkOneTitle;
     }
 
     /**
-     * @param FileReference $digikitMetaMap
+     * @param string $digikitLinkOneTitle
      */
-    public function setDigikitMetaMap(FileReference $digikitMetaMap)
+    public function setDigikitLinkOneTitle(string $digikitLinkOneTitle)
     {
-        $this->digikitMetaMap = $digikitMetaMap;
+        $this->digikitLinkOneTitle = $digikitLinkOneTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkTwoTitle()
+    {
+        return $this->digikitLinkTwoTitle;
+    }
+
+    /**
+     * @param string $digikitLinkTwoTitle
+     */
+    public function setDigikitLinkTwoTitle(string $digikitLinkTwoTitle)
+    {
+        $this->digikitLinkTwoTitle = $digikitLinkTwoTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkThreeTitle()
+    {
+        return $this->digikitLinkThreeTitle;
+    }
+
+    /**
+     * @param string $digikitLinkThreeTitle
+     */
+    public function setDigikitLinkThreeTitle(string $digikitLinkThreeTitle)
+    {
+        $this->digikitLinkThreeTitle = $digikitLinkThreeTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkFourTitle()
+    {
+        return $this->digikitLinkFourTitle;
+    }
+
+    /**
+     * @param string $digikitLinkFourTitle
+     */
+    public function setDigikitLinkFourTitle(string $digikitLinkFourTitle)
+    {
+        $this->digikitLinkFourTitle = $digikitLinkFourTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkFiveTitle()
+    {
+        return $this->digikitLinkFiveTitle;
+    }
+
+    /**
+     * @param string $digikitLinkFiveTitle
+     */
+    public function setDigikitLinkFiveTitle(string $digikitLinkFiveTitle)
+    {
+        $this->digikitLinkFiveTitle = $digikitLinkFiveTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkOne()
+    {
+        return $this->digikitLinkOne;
+    }
+
+    /**
+     * @param string $digikitLinkOne
+     */
+    public function setDigikitLinkOne(string $digikitLinkOne)
+    {
+        $this->digikitLinkOne = $digikitLinkOne;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkTwo()
+    {
+        return $this->digikitLinkTwo;
+    }
+
+    /**
+     * @param string $digikitLinkTwo
+     */
+    public function setDigikitLinkTwo(string $digikitLinkTwo)
+    {
+        $this->digikitLinkTwo = $digikitLinkTwo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkThree()
+    {
+        return $this->digikitLinkThree;
+    }
+
+    /**
+     * @param string $digikitLinkThree
+     */
+    public function setDigikitLinkThree(string $digikitLinkThree)
+    {
+        $this->digikitLinkThree = $digikitLinkThree;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkFour()
+    {
+        return $this->digikitLinkFour;
+    }
+
+    /**
+     * @param string $digikitLinkFour
+     */
+    public function setDigikitLinkFour(string $digikitLinkFour)
+    {
+        $this->digikitLinkFour = $digikitLinkFour;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkFive()
+    {
+        return $this->digikitLinkFive;
+    }
+
+    /**
+     * @param string $digikitLinkFive
+     */
+    public function setDigikitLinkFive(string $digikitLinkFive)
+    {
+        $this->digikitLinkFive = $digikitLinkFive;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitDownloadOneTitle()
+    {
+        return $this->digikitDownloadOneTitle;
+    }
+
+    /**
+     * @param string $digikitDownloadOneTitle
+     */
+    public function setDigikitDownloadOneTitle(string $digikitDownloadOneTitle)
+    {
+        $this->digikitDownloadOneTitle = $digikitDownloadOneTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitDownloadTwoTitle()
+    {
+        return $this->digikitDownloadTwoTitle;
+    }
+
+    /**
+     * @param string $digikitDownloadTwoTitle
+     */
+    public function setDigikitDownloadTwoTitle(string $digikitDownloadTwoTitle)
+    {
+        $this->digikitDownloadTwoTitle = $digikitDownloadTwoTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitDownloadThreeTitle()
+    {
+        return $this->digikitDownloadThreeTitle;
+    }
+
+    /**
+     * @param string $digikitDownloadThreeTitle
+     */
+    public function setDigikitDownloadThreeTitle(string $digikitDownloadThreeTitle)
+    {
+        $this->digikitDownloadThreeTitle = $digikitDownloadThreeTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitDownloadFourTitle()
+    {
+        return $this->digikitDownloadFourTitle;
+    }
+
+    /**
+     * @param string $digikitDownloadFourTitle
+     */
+    public function setDigikitDownloadFourTitle(string $digikitDownloadFourTitle)
+    {
+        $this->digikitDownloadFourTitle = $digikitDownloadFourTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitDownloadFiveTitle()
+    {
+        return $this->digikitDownloadFiveTitle;
+    }
+
+    /**
+     * @param string $digikitDownloadFiveTitle
+     */
+    public function setDigikitDownloadFiveTitle(string $digikitDownloadFiveTitle)
+    {
+        $this->digikitDownloadFiveTitle = $digikitDownloadFiveTitle;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getDigikitDownloadOne()
+    {
+        return $this->digikitDownloadOne;
+    }
+
+    /**
+     * @param FileReference $digikitDownloadOne
+     */
+    public function setDigikitDownloadOne(FileReference $digikitDownloadOne)
+    {
+        $this->digikitDownloadOne = $digikitDownloadOne;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getDigikitDownloadTwo()
+    {
+        return $this->digikitDownloadTwo;
+    }
+
+    /**
+     * @param FileReference $digikitDownloadTwo
+     */
+    public function setDigikitDownloadTwo(FileReference $digikitDownloadTwo)
+    {
+        $this->digikitDownloadTwo = $digikitDownloadTwo;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getDigikitDownloadThree()
+    {
+        return $this->digikitDownloadThree;
+    }
+
+    /**
+     * @param FileReference $digikitDownloadThree
+     */
+    public function setDigikitDownloadThree(FileReference $digikitDownloadThree)
+    {
+        $this->digikitDownloadThree = $digikitDownloadThree;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getDigikitDownloadFour()
+    {
+        return $this->digikitDownloadFour;
+    }
+
+    /**
+     * @param FileReference $digikitDownloadFour
+     */
+    public function setDigikitDownloadFour(FileReference $digikitDownloadFour)
+    {
+        $this->digikitDownloadFour = $digikitDownloadFour;
+    }
+
+    /**
+     * @return FileReference
+     */
+    public function getDigikitDownloadFive()
+    {
+        return $this->digikitDownloadFive;
+    }
+
+    /**
+     * @param FileReference $digikitDownloadFive
+     */
+    public function setDigikitDownloadFive(FileReference $digikitDownloadFive)
+    {
+        $this->digikitDownloadFive = $digikitDownloadFive;
     }
 
     /**
@@ -361,7 +760,7 @@ class Page extends AbstractEntity
         if (!empty($this->digikitSliderImages->toArray())) {
             /** @var FileReference $sliderImage */
             foreach ($this->digikitSliderImages as $sliderImage) {
-                array_push($images,$sliderImage->getOriginalResource()->getPublicUrl());
+                array_push($images, $sliderImage->getOriginalResource()->getPublicUrl());
             }
 
             return $images;
@@ -383,5 +782,61 @@ class Page extends AbstractEntity
             'place' => $this->digikitMetaPlace,
             'website' => $this->digikitMetaWebsite
         ];
+    }
+
+    /**
+     * Summarized properties
+     *
+     * @return array|boolean
+     */
+    public function getDigiKitLinks()
+    {
+        $array = [];
+
+        if ($this->digikitLinkOne !== '' && $this->digikitLinkOneTitle !== '') {
+            array_push($array,[0 => $this->digikitLinkOneTitle, 1 => $this->digikitLinkOne]);
+        }
+        if ($this->digikitLinkTwo !== '' && $this->digikitLinkTwoTitle !== '') {
+            array_push($array,[0 => $this->digikitLinkTwoTitle, 1 => $this->digikitLinkTwo]);
+        }
+        if ($this->digikitLinkThree !== '' && $this->digikitLinkThreeTitle !== '') {
+            array_push($array,[0 => $this->digikitLinkThreeTitle, 1 => $this->digikitLinkThree]);
+        }
+        if ($this->digikitLinkFour !== '' && $this->digikitLinkFourTitle !== '') {
+            array_push($array,[0 => $this->digikitLinkFourTitle, 1 => $this->digikitLinkFour]);
+        }
+        if ($this->digikitLinkFive !== '' && $this->digikitLinkFiveTitle !== '') {
+            array_push($array,[0 => $this->digikitLinkFiveTitle, 1 => $this->digikitLinkFive]);
+        }
+
+        return (!empty($array)) ? $array : false;
+    }
+
+    /**
+     * Summarized properties
+     *
+     * @return array
+     */
+    public function getDigiKitDownloads()
+    {
+        $array = [];
+
+        if ($this->digikitDownloadOne !== null && $this->digikitDownloadOneTitle !== null) {
+            array_push($array,[0 => $this->digikitDownloadOneTitle, 1 => $this->digikitDownloadOne->getOriginalResource()->getPublicUrl()]);
+        }
+        if ($this->digikitDownloadTwo !== null && $this->digikitDownloadTwoTitle !== null) {
+            array_push($array,[0 => $this->digikitDownloadTwoTitle, 1 => $this->digikitDownloadTwo->getOriginalResource()->getPublicUrl()]);
+        }
+        if ($this->digikitDownloadThree !== null && $this->digikitDownloadThreeTitle !== null) {
+            array_push($array,[0 => $this->digikitDownloadThreeTitle, 1 => $this->digikitDownloadThree->getOriginalResource()->getPublicUrl()]);
+        }
+        if ($this->digikitDownloadFour !== null && $this->digikitDownloadFourTitle !== null) {
+            array_push($array,[0 => $this->digikitDownloadFourTitle, 1 => $this->digikitDownloadFour->getOriginalResource()->getPublicUrl()]);
+        }
+        if ($this->digikitDownloadFive !== null && $this->digikitDownloadFiveTitle !== null) {
+            array_push($array,[0 => $this->digikitDownloadFiveTitle, 1 => $this->digikitDownloadFive->getOriginalResource()->getPublicUrl()]);
+        }
+
+        return (!empty($array)) ? $array : false;
     }
 }

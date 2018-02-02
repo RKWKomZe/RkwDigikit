@@ -126,16 +126,203 @@ $additionalColumns = [
             'eval' => 'trim,required'
         ]
     ],
-    'digikit_meta_map' => [
+    'digikit_link_one_title' => [
         'exclude' => 1,
-        'label' => $ll . 'digikit_meta_map',
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_two_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_three_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_four_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_five_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_one' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_two' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_three' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_four' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_five' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_one_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_two_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_three_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_four_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_five_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_download_one' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
         'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-            'digikit_meta_map',
+            'digikit_download_one',
             [
-                'maxitems' => 1,
                 'appearance' => [
-                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
                 ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
                 'overrideChildTca' => [
                     'types' => [
                         '0' => [
@@ -149,10 +336,130 @@ $additionalColumns = [
                             --palette--;;filePalette'
                         ],
                     ],
-                ]
+                ],
             ],
-            'gif,jpg,jpeg,bmp,png'
-        )
+            'pdf'
+        ),
+    ],
+    'digikit_download_two' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_download_two',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                    ],
+                ],
+            ],
+            'pdf'
+        ),
+    ],
+    'digikit_download_three' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_download_three',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                    ],
+                ],
+            ],
+            'pdf'
+        ),
+    ],
+    'digikit_download_four' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_download_four',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                    ],
+                ],
+            ],
+            'pdf'
+        ),
+    ],
+    'digikit_download_five' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'digikit_download_five',
+            [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // to use the image overlay palette instead of the basic overlay palette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                            --palette--;;filePalette'
+                        ],
+                    ],
+                ],
+            ],
+            'pdf'
+        ),
     ],
     'digikit_category' => [
         'exclude' => 1,
@@ -213,9 +520,43 @@ $palettes = [
             digikit_meta_employee,
             digikit_meta_place,
             --linebreak--,
-            digikit_meta_website,
+            digikit_meta_website          
+        '
+    ],
+    'DigiKitLinks' => [
+        'showitem' => '
+            digikit_link_one_title,
+            digikit_link_one,
             --linebreak--,
-            digikit_meta_map           
+            digikit_link_two_title,
+            digikit_link_two,
+            --linebreak--,
+            digikit_link_three_title,
+            digikit_link_three,
+            --linebreak--,
+            digikit_link_four_title,
+            digikit_link_four,
+            --linebreak--,
+            digikit_link_five_title,
+            digikit_link_five
+        '
+    ],
+    'DigiKitDownloads' => [
+        'showitem' => '
+            digikit_download_one_title,
+            digikit_download_one,
+            --linebreak--,
+            digikit_download_two_title,
+            digikit_download_two,
+            --linebreak--,
+            digikit_download_three_title,
+            digikit_download_three,
+            --linebreak--,
+            digikit_download_four_title,
+            digikit_download_four,
+            --linebreak--,
+            digikit_download_five_title,
+            digikit_download_five
         '
     ],
     'DigiKitMenu' => [
@@ -236,6 +577,8 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
         --palette--;Slider Settings;DigiKitSlider,
         --palette--;Main Information;DigiKitMain,
         --palette--;Meta Information;DigiKitMeta,
+        --palette--;Links;DigiKitLinks,
+        --palette--;Downloads;DigiKitDownloads,
         --palette--;Bind Page to navigation endpoint (Category Level 4);DigiKitMenu 
     '
 );
@@ -246,7 +589,12 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
 $GLOBALS['TCA']['pages']['ctrl']['searchFields'] .= trim('
     ,digikit_meta_company,digikit_meta_business,digikit_meta_employee,digikit_meta_place
     ,digikit_meta_website,digikit_meta_map,digikit_category,digikit_main_header,digikit_main_subheader
-    ,digikit_main_teaser,digikit_main_text
+    ,digikit_main_teaser,digikit_main_text,digikit_link_one_title,digikit_link_one,digikit_link_two_title
+    ,digikit_link_two,digikit_link_three_title,digikit_link_three,digikit_link_four_title,digikit_link_four
+    ,digikit_link_five_title,digikit_link_five,digikit_download_one_title,digikit_download_one
+    ,digikit_download_two_title,digikit_download_two,digikit_download_three_title
+    ,digikit_download_three,digikit_download_four_title,digikit_download_four
+    ,digikit_download_five_title,digikit_download_five
 ');
 
 /**
