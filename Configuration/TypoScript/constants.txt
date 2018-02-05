@@ -1,0 +1,29 @@
+#customsubcategory=dev=Development Settings
+#customsubcategory=menu=Navigation Settings
+#customsubcategory=contact=Contact Settings
+#customsubcategory=pages=Pages Settings
+plugin.tx_rkwdigikit {
+    view {
+        templateRootPath = EXT:rkw_digi_kit/Resources/Private/Templates/
+        partialRootPath = EXT:rkw_digi_kit/Resources/Private/Partials/
+        layoutRootPath = EXT:rkw_digi_kit/Resources/Private/Layouts/
+    }
+    settings {
+        navigation {
+            #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Root category id for DigiKit
+            rootCategoryId =
+        }
+        pages {
+            #cat=plugin.tx_rkwdigikit/pages; type=int+; label= Load Page Configuration for Fluid Template
+            loadPageConfiguration = 0
+        }
+        contact {
+            #cat=plugin.tx_rkwdigikit/contact; type=int+; label= Contact Storage Pid
+            storage =
+        }
+        develop {
+            #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
+            isDev = 0
+        }
+    }
+}

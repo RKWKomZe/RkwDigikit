@@ -1,0 +1,38 @@
+plugin.tx_rkwdigikit {
+    view {
+        templateRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.layoutRootPath}
+        }
+    }
+    settings {
+        navigation {
+            rootCategoryId = {$plugin.tx_rkwdigikit.settings.navigation.rootCategoryId}
+        }
+        pages {
+            loadPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
+        }
+        contact {
+            storage = {$plugin.tx_rkwdigikit.settings.contact.storage}
+        }
+        develop {
+            isDev = {$plugin.tx_rkwdigikit.settings.develop.isDev}
+        }
+    }
+}
+
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.develop.isDev}]
+    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s">
+[global]
+
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}]
+    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.t3s">
+[global]
+
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/serviceTypes.t3s">

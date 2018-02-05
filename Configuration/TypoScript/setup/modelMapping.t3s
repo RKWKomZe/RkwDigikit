@@ -1,0 +1,19 @@
+config.tx_extbase {
+    persistence {
+        classes {
+            Bm\RkwDigiKit\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                    columns {
+                        sorting.mapOnProperty = sorting
+                    }
+                }
+            }
+            Bm\RkwDigiKit\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                }
+            }
+        }
+    }
+}

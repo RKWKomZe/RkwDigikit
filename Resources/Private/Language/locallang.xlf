@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="de" datatype="plaintext" original="messages" date="2018-01-16T15:26:42Z"
+          product-name="rkw_digi_kit">
+        <header/>
+        <body>
+            <trans-unit id="page_types.digikit">
+                <source>DigiKit</source>
+            </trans-unit>
+
+            <trans-unit id="digikit.page_detail.meta.business">
+                <source><![CDATA[Branche:]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.page_detail.meta.employee">
+                <source><![CDATA[Mitarbeiter:]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.page_detail.meta.place">
+                <source><![CDATA[Ort:]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.page_detail.meta.website">
+                <source><![CDATA[Website:]]></source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

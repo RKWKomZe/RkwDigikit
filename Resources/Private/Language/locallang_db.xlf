@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-01-16T20:13:50Z" product-name="rkw_digi_kit">
+		<header/>
+		<body>
+		    <trans-unit id="digikit_level_one_image">
+                <source>Image</source>
+            </trans-unit>
+		    <trans-unit id="digikit_level_one_settings">
+                <source>Position</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_level_two_title_override">
+                <source>Override Navigation Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_level_two_position">
+                <source>Position</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_level_three_title_override">
+                <source>Override Navigation Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_level_three_position">
+                <source>Position</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_info_image">
+                <source>Image</source>
+            </trans-unit>
+		    <trans-unit id="digikit_info_title">
+                <source>Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_info_text">
+                <source>Text</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_main_header">
+                <source>Header</source>
+            </trans-unit>
+		    <trans-unit id="digikit_main_subheader">
+                <source>Subheader</source>
+            </trans-unit>
+		    <trans-unit id="digikit_main_teaser">
+                <source>Teaser Text</source>
+            </trans-unit>
+		    <trans-unit id="digikit_main_text">
+                <source>Text</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_slider_images">
+                <source>Slider Images</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_meta_company">
+                <source>Firma</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_business">
+                <source>Branche</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_employee">
+                <source>Mitarbeiter</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_place">
+                <source>Ort</source>
+            </trans-unit>
+		    <trans-unit id="digikit_meta_website">
+                <source>Website</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_link_title">
+                <source>Link Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_link">
+                <source>Link</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_download_title">
+                <source>Download Title</source>
+            </trans-unit>
+		    <trans-unit id="digikit_download">
+                <source>Download</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_category">
+                <source>Navigation Point</source>
+            </trans-unit>
+
+		    <trans-unit id="digikit_contacts">
+                <source>Contacts</source>
+            </trans-unit>
+
+            <trans-unit id="digikit_contact_name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_function">
+                <source>Function</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_phone">
+                <source>Phone</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_email">
+                <source>EMail</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_for">
+                <source>Contact For</source>
+            </trans-unit>
+		</body>
+    </file>
+</xliff>

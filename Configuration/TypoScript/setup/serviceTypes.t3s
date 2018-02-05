@@ -1,0 +1,18 @@
+jsonStructureService >
+jsonStructureService = PAGE
+jsonStructureService {
+    typeNum = 3000
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+#        additionalHeaders = Content-type:application/json
+        additionalHeaders = Content-type:text/html
+    }
+    10 = USER
+    10 {
+        userFunc = Bm\RkwDigiKit\Service\StructureService->getJsonOutput
+    }
+}
