@@ -26,12 +26,12 @@ defined('TYPO3_MODE') or die('Access denied!');
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+$ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
+
 return [
     'ctrl' => [
         'title' => 'DigiKit Contact',
-        'label' => '',
-        'label_alt' => '',
-        'label_alt_force' => 1,
+        'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -47,20 +47,24 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => '',
+        'searchFields' => 'name,function,phone,email,for',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            
+            name,function,phone,email,for
         '
     ],
     'types' => [
         '0' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-                
+                name,function,
+                --linebreak--,
+                phone,email,
+                --linebreak--,
+                for
             '
         ]
     ],
@@ -91,6 +95,7 @@ return [
                 ],
                 'foreign_table' => 'tx_rkwdigikit_domain_model_contact',
                 'foreign_table_where' => 'AND tx_rkwdigikit_domain_model_contact.pid=###CURRENT_PID### AND tx_rkwdigikit_domain_model_contact.sys_language_uid IN (-1,0)',
+                'default' => 0
             ]
         ],
         'l10n_diffsource' => [
@@ -149,4 +154,57 @@ return [
                 ]
             ]
         ],
+        'name' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_name',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim,required'
+            ]
+        ],
+        'function' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_function',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim,required'
+            ]
+        ],
+        'phone' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_phone',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim,required'
+            ]
+        ],
+        'email' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_email',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim,required'
+            ]
+        ],
+        'for' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_for',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'pages',
+                'foreign_table_where' => ' AND pages.doktype = ' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+                'allowed' => 'pages',
+                'MM' => 'tx_rkwdigikit_domain_model_contact_mm',
+                'MM_opposite_field' => 'for',
+                'size' => 5,
+                'maxitems' => 99999,
+                'enableMultiSelectFilterTextfield' => true
+            ]
+        ]
+    ]
 ];

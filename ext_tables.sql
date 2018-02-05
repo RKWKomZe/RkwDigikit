@@ -39,16 +39,8 @@ CREATE TABLE pages (
   digikit_link_three VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_link_four VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_link_five VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_one_title VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_two_title VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_three_title VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_four_title VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_five_title VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_download_one INT(11) unsigned DEFAULT '0' NOT NULL,
-  digikit_download_two INT(11) unsigned DEFAULT '0' NOT NULL,
-  digikit_download_three INT(11) unsigned DEFAULT '0' NOT NULL,
-  digikit_download_four INT(11) unsigned DEFAULT '0' NOT NULL,
-  digikit_download_five INT(11) unsigned DEFAULT '0' NOT NULL
+  digikit_downloads INT(11) unsigned DEFAULT '0' NOT NULL,
+  digikit_contacts INT(11) unsigned DEFAULT '0' NOT NULL
 );
 
 #
@@ -57,6 +49,12 @@ CREATE TABLE pages (
 CREATE TABLE tx_rkwdigikit_domain_model_contact (
   uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
+
+	name VARCHAR(255) DEFAULT '' NOT NULL,
+	function VARCHAR(255) DEFAULT '' NOT NULL,
+	phone VARCHAR(255) DEFAULT '' NOT NULL,
+	email VARCHAR(255) DEFAULT '' NOT NULL,
+	for INT(11) DEFAULT '0' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -86,4 +84,17 @@ CREATE TABLE tx_rkwdigikit_domain_model_contact (
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
   KEY language (l10n_parent,sys_language_uid)
+);
+
+#
+# TABLE structure FOR TABLE 'tx_rkwdigikit_domain_model_contact_mm'
+#
+CREATE TABLE tx_rkwdigikit_domain_model_contact_mm (
+  uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );

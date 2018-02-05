@@ -214,9 +214,10 @@ class StructureService extends AbstractService
                 $this->output['instances'][$page->getUid()] = [
                     'content' => $page->getDigiKitCompanyInformation(),
                     'metaContent' => $page->getDigiKitMetaInformation(),
+                    'contacts' => $page->getDigiKitContactsInformation(),
                     'sliderImages' => $page->getDigiKitImages(),
                     'links' => $page->getDigiKitLinks(),
-                    'downloads' => $page->getDigiKitDownloads()
+                    'downloads' => $page->getDigiKitDownloadsInformation()
                 ];
 
                 $taskId = $page->getDigikitCategory()->getUid();

@@ -84,6 +84,26 @@
 		    <trans-unit id="digikit_category">
                 <source>Navigation Point</source>
             </trans-unit>
+
+		    <trans-unit id="digikit_contacts">
+                <source>Contacts</source>
+            </trans-unit>
+
+            <trans-unit id="digikit_contact_name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_function">
+                <source>Function</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_phone">
+                <source>Phone</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_email">
+                <source>EMail</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_for">
+                <source>Contact For</source>
+            </trans-unit>
 		</body>
     </file>
 </xliff>
