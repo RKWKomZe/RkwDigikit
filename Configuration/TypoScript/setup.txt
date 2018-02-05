@@ -16,7 +16,7 @@ plugin.tx_rkwdigikit {
         }
         pages {
             loadDefaultPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}
-            loadPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
+            loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
         }
         contact {
             storage = {$plugin.tx_rkwdigikit.settings.contact.storage}

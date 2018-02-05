@@ -1,4 +1,4 @@
-[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}]
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}]
 # Default Page Configuration
 page >
 page = PAGE
@@ -26,7 +26,7 @@ page.10 {
 [global]
 
 
-[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}]
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDetailPageConfiguration}]
 # Detail Page Configuration
 page.200 = FLUIDTEMPLATE
 page.200 {
