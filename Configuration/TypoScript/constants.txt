@@ -14,7 +14,9 @@ plugin.tx_rkwdigikit {
             rootCategoryId =
         }
         pages {
-            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Configuration for Fluid Template
+            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Default Page Configuration for Fluid Template
+            loadDefaultPageConfiguration = 0
+            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Detail Configuration for Fluid Template
             loadPageConfiguration = 0
         }
         contact {
