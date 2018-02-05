@@ -15,8 +15,9 @@ plugin.tx_rkwdigikit {
             rootCategoryId = {$plugin.tx_rkwdigikit.settings.navigation.rootCategoryId}
         }
         pages {
+            loadPageType = {$plugin.tx_rkwdigikit.settings.pages.loadPageType}
             loadDefaultPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}
-            loadPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
+            loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
         }
         contact {
             storage = {$plugin.tx_rkwdigikit.settings.contact.storage}
@@ -31,9 +32,7 @@ plugin.tx_rkwdigikit {
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s">
 [global]
 
-[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}]
-    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.t3s">
-[global]
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.t3s">
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.t3s">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/serviceTypes.t3s">
