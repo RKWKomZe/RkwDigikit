@@ -712,7 +712,7 @@ class Page extends AbstractEntity
             foreach ($this->digikitDownloads as $download) {
                 $downloadTitle = $download->getOriginalResource()->getTitle();
                 $title = ($downloadTitle !== '') ? $downloadTitle : $download->getOriginalResource()->getName();
-                array_push($array, [0 => $title, 1 => $download->getOriginalResource()->getPublicUrl()]);
+                array_push($array, ['title' => $title, 'url' => $download->getOriginalResource()->getPublicUrl()]);
             }
         }
 

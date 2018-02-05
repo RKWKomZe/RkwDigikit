@@ -8,8 +8,8 @@ jsonStructureService {
         admPanel = 0
         debug = 0
         no_cache = 1
-#        additionalHeaders = Content-type:application/json
-        additionalHeaders = Content-type:text/html
+        additionalHeaders = Content-type:application/json
+#        additionalHeaders = Content-type:text/html
     }
     10 = USER
     10 {
