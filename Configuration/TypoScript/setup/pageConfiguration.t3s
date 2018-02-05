@@ -1,11 +1,13 @@
-[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}]
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadPageType}]
 # Default Page Configuration
 page >
 page = PAGE
 page.typeNum = 0
+[global]
 
-page.10 = FLUIDTEMPLATE
-page.10 {
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}]
+page.100 = FLUIDTEMPLATE
+page.100 {
     layoutRootPaths {
         0 = EXT:rkw_digi_kit/Resources/Private/Layouts/
     }
@@ -24,7 +26,6 @@ page.10 {
     }
 }
 [global]
-
 
 [globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDetailPageConfiguration}]
 # Detail Page Configuration

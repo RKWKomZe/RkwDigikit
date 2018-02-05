@@ -15,6 +15,7 @@ plugin.tx_rkwdigikit {
             rootCategoryId = {$plugin.tx_rkwdigikit.settings.navigation.rootCategoryId}
         }
         pages {
+            loadPageType = {$plugin.tx_rkwdigikit.settings.pages.loadPageType}
             loadDefaultPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}
             loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
         }
