@@ -8,8 +8,9 @@ editor:
  config:
    toolbarGroups:
      - { name: basicstyles, groups: [ basicstyles] }
-     - { name: clipboard, groups: [clipboard, undo] }
+     - { name: paragraph, groups: [ list, indent, blocks, align ] }
      - { name: links }
+     - { name: clipboard, groups: [clipboard, undo] }
    removeButtons:
      - Anchor
      - Superscript
