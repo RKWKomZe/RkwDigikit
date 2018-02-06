@@ -32,7 +32,12 @@ use Bm\RkwDigiKit\Domain\Repository\CategoryRepository;
 use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
+use TYPO3\CMS\Core\Resource\FileReference;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * Class StructureService
@@ -84,6 +89,11 @@ class StructureService extends AbstractService
     protected $mechanismIds = [];
 
     /**
+     * @var bool
+     */
+    protected $debugMode = false;
+
+    /**
      * StructureService constructor.
      */
     public function __construct()
@@ -97,6 +107,8 @@ class StructureService extends AbstractService
         $this->standaloneViewUtility = $this->objectManager->get(StandaloneViewUtility::class);
         /** @var CachingUtility cachingUtility */
         $this->cachingUtility = $this->objectManager->get(CachingUtility::class, self::CACHING_KEY);
+        // Debug Mode
+        $this->debugMode = (GeneralUtility::_GP('debugmode') === 'true') ? GeneralUtility::_GP('debugmode') : false;
     }
 
     /**
@@ -109,35 +121,35 @@ class StructureService extends AbstractService
 //        $cache = $this->cachingUtility->loadCache([self::CACHING_KEY]);
 //
 //        if (!$cache) {
-            /** @var QueryResult $categories */
-            $categories = $this->categoryRepository->findChildrenByParentId($this->settings['navigation']['rootCategoryId']);
+        /** @var QueryResult $categories */
+        $categories = $this->categoryRepository->findChildrenByParentId($this->settings['navigation']['rootCategoryId']);
 
-            if (!empty($categories->toArray())) {
+        if (!empty($categories->toArray())) {
 
-                self::createModels($categories);
+            $this->createModels($categories);
 
-                if (!empty($this->modelIds)) {
-                    self::createMechanisms();
-                }
+            if (!empty($this->modelIds)) {
+                $this->createMechanisms();
+            }
 
-                if (!empty($this->mechanismIds)) {
-                    self::createTasks();
-                }
+            if (!empty($this->mechanismIds)) {
+                $this->createTasks();
+            }
 
-                if (!empty($this->output['tasks'])) {
-                    self::renderContent();
-                }
+            if (!empty($this->output['tasks'])) {
+                $this->renderContent();
+            }
 
-                $this->output['status'] = true;
+            $this->output['status'] = true;
 
-                if (!empty($this->output)) {
-                    $this->cachingUtility->cache([self::CACHING_KEY], $this->output);
-                }
-
-                return json_encode($this->output);
+            if (!empty($this->output)) {
+                $this->cachingUtility->cache([self::CACHING_KEY], $this->output);
             }
 
             return json_encode($this->output);
+        }
+
+        return json_encode($this->output);
 //        } else {
 //            return json_encode($cache['data']);
 //        }
@@ -151,7 +163,7 @@ class StructureService extends AbstractService
         /** @var Category $model */
         foreach ($models as $model) {
             array_push($this->modelIds, $model->getUid());
-            $this->output['models']['uid'.$model->getUid()] = $model->getModelInformation();
+            $this->output['models']['uid' . $model->getUid()] = $model->getModelInformation();
         }
     }
 
@@ -167,14 +179,14 @@ class StructureService extends AbstractService
             foreach ($mechanisms as $mechanism) {
                 $uid = $mechanism->getUid();
 
-                $this->output['models']['uid'.$modelId]['mechanisms'][] = $uid;
+                $this->output['models']['uid' . $modelId]['mechanisms'][] = $uid;
 
                 array_push($this->mechanismIds, $uid);
 
                 $this->output['mechanisms'][$uid] = $mechanism->getMechanismInformation();
             }
 
-            array_flip($this->output['models']['uid'.$modelId]['mechanisms']);
+            array_flip($this->output['models']['uid' . $modelId]['mechanisms']);
         }
     }
 
@@ -211,15 +223,17 @@ class StructureService extends AbstractService
 
             /** @var Page $page */
             foreach ($pages as $page) {
+                $parent = ($page->getDigikitCategory() instanceof Category) ? $page->getDigikitCategory()->getUid() : false;
+
                 $this->output['instances'][$page->getUid()] = [
                     'content' => $page->getDigiKitCompanyInformation(),
                     'metaContent' => $page->getDigiKitMetaInformation(),
                     'contacts' => $page->getDigiKitContactsInformation(),
                     'sliderImages' => $page->getDigiKitImages(),
-                    'links' => $page->getDigiKitLinks(),
-                    'downloads' => $page->getDigiKitDownloadsInformation()
+                    'links' => $this->createLinks($page->getDigiKitLinks()),
+                    'downloads' => $this->createDownloads($page->getDigikitDownloads()),
+                    'parent' => $parent
                 ];
-
                 $taskId = $page->getDigikitCategory()->getUid();
                 array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
                 array_push($taskIds, $taskId);
@@ -228,6 +242,67 @@ class StructureService extends AbstractService
             foreach ($taskIds as $taskId) {
                 array_flip($this->output['tasks'][$taskId]['instances']);
             }
+        }
+    }
+
+    /**
+     * @param ObjectStorage $downloads
+     * @return bool|array
+     */
+    private function createDownloads(ObjectStorage $downloads)
+    {
+        if (!empty($downloads->toArray()) && $GLOBALS['TSFE']->cObj instanceof ContentObjectRenderer) {
+            $array = [];
+
+            /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $download */
+            foreach ($downloads as $download) {
+                /** @var FileReference $resource */
+                $resource = $download->getOriginalResource();
+
+                $downloadTitle = ($resource->getTitle() !== '') ? $resource->getTitle() : $resource->getName();
+
+                array_push($array, [0 => $downloadTitle, 1 => $resource->getPublicUrl()]);
+            }
+
+            if (!empty($array)) {
+                return $array;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Clean Links
+     *
+     * @param array $links
+     * @return bool|array
+     */
+    private function createLinks($links)
+    {
+        if (!empty($links) && $GLOBALS['TSFE']->cObj instanceof ContentObjectRenderer) {
+            $cObj = $GLOBALS['TSFE']->cObj;
+
+            foreach ($links as $key => $link) {
+                $typoLink = $cObj->typoLink($link['title'],[
+                    'parameter' => $link['url'],
+                    'returnLast' => 'url'
+                ]);
+
+                $links[$key]['url'] = $typoLink;
+            }
+            return $links;
+        }
+        return false;
+    }
+
+    /**
+     * @param $var
+     * @param string $title
+     */
+    private function debugMode($var, $title = __METHOD__)
+    {
+        if ($this->debugMode) {
+            DebuggerUtility::var_dump($var, $title);
         }
     }
 }
