@@ -232,6 +232,7 @@ class StructureService extends AbstractService
                     'sliderImages' => $page->getDigiKitImages(),
                     'links' => $this->createLinks($page->getDigiKitLinks()),
                     'downloads' => $this->createDownloads($page->getDigikitDownloads()),
+                    'videos' => $this->createVideos($page->getDigikitVideos()),
                     'parent' => $parent
                 ];
                 $taskId = $page->getDigikitCategory()->getUid();
@@ -251,7 +252,7 @@ class StructureService extends AbstractService
      */
     private function createDownloads(ObjectStorage $downloads)
     {
-        if (!empty($downloads->toArray()) && $GLOBALS['TSFE']->cObj instanceof ContentObjectRenderer) {
+        if (!empty($downloads->toArray())) {
             $array = [];
 
             /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $download */
@@ -262,6 +263,39 @@ class StructureService extends AbstractService
                 $downloadTitle = ($resource->getTitle() !== '') ? $resource->getTitle() : $resource->getName();
 
                 array_push($array, [0 => $downloadTitle, 1 => $resource->getPublicUrl()]);
+            }
+
+            if (!empty($array)) {
+                return $array;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @param ObjectStorage $videos
+     * @return array|bool
+     */
+    private function createVideos(ObjectStorage $videos)
+    {
+        if (!empty($videos->toArray())) {
+            $array = [];
+
+            /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $video */
+            foreach ($videos as $video) {
+                /** @var FileReference $resource */
+                $resource = $video->getOriginalResource();
+
+                $embed = $resource->getPublicUrl();
+
+                if ($resource->getExtension() === 'youtube') {
+                    if (!strpos($embed,'embed')) {
+                        $mediaId = substr($embed,strpos($embed,'?v=') + 3,strlen($embed));
+                        $embed = 'https://www.youtube.com/embed/' . $mediaId;
+                    }
+
+                }
+                array_push($array,['flag' => $resource->getExtension(),'embed' => $embed,'url' => $resource->getPublicUrl()]);
             }
 
             if (!empty($array)) {
@@ -283,7 +317,7 @@ class StructureService extends AbstractService
             $cObj = $GLOBALS['TSFE']->cObj;
 
             foreach ($links as $key => $link) {
-                $typoLink = $cObj->typoLink($link['title'],[
+                $typoLink = $cObj->typoLink($link['title'], [
                     'parameter' => $link['url'],
                     'returnLast' => 'url'
                 ]);
