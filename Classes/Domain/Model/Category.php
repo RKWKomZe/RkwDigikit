@@ -292,6 +292,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
             'category' => $modelSettings[2],
             'position' => $modelSettings[3],
             'image' => $image,
+            'parent' => $this->parent->getUid(),
             'mechanisms' => []
         ];
     }
@@ -308,6 +309,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
             'title' => $this->title,
             'overrideTitle' => $this->digikitLevelTwoTitleOverride,
             'position' => $this->digikitLevelTwoPosition,
+            'parent' => $this->parent->getUid(),
             'tasks' => []
         ];
     }
@@ -329,6 +331,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
             'infoTitle' => $this->digikitInfoTitle,
             'infoText' => $this->digikitInfoText,
             'infoImage' => $image,
+            'parent' => $this->parent->getUid(),
             'instances' => []
         ];
     }

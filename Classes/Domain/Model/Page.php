@@ -29,7 +29,6 @@ namespace Bm\RkwDigiKit\Domain\Model;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class Page
@@ -150,6 +149,11 @@ class Page extends AbstractEntity
     protected $digikitDownloads = null;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    protected $digikitVideos = null;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\Contact>
      */
     protected $digikitContacts = null;
@@ -167,6 +171,7 @@ class Page extends AbstractEntity
         $this->digikitSliderImages = new ObjectStorage();
         $this->digikitDownloads = new ObjectStorage();
         $this->digikitContacts = new ObjectStorage();
+        $this->digikitVideos = new ObjectStorage();
     }
 
     /**
@@ -556,6 +561,38 @@ class Page extends AbstractEntity
     /**
      * @return ObjectStorage
      */
+    public function getDigikitVideos()
+    {
+        return $this->digikitVideos;
+    }
+
+    /**
+     * @param ObjectStorage $digikitVideos
+     */
+    public function setDigikitVideos(ObjectStorage $digikitVideos)
+    {
+        $this->digikitVideos = $digikitVideos;
+    }
+
+    /**
+     * @param FileReference $videoToAdd
+     */
+    public function addDigikitVideos(FileReference $videoToAdd)
+    {
+        $this->digikitVideos->attach($videoToAdd);
+    }
+
+    /**
+     * @param FileReference $videoToRemove
+     */
+    public function removeDigikitVideos(FileReference $videoToRemove)
+    {
+        $this->digikitVideos->detach($videoToRemove);
+    }
+
+    /**
+     * @return ObjectStorage
+     */
     public function getDigikitContacts()
     {
         return $this->digikitContacts;
@@ -661,24 +698,29 @@ class Page extends AbstractEntity
         $array = [];
 
         if ($this->digikitLinkOne !== '' && $this->digikitLinkOneTitle !== '') {
-            array_push($array, [0 => $this->digikitLinkOneTitle, 1 => $this->digikitLinkOne]);
+            array_push($array, ['title' => $this->digikitLinkOneTitle, 'url' => $this->digikitLinkOne]);
         }
         if ($this->digikitLinkTwo !== '' && $this->digikitLinkTwoTitle !== '') {
-            array_push($array, [0 => $this->digikitLinkTwoTitle, 1 => $this->digikitLinkTwo]);
+            array_push($array, ['title' => $this->digikitLinkTwoTitle, 'url' => $this->digikitLinkTwo]);
         }
         if ($this->digikitLinkThree !== '' && $this->digikitLinkThreeTitle !== '') {
-            array_push($array, [0 => $this->digikitLinkThreeTitle, 1 => $this->digikitLinkThree]);
+            array_push($array, ['title' => $this->digikitLinkThreeTitle, 'url' => $this->digikitLinkThree]);
         }
         if ($this->digikitLinkFour !== '' && $this->digikitLinkFourTitle !== '') {
-            array_push($array, [0 => $this->digikitLinkFourTitle, 1 => $this->digikitLinkFour]);
+            array_push($array, ['title' => $this->digikitLinkFourTitle, 'url' => $this->digikitLinkFour]);
         }
         if ($this->digikitLinkFive !== '' && $this->digikitLinkFiveTitle !== '') {
-            array_push($array, [0 => $this->digikitLinkFiveTitle, 1 => $this->digikitLinkFive]);
+            array_push($array, ['title' => $this->digikitLinkFiveTitle, 'url' => $this->digikitLinkFive]);
         }
 
         return (!empty($array)) ? $array : false;
     }
 
+    /**
+     * Summarized properties
+     *
+     * @return array|bool
+     */
     public function getDigiKitContactsInformation()
     {
         $array = [];
@@ -692,27 +734,6 @@ class Page extends AbstractEntity
                     'phone' => $contact->getPhone(),
                     'email' => $contact->getEmail()
                 ]);
-            }
-        }
-
-        return (!empty($array)) ? $array : false;
-    }
-
-    /**
-     * Summarized properties
-     *
-     * @return array
-     */
-    public function getDigiKitDownloadsInformation()
-    {
-        $array = [];
-
-        if (!empty($this->digikitDownloads->toArray())) {
-            /** @var FileReference $download */
-            foreach ($this->digikitDownloads as $download) {
-                $downloadTitle = $download->getOriginalResource()->getTitle();
-                $title = ($downloadTitle !== '') ? $downloadTitle : $download->getOriginalResource()->getName();
-                array_push($array, ['title' => $title, 'url' => $download->getOriginalResource()->getPublicUrl()]);
             }
         }
 
