@@ -37,6 +37,11 @@ class Contact extends AbstractEntity
     /**
      * @var string
      */
+    protected $for = '';
+
+    /**
+     * @var string
+     */
     protected $name = '';
 
     /**
@@ -53,6 +58,22 @@ class Contact extends AbstractEntity
      * @var string
      */
     protected $email = '';
+
+    /**
+     * @return string
+     */
+    public function getFor()
+    {
+        return $this->for;
+    }
+
+    /**
+     * @param string $for
+     */
+    public function setFor(string $for)
+    {
+        $this->for = $for;
+    }
 
     /**
      * @return string

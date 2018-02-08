@@ -60,11 +60,12 @@ return [
         '0' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
+                --linebreak--,
+                for,
+                --linebreak--,
                 name,function,
                 --linebreak--,
-                phone,email,
-                --linebreak--,
-                for
+                phone,email
             '
         ]
     ],
@@ -154,6 +155,32 @@ return [
                 ]
             ]
         ],
+        'for' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_for',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['Baden-Württemberg','BW'],
+                    ['Bayern','BY'],
+                    ['Berlin','BE'],
+                    ['Brandenburg','BB'],
+                    ['Bremen','HB'],
+                    ['Hamburg','HH'],
+                    ['Hessen','HE'],
+                    ['Mecklenburg-Vorpommern','MV'],
+                    ['Niedersachsen','NI'],
+                    ['Nordrhein-Westfalen','NW'],
+                    ['Rheinland-Pfalz','RP'],
+                    ['Saarland','SL'],
+                    ['Sachsen','SN'],
+                    ['Sachsen-Anhalt','ST'],
+                    ['Schleswig-Holstein','SH'],
+                    ['Thüringen','TH']
+                ]
+            ]
+        ],
         'name' => [
             'exclude' => 1,
             'label' => $ll . 'digikit_contact_name',
@@ -188,22 +215,6 @@ return [
                 'type' => 'input',
                 'size' => 50,
                 'eval' => 'trim,required'
-            ]
-        ],
-        'for' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_for',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'pages',
-                'foreign_table_where' => ' AND pages.doktype = ' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
-                'allowed' => 'pages',
-                'MM' => 'tx_rkwdigikit_domain_model_contact_mm',
-                'MM_opposite_field' => 'for',
-                'size' => 5,
-                'maxitems' => 99999,
-                'enableMultiSelectFilterTextfield' => true
             ]
         ]
     ]

@@ -320,22 +320,6 @@ $additionalColumns = [
             'eval' => 'required'
         ]
     ],
-    'digikit_contacts' => [
-        'exclude' => 1,
-        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
-        'label' => $ll . 'digikit_contacts',
-        'config' => [
-            'type' => 'select',
-            'renderType' => 'selectMultipleSideBySide',
-            'foreign_table' => 'tx_rkwdigikit_domain_model_contact',
-            'foreign_table_where' => ' AND tx_rkwdigikit_domain_model_contact.sys_language_uid IN (-1, 0)',
-            'allowed' => 'tx_rkwdigikit_domain_model_contact',
-            'MM' => 'tx_rkwdigikit_domain_model_contact_mm',
-            'size' => 5,
-            'maxitems' => 99999,
-            'enableMultiSelectFilterTextfield' => true
-        ]
-    ],
     'digikit_videos' => [
         'exclude' => 1,
         'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
@@ -400,11 +384,6 @@ $palettes = [
             digikit_meta_website          
         '
     ],
-    'DigiKitContacts' => [
-        'showitem' => '
-            digikit_contacts
-        '
-    ],
     'DigiKitLinks' => [
         'showitem' => '
             digikit_link_one_title,
@@ -452,8 +431,6 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
         --palette--;Main Information;DigiKitMain,
         --palette--;Meta Information;DigiKitMeta,
         --palette--;Bind Page to navigation endpoint (Category Level 4);DigiKitMenu,
-        --div--;DigiKit Contacts,
-        --palette--;Contacts;DigiKitContacts,
         --div--;DigiKit Links,
         --palette--;Links;DigiKitLinks,
         --div--;DigiKit Downloads,
@@ -471,7 +448,7 @@ $GLOBALS['TCA']['pages']['ctrl']['searchFields'] .= trim('
     ,digikit_meta_website,digikit_meta_map,digikit_category,digikit_main_header,digikit_main_subheader
     ,digikit_main_teaser,digikit_main_text,digikit_link_one_title,digikit_link_one,digikit_link_two_title
     ,digikit_link_two,digikit_link_three_title,digikit_link_three,digikit_link_four_title,digikit_link_four
-    ,digikit_downloads,digikit_contacts
+    ,digikit_downloads
 ');
 
 /**

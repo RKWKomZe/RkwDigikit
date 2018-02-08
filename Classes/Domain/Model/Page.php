@@ -154,11 +154,6 @@ class Page extends AbstractEntity
     protected $digikitVideos = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\Contact>
-     */
-    protected $digikitContacts = null;
-
-    /**
      * @var \Bm\RkwDigiKit\Domain\Model\Category
      */
     protected $digikitCategory;
@@ -591,38 +586,6 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ObjectStorage
-     */
-    public function getDigikitContacts()
-    {
-        return $this->digikitContacts;
-    }
-
-    /**
-     * @param ObjectStorage $digikitContacts
-     */
-    public function setDigikitContacts(ObjectStorage $digikitContacts)
-    {
-        $this->digikitContacts = $digikitContacts;
-    }
-
-    /**
-     * @param Contact $contactToAdd
-     */
-    public function addDigikitContact(Contact $contactToAdd)
-    {
-        $this->digikitContacts->attach($contactToAdd);
-    }
-
-    /**
-     * @param Contact $contactToRemove
-     */
-    public function removeDigikitContact(Contact $contactToRemove)
-    {
-        $this->digikitContacts->detach($contactToRemove);
-    }
-
-    /**
      * @return Category
      */
     public function getDigikitCategory()
@@ -711,30 +674,6 @@ class Page extends AbstractEntity
         }
         if ($this->digikitLinkFive !== '' && $this->digikitLinkFiveTitle !== '') {
             array_push($array, ['title' => $this->digikitLinkFiveTitle, 'url' => $this->digikitLinkFive]);
-        }
-
-        return (!empty($array)) ? $array : false;
-    }
-
-    /**
-     * Summarized properties
-     *
-     * @return array|bool
-     */
-    public function getDigiKitContactsInformation()
-    {
-        $array = [];
-
-        if (!empty($this->digikitContacts->toArray())) {
-            /** @var Contact $contact */
-            foreach ($this->digikitContacts as $contact) {
-                array_push($array, [
-                    'name' => $contact->getName(),
-                    'function' => $contact->getFunction(),
-                    'phone' => $contact->getPhone(),
-                    'email' => $contact->getEmail()
-                ]);
-            }
         }
 
         return (!empty($array)) ? $array : false;
