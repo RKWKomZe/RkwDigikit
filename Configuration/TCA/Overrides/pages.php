@@ -25,10 +25,12 @@ $additionalColumns = [
                             --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
                             --palette--;;filePalette'
                         ],
-                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
                             'showitem' => '
-                            --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                            --palette--;;filePalette'
+                                --palette--;;basicoverlayPalette
+								,--palette--;;filePalette
+								,--linebreak--,crop
+							'
                         ],
                     ],
                 ]
@@ -325,7 +327,7 @@ $additionalColumns = [
         'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
         'label' => $ll . 'digikit_download',
         'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-            'media',
+            'digikit_videos',
             [
                 // Use the imageoverlayPalette instead of the basicoverlayPalette
                 'overrideChildTca' => [
