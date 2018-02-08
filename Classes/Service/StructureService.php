@@ -286,6 +286,10 @@ class StructureService extends AbstractService
         }
     }
 
+    /**
+     * @param $images
+     * @return array|bool
+     */
     private function createImages($images)
     {
         $array = [];
@@ -318,8 +322,8 @@ class StructureService extends AbstractService
                 $processingInstructionsQuadrat);
 
             array_push($array, [
-                '16:9' => $this->imageService->getImageUri($processedImageDefault, false),
-                '1:1' => $this->imageService->getImageUri($processedImageQuadrat, false)
+                0 => $this->imageService->getImageUri($processedImageDefault, false),
+                1 => $this->imageService->getImageUri($processedImageQuadrat, false)
             ]);
         }
 
