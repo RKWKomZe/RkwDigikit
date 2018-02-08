@@ -102,7 +102,7 @@
                 <source>EMail</source>
             </trans-unit>
             <trans-unit id="digikit_contact_for">
-                <source>Contact For</source>
+                <source>Bundesland</source>
             </trans-unit>
 		</body>
     </file>

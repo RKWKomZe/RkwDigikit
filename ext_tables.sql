@@ -40,7 +40,6 @@ CREATE TABLE pages (
   digikit_link_four VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_link_five VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_downloads INT(11) unsigned DEFAULT '0' NOT NULL,
-  digikit_contacts INT(11) unsigned DEFAULT '0' NOT NULL,
   digikit_videos INT(11) unsigned DEFAULT '0' NOT NULL
 );
 
@@ -55,7 +54,7 @@ CREATE TABLE tx_rkwdigikit_domain_model_contact (
 	function VARCHAR(255) DEFAULT '' NOT NULL,
 	phone VARCHAR(255) DEFAULT '' NOT NULL,
 	email VARCHAR(255) DEFAULT '' NOT NULL,
-	for INT(11) DEFAULT '0' NOT NULL,
+	for VARCHAR(255) DEFAULT '' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -27,8 +27,10 @@ namespace Bm\RkwDigiKit\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use Bm\RkwDigiKit\Domain\Model\Category;
+use Bm\RkwDigiKit\Domain\Model\Contact;
 use Bm\RkwDigiKit\Domain\Model\Page;
 use Bm\RkwDigiKit\Domain\Repository\CategoryRepository;
+use Bm\RkwDigiKit\Domain\Repository\ContactRepository;
 use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
@@ -47,6 +49,25 @@ class StructureService extends AbstractService
 {
     const CACHING_KEY = 'rkwdigikit';
 
+    static $state = [
+        'BW' => 'Baden-Württemberg',
+        'BY' => 'Bayern',
+        'BE' => 'Berlin',
+        'BB' => 'Brandenburg',
+        'HB' => 'Bremen',
+        'HH' => 'Hamburg',
+        'HE' => 'Hessen',
+        'MV' => 'Mecklenburg-Vorpommern',
+        'NI' => 'Niedersachsen',
+        'NW' => 'Nordrhein-Westfalen',
+        'RP' => 'Rheinland-Pfalz',
+        'SL' => 'Saarland',
+        'SN' => 'Sachsen',
+        'ST' => 'Sachsen-Anhalt',
+        'SH' => 'Schleswig-Holstein',
+        'TH' => 'Thüringen'
+    ];
+
     /**
      * @var CategoryRepository|null|object
      */
@@ -56,6 +77,11 @@ class StructureService extends AbstractService
      * @var PageRepository|null|object
      */
     protected $pageRepository = null;
+
+    /**
+     * @var ContactRepository|null|object
+     */
+    protected $contactRepository = null;
 
     /**
      * @var StandaloneViewUtility|null|object
@@ -75,6 +101,7 @@ class StructureService extends AbstractService
         'mechanisms' => [],
         'tasks' => [],
         'instances' => [],
+        'contacts' => [],
         'status' => false
     ];
 
@@ -103,6 +130,8 @@ class StructureService extends AbstractService
         $this->categoryRepository = $this->objectManager->get(CategoryRepository::class);
         /** @var PageRepository pageRepository */
         $this->pageRepository = $this->objectManager->get(PageRepository::class);
+        /** @var ContactRepository contactRepository */
+        $this->contactRepository = $this->objectManager->get(ContactRepository::class);
         /** @var StandaloneViewUtility standaloneViewUtility */
         $this->standaloneViewUtility = $this->objectManager->get(StandaloneViewUtility::class);
         /** @var CachingUtility cachingUtility */
@@ -137,8 +166,10 @@ class StructureService extends AbstractService
             }
 
             if (!empty($this->output['tasks'])) {
-                $this->renderContent();
+                $this->createContent();
             }
+
+            $this->createContacts();
 
             $this->output['status'] = true;
 
@@ -214,7 +245,7 @@ class StructureService extends AbstractService
     /**
      * Render Page Content for each Task
      */
-    private function renderContent()
+    private function createContent()
     {
         /** @var QueryResult $pages */
         $pages = $this->pageRepository->findByDoktype();
@@ -228,7 +259,6 @@ class StructureService extends AbstractService
                 $this->output['instances'][$page->getUid()] = [
                     'content' => $page->getDigiKitCompanyInformation(),
                     'metaContent' => $page->getDigiKitMetaInformation(),
-                    'contacts' => $page->getDigiKitContactsInformation(),
                     'sliderImages' => $page->getDigiKitImages(),
                     'links' => $this->createLinks($page->getDigiKitLinks()),
                     'downloads' => $this->createDownloads($page->getDigikitDownloads()),
@@ -242,6 +272,32 @@ class StructureService extends AbstractService
 
             foreach ($taskIds as $taskId) {
                 array_flip($this->output['tasks'][$taskId]['instances']);
+            }
+        }
+    }
+
+    /**
+     * Fill contact array with data
+     */
+    private function createContacts()
+    {
+        /** @var QueryResult $contacts */
+        $contactsResult = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage']);
+
+        if (!empty($contactsResult->toArray())) {
+            /** @var Contact $contact */
+            foreach ($contactsResult as $contact) {
+
+                $result = [
+                    'for' => $contact->getFor(),
+                    'forFull' => self::$state[$contact->getFor()],
+                    'name' => $contact->getName(),
+                    'function' => $contact->getFunction(),
+                    'phone' => $contact->getPhone(),
+                    'email' => $contact->getEmail()
+                ];
+
+                array_push($this->output['contacts'],$result);
             }
         }
     }
@@ -289,13 +345,14 @@ class StructureService extends AbstractService
                 $embed = $resource->getPublicUrl();
 
                 if ($resource->getExtension() === 'youtube') {
-                    if (!strpos($embed,'embed')) {
-                        $mediaId = substr($embed,strpos($embed,'?v=') + 3,strlen($embed));
+                    if (!strpos($embed, 'embed')) {
+                        $mediaId = substr($embed, strpos($embed, '?v=') + 3, strlen($embed));
                         $embed = 'https://www.youtube.com/embed/' . $mediaId;
                     }
 
                 }
-                array_push($array,['flag' => $resource->getExtension(),'embed' => $embed,'url' => $resource->getPublicUrl()]);
+                array_push($array,
+                    ['flag' => $resource->getExtension(), 'embed' => $embed, 'url' => $resource->getPublicUrl()]);
             }
 
             if (!empty($array)) {

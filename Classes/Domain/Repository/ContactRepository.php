@@ -34,4 +34,16 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class ContactRepository extends Repository
 {
+    /**
+     * @param $storageId
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAllContactByStorage($storageId)
+    {
+        $query = $this->createQuery();
+
+        $query->getQuerySettings()->setStoragePageIds([$storageId]);
+
+        return $query->execute();
+    }
 }
