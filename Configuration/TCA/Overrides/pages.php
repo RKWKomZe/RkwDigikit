@@ -288,7 +288,7 @@ $additionalColumns = [
                     ],
                 ],
             ],
-            'pdf'
+            'pdf,doc,docx'
         ),
     ],
     'digikit_category' => [
@@ -363,7 +363,8 @@ $additionalColumns = [
                         ]
                     ],
                 ],
-            ]
+            ],
+            'mp4,youtube'
         ),
     ]
 ];
