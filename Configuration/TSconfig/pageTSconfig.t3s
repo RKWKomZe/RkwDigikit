@@ -1,6 +1,29 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/Layouts.t3s">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/RTE.t3s">
 
+TCEFORM.sys_file_reference.crop.config.cropVariants {
+    default {
+        title = Slider
+        selectedRatio = 16:9
+        allowedAspectRatios {
+            16:9 {
+                title = 16:9
+                value = 1.7777777778
+            }
+        }
+    }
+    quadrat {
+        title = Quadrat
+        selectedRatio = 1:1
+        allowedAspectRatios {
+            1:1 {
+                title = 1:1
+                value = 1
+            }
+        }
+    }
+}
+
 [page|doktype = 130]
     TCEFORM.pages.backend_layout.keepItems = pagets__DigiKitDetail
     TCAdefaults.pages.backend_layout = pagets__DigiKitDetail

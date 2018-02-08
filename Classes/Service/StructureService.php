@@ -34,10 +34,12 @@ use Bm\RkwDigiKit\Domain\Repository\ContactRepository;
 use Bm\RkwDigiKit\Domain\Repository\PageRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
+use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -89,6 +91,11 @@ class StructureService extends AbstractService
     protected $standaloneViewUtility = null;
 
     /**
+     * @var null|object|ImageService
+     */
+    protected $imageService = null;
+
+    /**
      * @var CachingUtility|null|object
      */
     protected $cachingUtility = null;
@@ -136,6 +143,8 @@ class StructureService extends AbstractService
         $this->standaloneViewUtility = $this->objectManager->get(StandaloneViewUtility::class);
         /** @var CachingUtility cachingUtility */
         $this->cachingUtility = $this->objectManager->get(CachingUtility::class, self::CACHING_KEY);
+        /** @var ImageService imageService */
+        $this->imageService = $this->objectManager->get(ImageService::class);
         // Debug Mode
         $this->debugMode = (GeneralUtility::_GP('debugmode') === 'true') ? GeneralUtility::_GP('debugmode') : false;
     }
@@ -259,12 +268,13 @@ class StructureService extends AbstractService
                 $this->output['instances'][$page->getUid()] = [
                     'content' => $page->getDigiKitCompanyInformation(),
                     'metaContent' => $page->getDigiKitMetaInformation(),
-                    'sliderImages' => $page->getDigiKitImages(),
+                    'sliderImages' => $this->createImages($page->getDigikitSliderImages()),
                     'links' => $this->createLinks($page->getDigiKitLinks()),
                     'downloads' => $this->createDownloads($page->getDigikitDownloads()),
                     'videos' => $this->createVideos($page->getDigikitVideos()),
                     'parent' => $parent
                 ];
+
                 $taskId = $page->getDigikitCategory()->getUid();
                 array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
                 array_push($taskIds, $taskId);
@@ -274,6 +284,50 @@ class StructureService extends AbstractService
                 array_flip($this->output['tasks'][$taskId]['instances']);
             }
         }
+    }
+
+    private function createImages($images)
+    {
+        $array = [];
+
+        /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $image */
+        foreach ($images as $image) {
+            $resource = $image->getOriginalResource();
+            $properties = $resource->getProperties();
+            $resourceFile = $resource->getOriginalFile();
+
+            $cropVariants = CropVariantCollection::create((string)$properties['crop']);
+            $default = $cropVariants->getCropArea('default');
+            $quadrat = $cropVariants->getCropArea('quadrat');
+
+            $processingInstructionsDefault = [
+                'width' => '1280',
+                'height' => '720',
+                'crop' => $default->makeAbsoluteBasedOnFile($resourceFile)
+            ];
+
+            $processingInstructionsQuadrat = [
+                'width' => '400c',
+                'height' => '400c',
+                'crop' => $quadrat->makeAbsoluteBasedOnFile($resourceFile)
+            ];
+
+            $processedImageDefault = $this->imageService->applyProcessingInstructions($resourceFile,
+                $processingInstructionsDefault);
+            $processedImageQuadrat = $this->imageService->applyProcessingInstructions($resourceFile,
+                $processingInstructionsQuadrat);
+
+            array_push($array, [
+                '16:9' => $this->imageService->getImageUri($processedImageDefault, false),
+                '1:1' => $this->imageService->getImageUri($processedImageQuadrat, false)
+            ]);
+        }
+
+        if (!empty($array)) {
+            return $array;
+        }
+
+        return false;
     }
 
     /**
@@ -297,7 +351,7 @@ class StructureService extends AbstractService
                     'email' => $contact->getEmail()
                 ];
 
-                array_push($this->output['contacts'],$result);
+                array_push($this->output['contacts'], $result);
             }
         }
     }
