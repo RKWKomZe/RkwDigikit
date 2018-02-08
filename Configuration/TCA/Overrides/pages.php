@@ -335,6 +335,36 @@ $additionalColumns = [
             'maxitems' => 99999,
             'enableMultiSelectFilterTextfield' => true
         ]
+    ],
+    'digikit_videos' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_download',
+        'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+            'media',
+            [
+                // Use the imageoverlayPalette instead of the basicoverlayPalette
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
+                                    --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                        ]
+                    ],
+                ],
+            ]
+        ),
     ]
 ];
 
@@ -397,6 +427,11 @@ $palettes = [
             digikit_downloads
         '
     ],
+    'DigiKitVideos' => [
+        'showitem' => '
+            digikit_videos
+        '
+    ],
     'DigiKitMenu' => [
         'showitem' => '
             digikit_category
@@ -421,7 +456,9 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
         --div--;DigiKit Links,
         --palette--;Links;DigiKitLinks,
         --div--;DigiKit Downloads,
-        --palette--;Downloads;DigiKitDownloads, 
+        --palette--;Downloads;DigiKitDownloads,
+        --div--;DigiKit Videos,
+        --palette--;Videos;DigiKitVideos
     '
 );
 
