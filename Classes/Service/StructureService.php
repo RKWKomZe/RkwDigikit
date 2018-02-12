@@ -53,22 +53,22 @@ class StructureService extends AbstractService
     const CACHING_KEY = 'rkwdigikit';
 
     static $state = [
-        'BW' => 'Baden-Württemberg',
-        'BY' => 'Bayern',
-        'BE' => 'Berlin',
-        'BB' => 'Brandenburg',
-        'HB' => 'Bremen',
-        'HH' => 'Hamburg',
-        'HE' => 'Hessen',
-        'MV' => 'Mecklenburg-Vorpommern',
-        'NI' => 'Niedersachsen',
-        'NW' => 'Nordrhein-Westfalen',
-        'RP' => 'Rheinland-Pfalz',
-        'SL' => 'Saarland',
-        'SN' => 'Sachsen',
-        'ST' => 'Sachsen-Anhalt',
-        'SH' => 'Schleswig-Holstein',
-        'TH' => 'Thüringen'
+        'BW' => [0 => 'Baden-Württemberg'],
+        'BY' => [0 => 'Bayern'],
+        'BE' => [0 => 'Berlin'],
+        'BB' => [0 => 'Brandenburg'],
+        'HB' => [0 => 'Bremen'],
+        'HH' => [0 => 'Hamburg'],
+        'HE' => [0 => 'Hessen'],
+        'MV' => [0 => 'Mecklenburg-Vorpommern'],
+        'NI' => [0 => 'Niedersachsen'],
+        'NW' => [0 => 'Nordrhein-Westfalen'],
+        'RP' => [0 => 'Rheinland-Pfalz'],
+        'SL' => [0 => 'Saarland'],
+        'SN' => [0 => 'Sachsen'],
+        'ST' => [0 => 'Sachsen-Anhalt'],
+        'SH' => [0 => 'Schleswig-Holstein'],
+        'TH' => [0 => 'Thüringen']
     ];
 
     /**
@@ -110,7 +110,6 @@ class StructureService extends AbstractService
         'tasks' => [],
         'instances' => [],
         'contacts' => [
-            'filtered' => [],
             'global' => [],
             'filter' => []
         ],
@@ -350,14 +349,31 @@ class StructureService extends AbstractService
     {
         /** @var QueryResult $contacts */
         $contactsResult = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage']);
+        /** @var Contact $globalContact */
+        $globalContact = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage'],1)->getFirst();
 
+        if ($globalContact !== null) {
+            $global = [
+                'for' => $globalContact->getFor(),
+                'forFull' => '',
+                'name' => $globalContact->getName(),
+                'street' => $globalContact->getStreet(),
+                'city' => $globalContact->getCity(),
+                'phone' => $globalContact->getPhone(),
+                'email' => $globalContact->getEmail(),
+                'function' => $globalContact->getFunction()
+            ];
+            $this->output['contacts']['global'] = $global;
+        }
         if (!empty($contactsResult->toArray())) {
+            $this->output['contacts']['filter'] = self::$state;
+
             /** @var Contact $contact */
             foreach ($contactsResult as $contact) {
 
                 $result = [
                     'for' => $contact->getFor(),
-                    'forFull' => ($contact->isGlobal()) ? '' : self::$state[$contact->getFor()],
+                    'forFull' => ($contact->isGlobal()) ? '' : self::$state[$contact->getFor()][0],
                     'name' => $contact->getName(),
                     'street' => $contact->getStreet(),
                     'city' => $contact->getCity(),
@@ -365,16 +381,16 @@ class StructureService extends AbstractService
                     'email' => $contact->getEmail(),
                     'function' => $contact->getFunction()
                 ];
-
-                if ($contact->isGlobal()) {
-                    array_push($this->output['contacts']['global'], $result);
-                } else {
-                    array_push($this->output['contacts']['filtered'], $result);
-                }
+                array_push($this->output['contacts']['filter'][$contact->getFor()], $result);
             }
-
-            array_push($this->output['contacts']['filter'], self::$state);
         }
+
+        if ($globalContact !== null) {
+            foreach (self::$state as $key => $state) {
+                array_push($this->output['contacts']['filter'][$key], $global);
+            }
+        }
+        self::debugMode($this->output);
     }
 
     /**

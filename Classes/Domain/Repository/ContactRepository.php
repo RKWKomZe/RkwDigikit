@@ -36,11 +36,16 @@ class ContactRepository extends Repository
 {
     /**
      * @param $storageId
+     * @param $global
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllContactByStorage($storageId)
+    public function findAllContactByStorage($storageId,$global = 0)
     {
         $query = $this->createQuery();
+
+        $query->matching(
+            $query->equals('global', $global)
+        );
 
         $query->getQuerySettings()->setStoragePageIds([$storageId]);
 
