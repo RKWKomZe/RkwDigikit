@@ -20,6 +20,22 @@
             <trans-unit id="digikit.page_detail.meta.website">
                 <source><![CDATA[Website:]]></source>
             </trans-unit>
+
+            <trans-unit id="digikit.imprint">
+                <source><![CDATA[Impressum]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.termsAndConditions">
+                <source><![CDATA[Allgemeine Nutzungsbedingungen]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.agb">
+                <source><![CDATA[AGB]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.dataProtection">
+                <source><![CDATA[Datenschutz]]></source>
+            </trans-unit>
+            <trans-unit id="digikit.disclaimer">
+                <source><![CDATA[Disclaimer]]></source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

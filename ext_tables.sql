@@ -44,6 +44,13 @@ CREATE TABLE pages (
 );
 
 #
+# TABLE structure FOR TABLE 'sys_file_reference'
+#
+CREATE TABLE sys_file_reference (
+  thumbnail INT(11) unsigned DEFAULT '0' NOT NULL
+);
+
+#
 # TABLE structure FOR TABLE 'tx_rkwdigikit_domain_model_contact'
 #
 CREATE TABLE tx_rkwdigikit_domain_model_contact (
@@ -51,10 +58,13 @@ CREATE TABLE tx_rkwdigikit_domain_model_contact (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	name VARCHAR(255) DEFAULT '' NOT NULL,
-	function VARCHAR(255) DEFAULT '' NOT NULL,
-	phone VARCHAR(255) DEFAULT '' NOT NULL,
+	street VARCHAR(255) DEFAULT '' NOT NULL,
+	city VARCHAR(255) DEFAULT '' NOT NULL,
+  phone VARCHAR(255) DEFAULT '' NOT NULL,
 	email VARCHAR(255) DEFAULT '' NOT NULL,
 	for VARCHAR(255) DEFAULT '' NOT NULL,
+	global tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	function VARCHAR(255) DEFAULT '' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

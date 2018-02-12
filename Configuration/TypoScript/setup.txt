@@ -25,6 +25,13 @@ plugin.tx_rkwdigikit {
         develop {
             isDev = {$plugin.tx_rkwdigikit.settings.develop.isDev}
         }
+        footerLinks {
+            imprint = {$plugin.tx_rkwdigikit.settings.footerLinks.imprint}
+            termsAndConditions = {$plugin.tx_rkwdigikit.settings.footerLinks.termsAndConditions}
+            agb = {$plugin.tx_rkwdigikit.settings.footerLinks.agb}
+            dataProtection = {$plugin.tx_rkwdigikit.settings.footerLinks.dataProtection}
+            disclaimer = {$plugin.tx_rkwdigikit.settings.footerLinks.disclaimer}
+        }
     }
 }
 

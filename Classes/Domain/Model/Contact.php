@@ -40,6 +40,11 @@ class Contact extends AbstractEntity
     protected $for = '';
 
     /**
+     * @var bool
+     */
+    protected $global = false;
+
+    /**
      * @var string
      */
     protected $name = '';
@@ -47,7 +52,12 @@ class Contact extends AbstractEntity
     /**
      * @var string
      */
-    protected $function = '';
+    protected $street = '';
+
+    /**
+     * @var string
+     */
+    protected $city = '';
 
     /**
      * @var string
@@ -58,6 +68,11 @@ class Contact extends AbstractEntity
      * @var string
      */
     protected $email = '';
+
+    /**
+     * @var string
+     */
+    protected $function = '';
 
     /**
      * @return string
@@ -73,6 +88,22 @@ class Contact extends AbstractEntity
     public function setFor(string $for)
     {
         $this->for = $for;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isGlobal()
+    {
+        return $this->global;
+    }
+
+    /**
+     * @param bool $global
+     */
+    public function setGlobal(bool $global)
+    {
+        $this->global = $global;
     }
 
     /**
@@ -94,17 +125,33 @@ class Contact extends AbstractEntity
     /**
      * @return string
      */
-    public function getFunction()
+    public function getStreet()
     {
-        return $this->function;
+        return $this->street;
     }
 
     /**
-     * @param string $function
+     * @param string $street
      */
-    public function setFunction(string $function)
+    public function setStreet(string $street)
     {
-        $this->function = $function;
+        $this->street = $street;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity(string $city)
+    {
+        $this->city = $city;
     }
 
     /**
@@ -137,5 +184,21 @@ class Contact extends AbstractEntity
     public function setEmail(string $email)
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFunction()
+    {
+        return $this->function;
+    }
+
+    /**
+     * @param string $function
+     */
+    public function setFunction(string $function)
+    {
+        $this->function = $function;
     }
 }
