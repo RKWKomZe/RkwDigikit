@@ -41,6 +41,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Service\ImageService;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -108,7 +109,12 @@ class StructureService extends AbstractService
         'mechanisms' => [],
         'tasks' => [],
         'instances' => [],
-        'contacts' => [],
+        'contacts' => [
+            'filtered' => [],
+            'global' => [],
+            'filter' => []
+        ],
+        'footer' => [],
         'status' => false
     ];
 
@@ -179,6 +185,8 @@ class StructureService extends AbstractService
             }
 
             $this->createContacts();
+
+            $this->createFooterLinks();
 
             $this->output['status'] = true;
 
@@ -286,6 +294,11 @@ class StructureService extends AbstractService
         }
     }
 
+    /**
+     * Fill Image array
+     * @param $images
+     * @return array|bool
+     */
     private function createImages($images)
     {
         $array = [];
@@ -318,8 +331,8 @@ class StructureService extends AbstractService
                 $processingInstructionsQuadrat);
 
             array_push($array, [
-                '16:9' => $this->imageService->getImageUri($processedImageDefault, false),
-                '1:1' => $this->imageService->getImageUri($processedImageQuadrat, false)
+                0 => $this->imageService->getImageUri($processedImageDefault, false),
+                1 => $this->imageService->getImageUri($processedImageQuadrat, false)
             ]);
         }
 
@@ -344,15 +357,23 @@ class StructureService extends AbstractService
 
                 $result = [
                     'for' => $contact->getFor(),
-                    'forFull' => self::$state[$contact->getFor()],
+                    'forFull' => ($contact->isGlobal()) ? '' : self::$state[$contact->getFor()],
                     'name' => $contact->getName(),
-                    'function' => $contact->getFunction(),
+                    'street' => $contact->getStreet(),
+                    'city' => $contact->getCity(),
                     'phone' => $contact->getPhone(),
-                    'email' => $contact->getEmail()
+                    'email' => $contact->getEmail(),
+                    'function' => $contact->getFunction()
                 ];
 
-                array_push($this->output['contacts'], $result);
+                if ($contact->isGlobal()) {
+                    array_push($this->output['contacts']['global'], $result);
+                } else {
+                    array_push($this->output['contacts']['filtered'], $result);
+                }
             }
+
+            array_push($this->output['contacts']['filter'], self::$state);
         }
     }
 
@@ -391,7 +412,7 @@ class StructureService extends AbstractService
         if (!empty($videos->toArray())) {
             $array = [];
 
-            /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $video */
+            /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $video */
             foreach ($videos as $video) {
                 /** @var FileReference $resource */
                 $resource = $video->getOriginalResource();
@@ -438,6 +459,21 @@ class StructureService extends AbstractService
             return $links;
         }
         return false;
+    }
+
+    /**
+     * Fill footer array with data
+     */
+    private function createFooterLinks()
+    {
+        foreach ($this->settings['footerLinks'] as $key => $value) {
+            $input = [
+                0 => LocalizationUtility::translate('digikit.'.$key,'rkwDigiKit'),
+                1 => $value
+            ];
+
+            array_push($this->output['footer'],$input);
+        }
     }
 
     /**

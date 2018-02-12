@@ -81,6 +81,10 @@
                 <source>Download</source>
             </trans-unit>
 
+		    <trans-unit id="digikit_videos">
+                <source>Videos</source>
+            </trans-unit>
+
 		    <trans-unit id="digikit_category">
                 <source>Navigation Point</source>
             </trans-unit>
@@ -92,8 +96,11 @@
             <trans-unit id="digikit_contact_name">
                 <source>Name</source>
             </trans-unit>
-            <trans-unit id="digikit_contact_function">
-                <source>Function</source>
+            <trans-unit id="digikit_contact_street">
+                <source>Street and Number</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_city">
+                <source>Zipcode and City</source>
             </trans-unit>
             <trans-unit id="digikit_contact_phone">
                 <source>Phone</source>
@@ -103,6 +110,12 @@
             </trans-unit>
             <trans-unit id="digikit_contact_for">
                 <source>Bundesland</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_global">
+                <source>Is global?</source>
+            </trans-unit>
+            <trans-unit id="digikit_contact_function">
+                <source>Function (Only for global contact)</source>
             </trans-unit>
 		</body>
     </file>

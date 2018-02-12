@@ -47,13 +47,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,function,phone,email,for',
+        'searchFields' => 'name,function,phone,email,for,global,street,city',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            name,function,phone,email,for
+            name,street,city,phone,email,for,global
         '
     ],
     'types' => [
@@ -61,9 +61,11 @@ return [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
                 --linebreak--,
-                for,
+                for,global,
                 --linebreak--,
-                name,function,
+                function,
+                --linebreak--,
+                name,street,city,
                 --linebreak--,
                 phone,email
             '
@@ -162,6 +164,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
+                    ['',0],
                     ['Baden-Württemberg','BW'],
                     ['Bayern','BY'],
                     ['Berlin','BE'],
@@ -178,7 +181,8 @@ return [
                     ['Sachsen-Anhalt','ST'],
                     ['Schleswig-Holstein','SH'],
                     ['Thüringen','TH']
-                ]
+                ],
+                'default' => 0
             ]
         ],
         'name' => [
@@ -190,13 +194,22 @@ return [
                 'eval' => 'trim,required'
             ]
         ],
-        'function' => [
+        'street' => [
             'exclude' => 1,
-            'label' => $ll . 'digikit_contact_function',
+            'label' => $ll . 'digikit_contact_street',
             'config' => [
                 'type' => 'input',
                 'size' => 50,
-                'eval' => 'trim,required'
+                'eval' => 'trim'
+            ]
+        ],
+        'city' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_city',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim'
             ]
         ],
         'phone' => [
@@ -216,6 +229,25 @@ return [
                 'size' => 50,
                 'eval' => 'trim,required'
             ]
-        ]
+        ],
+        'global' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_global',
+            'config' => [
+                'type' => 'check',
+                'items' => [
+                    [ 'Is global contact?', '' ]
+                ],
+            ]
+        ],
+        'function' => [
+            'exclude' => 1,
+            'label' => $ll . 'digikit_contact_function',
+            'config' => [
+                'type' => 'input',
+                'size' => 50,
+                'eval' => 'trim'
+            ]
+        ],
     ]
 ];

@@ -325,7 +325,7 @@ $additionalColumns = [
     'digikit_videos' => [
         'exclude' => 1,
         'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
-        'label' => $ll . 'digikit_download',
+        'label' => $ll . 'digikit_videos',
         'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
             'digikit_videos',
             [

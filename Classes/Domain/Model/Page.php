@@ -149,7 +149,7 @@ class Page extends AbstractEntity
     protected $digikitDownloads = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
      */
     protected $digikitVideos = null;
 
@@ -165,7 +165,6 @@ class Page extends AbstractEntity
     {
         $this->digikitSliderImages = new ObjectStorage();
         $this->digikitDownloads = new ObjectStorage();
-        $this->digikitContacts = new ObjectStorage();
         $this->digikitVideos = new ObjectStorage();
     }
 
@@ -570,17 +569,17 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @param FileReference $videoToAdd
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $videoToAdd
      */
-    public function addDigikitVideos(FileReference $videoToAdd)
+    public function addDigikitVideos(\Bm\RkwDigiKit\Domain\Model\FileReference $videoToAdd)
     {
         $this->digikitVideos->attach($videoToAdd);
     }
 
     /**
-     * @param FileReference $videoToRemove
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $videoToRemove
      */
-    public function removeDigikitVideos(FileReference $videoToRemove)
+    public function removeDigikitVideos(\Bm\RkwDigiKit\Domain\Model\FileReference $videoToRemove)
     {
         $this->digikitVideos->detach($videoToRemove);
     }

@@ -2,6 +2,7 @@
 #customsubcategory=menu=Navigation Settings
 #customsubcategory=contact=Contact Settings
 #customsubcategory=pages=Pages Settings
+#customsubcategory=footerLinks=Footer Link Settings
 plugin.tx_rkwdigikit {
     view {
         templateRootPath = EXT:rkw_digi_kit/Resources/Private/Templates/
@@ -28,6 +29,18 @@ plugin.tx_rkwdigikit {
         develop {
             #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
             isDev = 0
+        }
+        footerLinks {
+            #cat=plugin.tx_rkwdigikit/footerLinks; type=string; label=Impressum
+            imprint = https://www.rkw-kompetenzzentrum.de/impressum/
+            #cat=plugin.tx_rkwdigikit/footerLinks; type=string; label=Allgemeine Nutzungsbedingungen
+            termsAndConditions = https://www.rkw-kompetenzzentrum.de/allgemeine-nutzungsbedingungen/
+            #cat=plugin.tx_rkwdigikit/footerLinks; type=string; label=AGB
+            agb = https://www.rkw-kompetenzzentrum.de/allgemeine-geschaeftsbedingungen/
+            #cat=plugin.tx_rkwdigikit/footerLinks; type=string; label=Datenschutz
+            dataProtection = https://www.rkw-kompetenzzentrum.de/datenschutz/
+            #cat=plugin.tx_rkwdigikit/footerLinks; type=string; label=Disclaimer
+            disclaimer = https://www.rkw-kompetenzzentrum.de/disclaimer/
         }
     }
 }
