@@ -6,10 +6,10 @@ config {
 
     language = de
     locale_all = de_DE.UTF-8
-    htmlTag_stdWrap.cObject = TEXT
-    htmlTag_stdWrap.cObject.value = <html id="rkwDigiKit">|</html>
+    htmlTag_langKey = de-DE
 
     headerComment = Realized by Bergisch Media - the digital agency - http://www.bergisch-media.de
+    locale_all = de_DE.UTF-8
 }
 
 page.bodyTag >
