@@ -21,6 +21,8 @@ plugin.tx_rkwdigikit {
             loadDefaultPageConfiguration = 0
             #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Detail Configuration for Fluid Template (Type 200)
             loadDetailPageConfiguration = 0
+            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Application Configuration for Fluid Template (Type 300)
+            loadApplicationPageConfiguration = 0
         }
         contact {
             #cat=plugin.tx_rkwdigikit/contact; type=int+; label= Contact Storage Pid

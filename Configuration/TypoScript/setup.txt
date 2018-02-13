@@ -18,6 +18,7 @@ plugin.tx_rkwdigikit {
             loadPageType = {$plugin.tx_rkwdigikit.settings.pages.loadPageType}
             loadDefaultPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}
             loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
+            loadApplicationPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadApplicationPageConfiguration}
         }
         contact {
             storage = {$plugin.tx_rkwdigikit.settings.contact.storage}
