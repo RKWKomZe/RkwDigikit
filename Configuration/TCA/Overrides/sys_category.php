@@ -103,9 +103,11 @@ $additionalColumns = [
             'items' => [
                 ['Default', ''],
                 ['Horizontal x1', '--x'],
-                ['Vertical x1', '--y'],
+                ['Vertical y1', '--y'],
                 ['Horizontal x2', '--x2'],
-                ['Vertical x2', '--y2']
+                ['Vertical y2', '--y2'],
+                ['Horizontal x3', '--x3'],
+                ['Vertical y3', '--y3']
             ],
             'size' => 1
         ]
