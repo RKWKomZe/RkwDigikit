@@ -29,9 +29,11 @@ namespace Bm\RkwDigiKit\Service;
 use Bm\RkwDigiKit\Domain\Model\Category;
 use Bm\RkwDigiKit\Domain\Model\Contact;
 use Bm\RkwDigiKit\Domain\Model\Page;
+use Bm\RkwDigiKit\Domain\Model\Tutorial;
 use Bm\RkwDigiKit\Domain\Repository\CategoryRepository;
 use Bm\RkwDigiKit\Domain\Repository\ContactRepository;
 use Bm\RkwDigiKit\Domain\Repository\PageRepository;
+use Bm\RkwDigiKit\Domain\Repository\TutorialRepository;
 use Bm\RkwDigiKit\Utility\CachingUtility;
 use Bm\RkwDigiKit\Utility\StandaloneViewUtility;
 use TYPO3\CMS\Core\Imaging\ImageManipulation\CropVariantCollection;
@@ -87,6 +89,11 @@ class StructureService extends AbstractService
     protected $contactRepository = null;
 
     /**
+     * @var TutorialRepository|null|object
+     */
+    protected $tutorialRepository = null;
+
+    /**
      * @var StandaloneViewUtility|null|object
      */
     protected $standaloneViewUtility = null;
@@ -114,6 +121,7 @@ class StructureService extends AbstractService
             'filter' => []
         ],
         'footer' => [],
+        'tutorial' => [],
         'status' => false
     ];
 
@@ -144,6 +152,8 @@ class StructureService extends AbstractService
         $this->pageRepository = $this->objectManager->get(PageRepository::class);
         /** @var ContactRepository contactRepository */
         $this->contactRepository = $this->objectManager->get(ContactRepository::class);
+        /** @var TutorialRepository tutorialRepository */
+        $this->tutorialRepository = $this->objectManager->get(TutorialRepository::class);
         /** @var StandaloneViewUtility standaloneViewUtility */
         $this->standaloneViewUtility = $this->objectManager->get(StandaloneViewUtility::class);
         /** @var CachingUtility cachingUtility */
@@ -182,6 +192,8 @@ class StructureService extends AbstractService
             if (!empty($this->output['tasks'])) {
                 $this->createContent();
             }
+
+            $this->createTutorial();
 
             $this->createContacts();
 
@@ -350,7 +362,8 @@ class StructureService extends AbstractService
         /** @var QueryResult $contacts */
         $contactsResult = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage']);
         /** @var Contact $globalContact */
-        $globalContact = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage'],1)->getFirst();
+        $globalContact = $this->contactRepository->findAllContactByStorage($this->settings['contact']['storage'],
+            1)->getFirst();
 
         if ($globalContact !== null) {
             $global = [
@@ -483,11 +496,31 @@ class StructureService extends AbstractService
     {
         foreach ($this->settings['footerLinks'] as $key => $value) {
             $input = [
-                0 => LocalizationUtility::translate('digikit.'.$key,'rkwDigiKit'),
+                0 => LocalizationUtility::translate('digikit.' . $key, 'rkwDigiKit'),
                 1 => $value
             ];
 
-            array_push($this->output['footer'],$input);
+            array_push($this->output['footer'], $input);
+        }
+    }
+
+    private function createTutorial()
+    {
+        /** @var QueryResult $queryResult */
+        $queryResult = $this->tutorialRepository->findOneTutorial();
+        if (!empty($queryResult->toArray())) {
+            /** @var Tutorial $tutorial */
+            $tutorial = $queryResult->getFirst();
+            /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
+            foreach ($tutorial->getMedia() as $media) {
+                /** @var FileReference $resource */
+                $resource = $media->getOriginalResource();
+                array_push($this->output['tutorial'],[
+                    'type' => $resource->getExtension(),
+                    'url' => $resource->getPublicUrl(),
+                    'description' => $resource->getDescription()
+                ]);
+            }
         }
     }
 

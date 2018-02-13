@@ -23,6 +23,9 @@ plugin.tx_rkwdigikit {
         contact {
             storage = {$plugin.tx_rkwdigikit.settings.contact.storage}
         }
+        tutorial {
+            storage = {$plugin.tx_rkwdigikit.settings.tutorial.storage}
+        }
         develop {
             isDev = {$plugin.tx_rkwdigikit.settings.develop.isDev}
         }

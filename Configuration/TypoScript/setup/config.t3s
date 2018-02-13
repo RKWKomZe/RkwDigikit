@@ -10,7 +10,6 @@ config {
 
     headerComment = Realized by Bergisch Media - the digital agency - http://www.bergisch-media.de
     locale_all = de_DE.UTF-8
-    htmlTag_langKey = de-DE
 }
 
 page.bodyTag >
