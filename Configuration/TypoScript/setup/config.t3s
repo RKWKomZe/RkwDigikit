@@ -24,7 +24,7 @@ page.headerData {
     30 = TEXT
     30.value = <script src="https://use.typekit.net/gxk5fpu.js"></script>
     40 = TEXT
-    50.value = <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    40.value = <script>try{Typekit.load({ async: true });}catch(e){}</script>
 }
 
 page.includeCSS {
