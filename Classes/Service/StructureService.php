@@ -455,7 +455,7 @@ class StructureService extends AbstractService
 
                 }
                 array_push($array,
-                    ['flag' => $resource->getExtension(), 'embed' => $embed, 'url' => $resource->getPublicUrl()]);
+                    ['flag' => $resource->getExtension(), 'embed' => $embed, 'url' => $resource->getPublicUrl(),'title' => $resource->getTitle()]);
             }
 
             if (!empty($array)) {
