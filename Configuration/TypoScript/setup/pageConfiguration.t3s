@@ -28,25 +28,6 @@ page.100 {
 [global]
 
 [globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadDetailPageConfiguration}]
-page.300 = FLUIDTEMPLATE
-page.300 {
-    layoutRootPaths {
-        0 = EXT:rkw_digi_kit/Resources/Private/Layouts/
-    }
-    partialRootPaths {
-        0 = EXT:rkw_digi_kit/Resources/Private/Partials/
-    }
-    file.cObject = CASE
-    file.cObject {
-        key.data = levelfield:-1, backend_layout_next_level, slide
-        key.override.field = backend_layout
-        pagets__DigiKitApplication = TEXT
-        pagets__DigiKitApplication.value = EXT:rkw_digi_kit/Resources/Private/Templates/Pages/DigiKitApplication.html
-    }
-    variables {
-        content < styles.content.get
-    }
-}
 # Detail Page Configuration
 page.200 = FLUIDTEMPLATE
 page.200 {
@@ -74,4 +55,26 @@ page.200 {
         as = page
     }
 }
+[global]
+
+[globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.pages.loadApplicationPageConfiguration}]
+    page.300 = FLUIDTEMPLATE
+    page.300 {
+        layoutRootPaths {
+            0 = EXT:rkw_digi_kit/Resources/Private/Layouts/
+        }
+        partialRootPaths {
+            0 = EXT:rkw_digi_kit/Resources/Private/Partials/
+        }
+        file.cObject = CASE
+        file.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
+            pagets__DigiKitApplication = TEXT
+            pagets__DigiKitApplication.value = EXT:rkw_digi_kit/Resources/Private/Templates/Pages/DigiKitApplication.html
+        }
+        variables {
+            content < styles.content.get
+        }
+    }
 [global]
