@@ -1,0 +1,37 @@
+config {
+    admPanel = 0
+    doctype = html5
+
+    prefixLocalAnchors = all
+
+    language = de
+    locale_all = de_DE.UTF-8
+    htmlTag_langKey = de-DE
+
+    headerComment = Realized by Bergisch Media - the digital agency - http://www.bergisch-media.de
+    locale_all = de_DE.UTF-8
+    htmlTag_langKey = de-DE
+}
+
+page.bodyTag >
+page.bodyTagCObject = TEXT
+page.bodyTagCObject.wrap = <body class="u-bg-rkw-grey">|</body>
+
+page.headerData {
+    10 = TEXT
+    10.value = <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    20 = TEXT
+    20.value = <meta name="viewport" content="width=device-width, initial-scale=1">
+    30 = TEXT
+    30.value = <script src="https://use.typekit.net/gxk5fpu.js"></script>
+    40 = TEXT
+    50.value = <script>try{Typekit.load({ async: true });}catch(e){}</script>
+}
+
+page.includeCSS {
+    main = EXT:rkw_digi_kit/Resources/Public/dist/stylesheet.css
+}
+
+page.includeJSFooter {
+    bundle = EXT:rkw_digi_kit/Resources/Public/dist/bundle.js
+}

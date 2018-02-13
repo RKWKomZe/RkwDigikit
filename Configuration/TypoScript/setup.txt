@@ -40,6 +40,7 @@ plugin.tx_rkwdigikit {
 [global]
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/config.t3s">
 
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.t3s">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/serviceTypes.t3s">

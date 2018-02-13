@@ -2,14 +2,6 @@
 defined('TYPO3_MODE') or die('Access denied!');
 
 /**
- * Register plugins
- */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Bm.' . $_EXTKEY,
-    'DigiKit',
-    'RKW - DigitalisierungsKIT'
-);
-/**
  * Define new page type
  */
 call_user_func(
