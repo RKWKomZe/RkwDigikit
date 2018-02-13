@@ -1,6 +1,6 @@
 <?php
 
-namespace Bm\RkwDigiKit\Controller;
+namespace Bm\RkwDigiKit\Domain\Repository;
 
 /***************************************************************
  *
@@ -26,18 +26,10 @@ namespace Bm\RkwDigiKit\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
- * Class DigiKitController
- * @package Bm\RkwDigiKit\Controller
+ * Class TutorialRepository
+ * @package Bm\RkwDigiKit\Domain\Repository
  */
-class DigiKitController extends ActionController
-{
-    /**
-     * Shows Vue.js plugin
-     */
-    public function indexAction()
-    {
-    }
-}
+class TutorialRepository extends Repository {}

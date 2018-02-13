@@ -1,0 +1,14 @@
+<div class="o-container--large" id="rkwDigiKit">
+    <div class="o-container">
+        <a href="#" class="logo"></a>
+        <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal"></a>
+
+        <nav class="c-tile-nav o-grid">
+            <div is="nav-model" v-for="(item, itemKey, itemIndex) in digiKit.models" :item="item" :key="item.id" :index="itemIndex" :uid="item.id"></div>
+        </nav>
+        <div class="c-rkw-customer">Kunde</div>
+
+        <content-modal></content-modal>
+        <bookmark-modal ref="bookmarks"></bookmark-modal>
+    </div>
+</div>

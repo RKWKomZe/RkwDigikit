@@ -16,18 +16,6 @@ $pageTSconfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig($pageTSconfig);
 
 /**
- * Configure plugins
- */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Bm.' . $_EXTKEY,
-    'DigiKit',
-    [
-        'DigiKit' => 'index'
-    ],
-    []
-);
-
-/**
  * Configure Caching Framework
  */
 $cacheKeys = [\Bm\RkwDigiKit\Service\StructureService::CACHING_KEY];
