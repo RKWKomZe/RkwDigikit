@@ -390,7 +390,6 @@ class StructureService extends AbstractService
                 array_push($this->output['contacts']['filter'][$key], $global);
             }
         }
-        self::debugMode($this->output);
     }
 
     /**
