@@ -32,4 +32,19 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  * Class TutorialRepository
  * @package Bm\RkwDigiKit\Domain\Repository
  */
-class TutorialRepository extends Repository {}
+class TutorialRepository extends Repository
+{
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResult
+     */
+    public function findOneTutorial()
+    {
+        $query = $this->createQuery();
+
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        $query->setLimit(1);
+
+        return $query->execute();
+    }
+}

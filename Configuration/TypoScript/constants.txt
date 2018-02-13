@@ -1,6 +1,7 @@
 #customsubcategory=dev=Development Settings
 #customsubcategory=menu=Navigation Settings
 #customsubcategory=contact=Contact Settings
+#customsubcategory=tutorial=Tutorial Settings
 #customsubcategory=pages=Pages Settings
 #customsubcategory=footerLinks=Footer Link Settings
 plugin.tx_rkwdigikit {
@@ -26,6 +27,10 @@ plugin.tx_rkwdigikit {
         }
         contact {
             #cat=plugin.tx_rkwdigikit/contact; type=int+; label= Contact Storage Pid
+            storage =
+        }
+        tutorial {
+            #cat=plugin.tx_rkwdigikit/tutorial; type=int+; label= Tutorial Storage Pid
             storage =
         }
         develop {

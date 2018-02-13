@@ -36,47 +36,47 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Tutorial extends AbstractEntity
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
      */
-    protected $images = null;
+    protected $media = null;
 
     /**
      * Tutorial constructor.
      */
     public function __construct()
     {
-        $this->images = new ObjectStorage();
+        $this->media = new ObjectStorage();
     }
 
     /**
      * @return ObjectStorage
      */
-    public function getImages()
+    public function getMedia()
     {
-        return $this->images;
+        return $this->media;
     }
 
     /**
-     * @param ObjectStorage $images
+     * @param ObjectStorage $media
      */
-    public function setImages(ObjectStorage $images)
+    public function setMedia(ObjectStorage $media)
     {
-        $this->images = $images;
+        $this->media = $media;
     }
 
     /**
-     * @param FileReference $imageToAdd
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $mediaToAdd
      */
-    public function addImage(FileReference $imageToAdd)
+    public function addMedia(\Bm\RkwDigiKit\Domain\Model\FileReference $mediaToAdd)
     {
-        $this->images->attach($imageToAdd);
+        $this->media->attach($mediaToAdd);
     }
 
     /**
-     * @param FileReference $imageToRemove
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $mediaToRemove
      */
-    public function removeImage(FileReference $imageToRemove)
+    public function removeMedia(\Bm\RkwDigiKit\Domain\Model\FileReference $mediaToRemove)
     {
-        $this->images->detach($imageToRemove);
+        $this->media->detach($mediaToRemove);
     }
 }

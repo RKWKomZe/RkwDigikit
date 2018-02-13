@@ -47,13 +47,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'images',
+        'searchFields' => 'media',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            images
+            media
         '
     ],
     'types' => [
@@ -61,13 +61,7 @@ return [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
                 --linebreak--,
-                for,global,
-                --linebreak--,
-                function,
-                --linebreak--,
-                name,street,city,
-                --linebreak--,
-                phone,email
+                media
             '
         ]
     ],
@@ -157,97 +151,50 @@ return [
                 ]
             ]
         ],
-        'for' => [
+        'media' => [
             'exclude' => 1,
-            'label' => $ll . 'digikit_contact_for',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['',0],
-                    ['Baden-Württemberg','BW'],
-                    ['Bayern','BY'],
-                    ['Berlin','BE'],
-                    ['Brandenburg','BB'],
-                    ['Bremen','HB'],
-                    ['Hamburg','HH'],
-                    ['Hessen','HE'],
-                    ['Mecklenburg-Vorpommern','MV'],
-                    ['Niedersachsen','NI'],
-                    ['Nordrhein-Westfalen','NW'],
-                    ['Rheinland-Pfalz','RP'],
-                    ['Saarland','SL'],
-                    ['Sachsen','SN'],
-                    ['Sachsen-Anhalt','ST'],
-                    ['Schleswig-Holstein','SH'],
-                    ['Thüringen','TH']
+            'label' => 'Tutorial Media',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('media', [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference'
                 ],
-                'default' => 0
-            ]
-        ],
-        'name' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_name',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim,required'
-            ]
-        ],
-        'street' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_street',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim'
-            ]
-        ],
-        'city' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_city',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim'
-            ]
-        ],
-        'phone' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_phone',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim,required'
-            ]
-        ],
-        'email' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_email',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim,required'
-            ]
-        ],
-        'global' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_global',
-            'config' => [
-                'type' => 'check',
-                'items' => [
-                    [ 'Is global contact?', '' ]
+                // custom configuration for displaying fields in the overlay/reference table
+                // behaves the same as the image field.
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ]
+                    ],
                 ],
-            ]
-        ],
-        'function' => [
-            'exclude' => 1,
-            'label' => $ll . 'digikit_contact_function',
-            'config' => [
-                'type' => 'input',
-                'size' => 50,
-                'eval' => 'trim'
-            ]
-        ],
+            ], $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
+        ]
     ]
 ];
