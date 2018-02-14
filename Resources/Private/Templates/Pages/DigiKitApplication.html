@@ -13,4 +13,14 @@
         <bookmark-modal ref="bookmarks"></bookmark-modal>
     </div>
     <application-tour></application-tour>
+    <div class="o-grid c-rkw-footer c-rkw-footer--home">
+        <div class="o-grid__col u-4/12">
+            <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW 2018</p>
+        </div>
+        <div class="o-grid__col u-8/12">
+            <p class="c-rkw-content__body">
+                <a v-for="link in footer" class="c-rkw-footer__link c-rkw-footer__link--home" target="_blank" :href="link[1]">{{link[0]}}</a>
+            </p>
+        </div>
+    </div>
 </div>
