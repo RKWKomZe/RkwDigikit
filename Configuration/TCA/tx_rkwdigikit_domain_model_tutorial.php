@@ -31,7 +31,7 @@ $ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
 return [
     'ctrl' => [
         'title' => 'DigiKit Tutorial',
-        'label' => 'name',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -47,12 +47,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'media',
+        'searchFields' => 'title,media',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
+            title,
+            --linebreak--,
             media
         '
     ],
@@ -149,6 +151,14 @@ return [
                 'range' => [
                     'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
                 ]
+            ]
+        ],
+        'title' => [
+            'exclude' => 1,
+            'label' => 'Title',
+            'config' => [
+                'type' => 'input',
+                'size' => 50
             ]
         ],
         'media' => [

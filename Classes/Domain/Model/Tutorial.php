@@ -36,6 +36,11 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Tutorial extends AbstractEntity
 {
     /**
+     * @var string
+     */
+    protected $title = '';
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
      */
     protected $media = null;
@@ -46,6 +51,22 @@ class Tutorial extends AbstractEntity
     public function __construct()
     {
         $this->media = new ObjectStorage();
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
     }
 
     /**
