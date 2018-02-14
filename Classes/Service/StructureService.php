@@ -121,7 +121,10 @@ class StructureService extends AbstractService
             'filter' => []
         ],
         'footer' => [],
-        'tutorial' => [],
+        'tutorial' => [
+            'intro' => '',
+            'data' => []
+        ],
         'status' => false
     ];
 
@@ -511,11 +514,14 @@ class StructureService extends AbstractService
         if (!empty($queryResult->toArray())) {
             /** @var Tutorial $tutorial */
             $tutorial = $queryResult->getFirst();
+
+            $this->output['tutorial']['intro']= nl2br($tutorial->getIntroText());
+
             /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
             foreach ($tutorial->getMedia() as $media) {
                 /** @var FileReference $resource */
                 $resource = $media->getOriginalResource();
-                array_push($this->output['tutorial'],[
+                array_push($this->output['tutorial']['data'],[
                     'type' => $resource->getExtension(),
                     'url' => $resource->getPublicUrl(),
                     'description' => $resource->getDescription()

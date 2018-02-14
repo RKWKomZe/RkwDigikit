@@ -41,6 +41,11 @@ class Tutorial extends AbstractEntity
     protected $title = '';
 
     /**
+     * @var string
+     */
+    protected $introText = '';
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
      */
     protected $media = null;
@@ -59,6 +64,14 @@ class Tutorial extends AbstractEntity
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntroText()
+    {
+        return $this->introText;
     }
 
     /**

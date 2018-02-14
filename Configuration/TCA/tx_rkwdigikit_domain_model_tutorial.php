@@ -47,13 +47,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,media',
+        'searchFields' => 'title,intro_text,media',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            title,media
+            title,intro_text,media
         '
     ],
     'types' => [
@@ -61,6 +61,8 @@ return [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
                 title,
+                --linebreak--,
+                intro_text,
                 --linebreak--,
                 media
             '
@@ -158,6 +160,14 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 50
+            ]
+        ],
+        'intro_text' => [
+            'exclude' => 1,
+            'label' => 'Intro Text',
+            'config' => [
+                'type' => 'text',
+                'wrap' => 'off'
             ]
         ],
         'media' => [
