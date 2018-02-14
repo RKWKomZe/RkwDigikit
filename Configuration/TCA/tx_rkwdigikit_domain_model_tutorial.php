@@ -166,8 +166,7 @@ return [
             'exclude' => 1,
             'label' => 'Intro Text',
             'config' => [
-                'type' => 'text',
-                'wrap' => 'off'
+                'type' => 'text'
             ]
         ],
         'media' => [
