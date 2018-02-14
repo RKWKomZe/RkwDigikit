@@ -53,15 +53,14 @@ return [
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            title,
-            --linebreak--,
-            media
+            title,media
         '
     ],
     'types' => [
         '0' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
+                title,
                 --linebreak--,
                 media
             '
