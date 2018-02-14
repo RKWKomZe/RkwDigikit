@@ -194,7 +194,9 @@ return [
                         ]
                     ],
                 ],
-            ], $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
+            ],
+            'gif,jpg,jpeg,bmp,png,mp4'
+            )
         ]
     ]
 ];
