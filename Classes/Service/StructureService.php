@@ -401,7 +401,7 @@ class StructureService extends AbstractService
             }
         }
 
-        if ($globalContact !== null) {
+        if ($globalContact !== null && !empty($this->output['contacts']['filter'])) {
             foreach (self::$state as $key => $state) {
                 array_push($this->output['contacts']['filter'][$key], $global);
             }
