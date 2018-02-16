@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1206 4908 37 37">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #e64415;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rechteck_640" data-name="Rechteck 640" class="cls-1" width="37" height="37" transform="translate(1181 241)"/>
+    </clipPath>
+  </defs>
+  <g id="Gruppe_maskieren_49" data-name="Gruppe maskieren 49" class="cls-2" transform="translate(25 4667)">
+    <path id="floppy-disk" class="cls-3" d="M32.375,0H0V37H37V4.625ZM18.5,4.625h4.625v9.25H18.5Zm13.875,27.75H4.625V4.625H6.938V16.188H27.75V4.625h2.709l1.916,1.916Z" transform="translate(1181 241)"/>
+  </g>
+</svg>

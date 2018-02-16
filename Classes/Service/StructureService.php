@@ -317,6 +317,12 @@ class StructureService extends AbstractService
     {
         $array = [];
 
+        if(!count($images)) {
+            $array[0] = array(
+                0 => "/fileadmin/RKW_DigiKit/default_platzhalter_image.png",
+                1 => "/fileadmin/RKW_DigiKit/default_platzhalter_image.png",
+            );
+        }
         /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $image */
         foreach ($images as $image) {
             $resource = $image->getOriginalResource();
