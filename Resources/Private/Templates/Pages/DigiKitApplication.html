@@ -1,13 +1,13 @@
 <div class="o-container--large" id="rkwDigiKit">
     <div class="o-container">
         <a href="#" class="logo"></a>
-        <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal"></a>
-        <a href="#" class="c-rkw-tutorial" @click.prevent="toggleTutorial"></a>
+        <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal" data-title="Ihre Merkliste" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
+        <a href="#" class="c-rkw-tutorial" @click.prevent="toggleTutorial" data-title="Tutorial" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
 
         <nav class="c-tile-nav o-grid">
             <div is="nav-model" v-for="(item, itemKey, itemIndex) in digiKit.models" :item="item" :key="item.id" :index="itemIndex" :uid="item.id"></div>
         </nav>
-        <div class="c-rkw-customer">Kunde</div>
+        <div class="c-rkw-customer" data-title="Bezugs- und Ausgangspunkt aller strategischen Überlegungen ist der Kunde." v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }">Kunde</div>
 
         <content-modal></content-modal>
         <bookmark-modal ref="bookmarks"></bookmark-modal>
@@ -15,7 +15,7 @@
     <application-tour></application-tour>
     <div class="o-grid c-rkw-footer c-rkw-footer--home">
         <div class="o-grid__col u-4/12">
-            <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW 2018</p>
+            <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW 2018 | BETA Version 1.0</p>
         </div>
         <div class="o-grid__col u-8/12">
             <p class="c-rkw-content__body">
@@ -23,4 +23,5 @@
             </p>
         </div>
     </div>
+    <div class="c-rkw-tooltip" id="rkw-tooltip"></div>
 </div>
