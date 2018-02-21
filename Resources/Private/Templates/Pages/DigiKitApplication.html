@@ -4,20 +4,22 @@
         <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal" data-title="Ihre Merkliste" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
         <a href="#" class="c-rkw-tutorial" @click.prevent="toggleTutorial" data-title="Tutorial" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
 
-        <nav class="c-tile-nav o-grid">
-            <div is="nav-model" v-for="(item, itemKey, itemIndex) in digiKit.models" :item="item" :key="item.id" :index="itemIndex" :uid="item.id"></div>
-        </nav>
-        <div class="c-rkw-customer" data-title="Bezugs- und Ausgangspunkt aller strategischen Überlegungen ist der Kunde." v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }">Kunde</div>
+        <div class="c-rkw-navigation-wrapper" v-bind:class="[{'c-rkw-navigation-wrapper--open-left': isNavOpen === 'left'}, {'c-rkw-navigation-wrapper--open-right': isNavOpen === 'right'}]">
+            <nav class="c-tile-nav o-grid">
+                <div is="nav-model" v-for="(item, itemKey, itemIndex) in digiKit.models" :item="item" :key="item.id" :index="itemIndex" :uid="item.id"></div>
+            </nav>
+            <div class="c-rkw-customer" data-title="Bezugs- und Ausgangspunkt aller strategischen Überlegungen ist der Kunde." v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }">Kunde</div>
+        </div>
 
         <content-modal></content-modal>
         <bookmark-modal ref="bookmarks"></bookmark-modal>
     </div>
     <application-tour></application-tour>
     <div class="o-grid c-rkw-footer c-rkw-footer--home">
-        <div class="o-grid__col u-4/12">
+        <div class="o-grid__col u-4/12 u-12/12@mobile">
             <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW 2018 | BETA Version 1.0</p>
         </div>
-        <div class="o-grid__col u-8/12">
+        <div class="o-grid__col u-8/12 u-12/12@mobile">
             <p class="c-rkw-content__body">
                 <a v-for="link in footer" class="c-rkw-footer__link c-rkw-footer__link--home" target="_blank" :href="link[1]">{{link[0]}}</a>
             </p>
