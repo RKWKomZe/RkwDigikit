@@ -34,3 +34,5 @@ page.includeCSS {
 page.includeJSFooter {
     bundle = EXT:rkw_digi_kit/Resources/Public/dist/bundle.js
 }
+
+page.shortcutIcon = EXT:rkw_digi_kit/Resources/Public/favicon.ico
