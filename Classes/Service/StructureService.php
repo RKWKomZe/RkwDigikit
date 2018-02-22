@@ -522,12 +522,24 @@ class StructureService extends AbstractService
             $tutorial = $queryResult->getFirst();
 
             $this->output['tutorial']['intro']= nl2br($tutorial->getIntroText());
+            $this->output['tutorial']['introMobile']= nl2br($tutorial->getIntroTextMobile());
 
             /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
             foreach ($tutorial->getMedia() as $media) {
                 /** @var FileReference $resource */
                 $resource = $media->getOriginalResource();
                 array_push($this->output['tutorial']['data'],[
+                    'type' => $resource->getExtension(),
+                    'url' => $resource->getPublicUrl(),
+                    'description' => $resource->getDescription()
+                ]);
+            }
+
+            /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
+            foreach ($tutorial->getMediaMobile() as $media) {
+                /** @var FileReference $resource */
+                $resource = $media->getOriginalResource();
+                array_push($this->output['tutorial']['dataMobile'],[
                     'type' => $resource->getExtension(),
                     'url' => $resource->getPublicUrl(),
                     'description' => $resource->getDescription()

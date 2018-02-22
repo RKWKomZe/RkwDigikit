@@ -46,9 +46,19 @@ class Tutorial extends AbstractEntity
     protected $introText = '';
 
     /**
+     * @var string
+     */
+    protected $introTextMobile = '';
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
      */
     protected $media = null;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Bm\RkwDigiKit\Domain\Model\FileReference>
+     */
+    protected $mediaMobile = null;
 
     /**
      * Tutorial constructor.
@@ -83,6 +93,22 @@ class Tutorial extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getIntroTextMobile()
+    {
+        return $this->introTextMobile;
+    }
+
+    /**
+     * @param string $introTextMobile
+     */
+    public function setIntroTextMobile(string $introTextMobile)
+    {
+        $this->introTextMobile = $introTextMobile;
+    }
+
+    /**
      * @return ObjectStorage
      */
     public function getMedia()
@@ -112,5 +138,37 @@ class Tutorial extends AbstractEntity
     public function removeMedia(\Bm\RkwDigiKit\Domain\Model\FileReference $mediaToRemove)
     {
         $this->media->detach($mediaToRemove);
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getMediaMobile()
+    {
+        return $this->mediaMobile;
+    }
+
+    /**
+     * @param ObjectStorage $mediaMobile
+     */
+    public function setMediaMobile(ObjectStorage $mediaMobile)
+    {
+        $this->mediaMobile = $mediaMobile;
+    }
+
+    /**
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $mediaMobileToAdd
+     */
+    public function addMediaMobile(\Bm\RkwDigiKit\Domain\Model\FileReference $mediaMobileToAdd)
+    {
+        $this->mediaMobile->attach($mediaMobileToAdd);
+    }
+
+    /**
+     * @param \Bm\RkwDigiKit\Domain\Model\FileReference $mediaMobileToRemove
+     */
+    public function removeMediaMobile(\Bm\RkwDigiKit\Domain\Model\FileReference $mediaMobileToRemove)
+    {
+        $this->mediaMobile->detach($mediaMobileToRemove);
     }
 }

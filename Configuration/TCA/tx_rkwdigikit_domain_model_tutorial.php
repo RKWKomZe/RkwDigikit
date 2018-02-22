@@ -47,13 +47,13 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,intro_text,media',
+        'searchFields' => 'title,intro_text,intro_text_mobile,media,media_mobile',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            title,intro_text,media
+            title,intro_text,intro_text_mobile,media,media_mobile
         '
     ],
     'types' => [
@@ -62,9 +62,9 @@ return [
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
                 title,
                 --linebreak--,
-                intro_text,
+                intro_text,intro_text_mobile,
                 --linebreak--,
-                media
+                media,media_mobile
             '
         ]
     ],
@@ -169,6 +169,13 @@ return [
                 'type' => 'text'
             ]
         ],
+        'intro_text_mobile' => [
+            'exclude' => 1,
+            'label' => 'Intro Text Mobile',
+            'config' => [
+                'type' => 'text'
+            ]
+        ],
         'media' => [
             'exclude' => 1,
             'label' => 'Tutorial Media',
@@ -214,6 +221,53 @@ return [
                 ],
             ],
             'gif,jpg,jpeg,bmp,png,mp4'
+            )
+        ],
+        'media_mobile' => [
+            'exclude' => 1,
+            'label' => 'Tutorial Media Mobile',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('media_mobile', [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // behaves the same as the image field.
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ]
+                    ],
+                ],
+            ],
+                'gif,jpg,jpeg,bmp,png,mp4'
             )
         ]
     ]
