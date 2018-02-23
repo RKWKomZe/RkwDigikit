@@ -123,7 +123,9 @@ class StructureService extends AbstractService
         'footer' => [],
         'tutorial' => [
             'intro' => '',
-            'data' => []
+            'introMobile' => '',
+            'data' => [],
+            'dataMobile' => []
         ],
         'status' => false
     ];
