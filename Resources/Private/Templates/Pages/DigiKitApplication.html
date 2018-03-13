@@ -1,6 +1,6 @@
 <div class="o-container--large" id="rkwDigiKit">
     <div class="o-container">
-        <a href="#" class="logo"></a>
+        <a href="#" class="logo" @click.prevent="goToStart"></a>
         <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal" data-title="Ihre Merkliste" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
         <a href="#" class="c-rkw-tutorial" @click.prevent="toggleTutorial" data-title="Tutorial" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
 
