@@ -121,7 +121,12 @@ class StructureService extends AbstractService
             'filter' => []
         ],
         'footer' => [],
-        'tutorial' => [],
+        'tutorial' => [
+            'intro' => '',
+            'introMobile' => '',
+            'data' => [],
+            'dataMobile' => []
+        ],
         'status' => false
     ];
 
@@ -314,6 +319,12 @@ class StructureService extends AbstractService
     {
         $array = [];
 
+        if(!count($images)) {
+            $array[0] = array(
+                0 => "/fileadmin/RKW_DigiKit/default_platzhalter_image.png",
+                1 => "/fileadmin/RKW_DigiKit/default_platzhalter_image.png",
+            );
+        }
         /** @var \TYPO3\CMS\Extbase\Domain\Model\FileReference $image */
         foreach ($images as $image) {
             $resource = $image->getOriginalResource();
@@ -398,7 +409,7 @@ class StructureService extends AbstractService
             }
         }
 
-        if ($globalContact !== null) {
+        if ($globalContact !== null && !empty($this->output['contacts']['filter'])) {
             foreach (self::$state as $key => $state) {
                 array_push($this->output['contacts']['filter'][$key], $global);
             }
@@ -511,11 +522,26 @@ class StructureService extends AbstractService
         if (!empty($queryResult->toArray())) {
             /** @var Tutorial $tutorial */
             $tutorial = $queryResult->getFirst();
+
+            $this->output['tutorial']['intro']= nl2br($tutorial->getIntroText());
+            $this->output['tutorial']['introMobile']= nl2br($tutorial->getIntroTextMobile());
+
             /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
             foreach ($tutorial->getMedia() as $media) {
                 /** @var FileReference $resource */
                 $resource = $media->getOriginalResource();
-                array_push($this->output['tutorial'],[
+                array_push($this->output['tutorial']['data'],[
+                    'type' => $resource->getExtension(),
+                    'url' => $resource->getPublicUrl(),
+                    'description' => $resource->getDescription()
+                ]);
+            }
+
+            /** @var \Bm\RkwDigiKit\Domain\Model\FileReference $media */
+            foreach ($tutorial->getMediaMobile() as $media) {
+                /** @var FileReference $resource */
+                $resource = $media->getOriginalResource();
+                array_push($this->output['tutorial']['dataMobile'],[
                     'type' => $resource->getExtension(),
                     'url' => $resource->getPublicUrl(),
                     'description' => $resource->getDescription()

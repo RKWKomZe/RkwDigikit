@@ -20,11 +20,11 @@ page.headerData {
     10 = TEXT
     10.value = <meta http-equiv="X-UA-Compatible" content="IE=edge">
     20 = TEXT
-    20.value = <meta name="viewport" content="width=device-width, initial-scale=1">
+    20.value = <meta name="viewport" content="width=device-width, user-scalable=no">
     30 = TEXT
     30.value = <script src="https://use.typekit.net/gxk5fpu.js"></script>
     40 = TEXT
-    50.value = <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    40.value = <script>try{Typekit.load({ async: true });}catch(e){}</script>
 }
 
 page.includeCSS {
@@ -34,3 +34,5 @@ page.includeCSS {
 page.includeJSFooter {
     bundle = EXT:rkw_digi_kit/Resources/Public/dist/bundle.js
 }
+
+page.shortcutIcon = EXT:rkw_digi_kit/Resources/Public/favicon.ico

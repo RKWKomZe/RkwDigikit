@@ -31,7 +31,7 @@ $ll = 'LLL:EXT:rkw_digi_kit/Resources/Private/Language/locallang_db.xlf:';
 return [
     'ctrl' => [
         'title' => 'DigiKit Tutorial',
-        'label' => 'name',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -47,21 +47,24 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'media',
+        'searchFields' => 'title,intro_text,intro_text_mobile,media,media_mobile',
         'iconfile' => 'EXT:rkw_digi_kit/ext_icon.png'
     ],
     'interface' => [
         'showRecordFieldList' => '
             sys_language_uid, l10n_parent, l10n_diffsource, hidden,
-            media
+            title,intro_text,intro_text_mobile,media,media_mobile
         '
     ],
     'types' => [
         '0' => [
             'showitem' => '
                 sys_language_uid, l10n_parent, l10n_diffsource, hidden,
+                title,
                 --linebreak--,
-                media
+                intro_text,intro_text_mobile,
+                --linebreak--,
+                media,media_mobile
             '
         ]
     ],
@@ -151,6 +154,28 @@ return [
                 ]
             ]
         ],
+        'title' => [
+            'exclude' => 1,
+            'label' => 'Title',
+            'config' => [
+                'type' => 'input',
+                'size' => 50
+            ]
+        ],
+        'intro_text' => [
+            'exclude' => 1,
+            'label' => 'Intro Text',
+            'config' => [
+                'type' => 'text'
+            ]
+        ],
+        'intro_text_mobile' => [
+            'exclude' => 1,
+            'label' => 'Intro Text Mobile',
+            'config' => [
+                'type' => 'text'
+            ]
+        ],
         'media' => [
             'exclude' => 1,
             'label' => 'Tutorial Media',
@@ -194,7 +219,56 @@ return [
                         ]
                     ],
                 ],
-            ], $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
+            ],
+            'gif,jpg,jpeg,bmp,png,mp4'
+            )
+        ],
+        'media_mobile' => [
+            'exclude' => 1,
+            'label' => 'Tutorial Media Mobile',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('media_mobile', [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/Database.xlf:tt_content.asset_references.addFileReference'
+                ],
+                // custom configuration for displaying fields in the overlay/reference table
+                // behaves the same as the image field.
+                'overrideChildTca' => [
+                    'types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.audioOverlayPalette;audioOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.videoOverlayPalette;videoOverlayPalette,
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                            'showitem' => '
+                                --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                --palette--;;filePalette'
+                        ]
+                    ],
+                ],
+            ],
+                'gif,jpg,jpeg,bmp,png,mp4'
+            )
         ]
     ]
 ];

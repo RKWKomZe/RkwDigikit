@@ -116,7 +116,11 @@ CREATE TABLE tx_rkwdigikit_domain_model_tutorial (
   uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
+  title VARCHAR(255) DEFAULT '' NOT NULL,
+  intro_text text,
+  intro_text_mobile text,
 	media INT(11) unsigned DEFAULT '0' NOT NULL,
+	media_mobile INT(11) unsigned DEFAULT '0' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
