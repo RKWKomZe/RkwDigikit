@@ -26,7 +26,7 @@ CREATE TABLE pages (
   digikit_meta_company VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_meta_business VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_meta_employee VARCHAR(255) DEFAULT '' NOT NULL,
-  digikit_meta_place VARCHAR (255) DEFAULT 'D-' NOT NULL,
+  digikit_meta_place VARCHAR (255) DEFAULT '' NOT NULL,
   digikit_meta_website VARCHAR (255) DEFAULT '' NOT NULL,
   digikit_category INT(11) DEFAULT '0' NOT NULL,
   digikit_link_one_title VARCHAR(255) DEFAULT '' NOT NULL,
