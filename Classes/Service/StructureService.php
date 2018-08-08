@@ -299,9 +299,11 @@ class StructureService extends AbstractService
                     'parent' => $parent
                 ];
 
-                $taskId = $page->getDigikitCategory()->getUid();
-                array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
-                array_push($taskIds, $taskId);
+                if($page->getDigikitCategory() instanceof Category) {
+                    $taskId = $page->getDigikitCategory()->getUid();
+                    array_push($this->output['tasks'][$taskId]['instances'], $page->getUid());
+                    array_push($taskIds, $taskId);
+                }
             }
 
             foreach ($taskIds as $taskId) {
