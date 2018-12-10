@@ -12,6 +12,9 @@ config.tx_extbase {
             Bm\RkwDigiKit\Domain\Model\Page {
                 mapping {
                     tableName = pages
+                    columns {
+                        tstamp.mapOnProperty = tstamp
+                    }
                 }
             }
             Bm\RkwDigiKit\Domain\Model\FileReference {

@@ -44,6 +44,11 @@ class Page extends AbstractEntity
     protected $doktype = 0;
 
     /**
+     * @var int
+     */
+    protected $tstamp;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $digikitSliderImages = null;
@@ -182,6 +187,22 @@ class Page extends AbstractEntity
     public function setDoktype(int $doktype)
     {
         $this->doktype = $doktype;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTstamp()
+    {
+        return $this->tstamp;
+    }
+
+    /**
+     * @param mixed $tstamp
+     */
+    public function setTstamp($tstamp)
+    {
+        $this->tstamp = $tstamp;
     }
 
     /**

@@ -46,3 +46,14 @@ foreach ($cacheKeys as $cacheKey) {
         ];
     }
 }
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Bm.' . $_EXTKEY,
+    'Sitemap',
+    array(
+        'Sitemap' => 'list',
+    ),
+    array(
+        'Sitemap' => 'list',
+    )
+);

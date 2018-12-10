@@ -39,6 +39,23 @@ plugin.tx_rkwdigikit {
     }
 }
 
+plugin.tx_rkwdigikit_sitemap {
+    view {
+        templateRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = {$plugin.tx_rkwdigikit.view.layoutRootPath}
+        }
+    }
+    settings {
+        url = https://app.digitalisierungs-cockpit.de/
+    }
+}
+
 [globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.develop.isDev}]
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s">
 [global]

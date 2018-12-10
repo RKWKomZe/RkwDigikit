@@ -16,3 +16,35 @@ jsonStructureService {
         userFunc = Bm\RkwDigiKit\Service\StructureService->getJsonOutput
     }
 }
+
+sitemap_plugin = PAGE
+sitemap_plugin {
+    typeNum = 100
+
+    config >
+    config {
+        disableAllHeaderCode = 1
+        xhtml_cleaning = 0
+        admPanel = 0
+        debug = 0
+        no_cache = 1
+        additionalHeaders = Content-Type:text/xml;charset=utf-8
+        additionalHeaders.10.header = Content-Type:text/xml;charset=utf-8
+        metaCharset = UTF-8
+    }
+
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = RkwDigiKit
+        pluginName = Sitemap
+        vendorName = Bm
+        controller = Sitemap
+        action = list
+        switchableControllerActions {
+            Sitemap {
+                1 = list
+            }
+        }
+    }
+}
