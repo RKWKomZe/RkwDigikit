@@ -21,6 +21,8 @@ page.headerData {
     10.value = <meta http-equiv="X-UA-Compatible" content="IE=edge">
     20 = TEXT
     20.value = <meta name="viewport" content="width=device-width, user-scalable=no">
+    25 = TEXT
+    25.value = <meta name="google-site-verification" content="zEbfmc-ZrmmuUCWNMEZZEhg89Rsg9Yfvg_DcTFMr3So" />
     30 = TEXT
     30.value = <script src="https://use.typekit.net/gxk5fpu.js"></script>
     40 = TEXT
