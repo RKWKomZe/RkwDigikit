@@ -55,8 +55,10 @@ class SitemapController extends ActionController
         $sitemap = array();
         /** @var Page $page */
         foreach($pages as $page) {
+            $title = str_replace(' ', '-', $page->getDigikitMainHeader());
+            $title = str_replace('/', '-', $title);
             $sitemap[] = array(
-                'loc' => $this->settings['url'] . 'beispiel/' . $page->getUid() . '-' . str_replace(' ', '-', $page->getDigikitMainHeader()),
+                'loc' => $this->settings['url'] . 'beispiel/' . $page->getUid() . '-' . $title,
                 'lastmod' => strftime('%Y-%m-%d', $page->getTstamp())
             );
         }
