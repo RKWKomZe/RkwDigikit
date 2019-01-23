@@ -5,7 +5,7 @@ defined('TYPO3_MODE') or die('Access denied!');
  *
  *  Copyright notice
  *
- *  (c) 2018 Bastian Behr <behr@bergisch-media.de>
+ *  (c) 2019 Bastian Behr <digital@dcc.ruhr>
  *
  *  All rights reserved
  *

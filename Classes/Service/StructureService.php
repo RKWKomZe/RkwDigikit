@@ -6,7 +6,7 @@ namespace Bm\RkwDigiKit\Service;
  *
  *  Copyright notice
  *
- *  (c) 2018 Bastian Behr <behr@bergisch-media.de>
+ *  (c) 2019 Bastian Behr <digital@dcc.ruhr>
  *
  *  All rights reserved
  *
