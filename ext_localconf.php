@@ -11,7 +11,7 @@ $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['digikittext'] = 'EXT:rkw_digi_kit
  */
 $pageTSconfig = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY)
-    . 'Configuration/TSconfig/pageTSconfig.t3s'
+    . 'Configuration/TSconfig/pageTSconfig.typoscript'
 );
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig($pageTSconfig);
 
