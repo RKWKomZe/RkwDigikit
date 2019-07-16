@@ -13,21 +13,21 @@ plugin.tx_rkwdigikit {
     settings {
         navigation {
             #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Root category id for DigiKit
-            rootCategoryId =
+            rootCategoryId = 1
         }
         pages {
             #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Type (Use only if page not exists!!!)
-            loadPageType = 0
+            loadPageType = 1
             #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Default Page Configuration for Fluid Template (Type 100)
-            loadDefaultPageConfiguration = 0
+            loadDefaultPageConfiguration = 1
             #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Detail Configuration for Fluid Template (Type 200)
-            loadDetailPageConfiguration = 0
+            loadDetailPageConfiguration = 1
             #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Application Configuration for Fluid Template (Type 300)
-            loadApplicationPageConfiguration = 0
+            loadApplicationPageConfiguration = 1
         }
         contact {
             #cat=plugin.tx_rkwdigikit/contact; type=int+; label= Contact Storage Pid
-            storage =
+            storage = 2
         }
         tutorial {
             #cat=plugin.tx_rkwdigikit/tutorial; type=int+; label= Tutorial Storage Pid
@@ -51,3 +51,15 @@ plugin.tx_rkwdigikit {
         }
     }
 }
+
+
+# Environments
+<INCLUDE_TYPOSCRIPT: source="FILE:./__LIVE/constants.typoscript">
+
+[applicationContext = Development*]
+    <INCLUDE_TYPOSCRIPT: source="FILE:./__DEV/constants.typoscript">
+[global]
+
+[applicationContext = Production/Staging]
+    <INCLUDE_TYPOSCRIPT: source="FILE:./__STAGE/constants.typoscript">
+[global]

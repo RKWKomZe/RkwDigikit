@@ -17,7 +17,7 @@ plugin.tx_rkwdigikit {
         pages {
             loadPageType = {$plugin.tx_rkwdigikit.settings.pages.loadPageType}
             loadDefaultPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDefaultPageConfiguration}
-            loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadPageConfiguration}
+            loadDetailPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadDetailPageConfiguration}
             loadApplicationPageConfiguration = {$plugin.tx_rkwdigikit.settings.pages.loadApplicationPageConfiguration}
         }
         contact {
@@ -57,11 +57,24 @@ plugin.tx_rkwdigikit_sitemap {
 }
 
 [globalVar = LIT:1 = {$plugin.tx_rkwdigikit.settings.develop.isDev}]
-    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.t3s">
+    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/develop.typoscript">
 [global]
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.t3s">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/config.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/pageConfiguration.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/config.typoscript">
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.t3s">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/serviceTypes.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/modelMapping.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TypoScript/setup/serviceTypes.typoscript">
+
+
+
+# Environments
+<INCLUDE_TYPOSCRIPT: source="FILE:./__LIVE/setup.typoscript">
+
+[applicationContext = Development*]
+    <INCLUDE_TYPOSCRIPT: source="FILE:./__DEV/setup.typoscript">
+[global]
+
+[applicationContext = Production/Staging]
+    <INCLUDE_TYPOSCRIPT: source="FILE:./__STAGE/setup.typoscript">
+[global]
