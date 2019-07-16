@@ -1,5 +1,5 @@
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/Layouts.t3s">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/RTE.t3s">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/Layouts.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rkw_digi_kit/Configuration/TSconfig/Backend/RTE.typoscript">
 
 TCEFORM.sys_file_reference.crop.config.cropVariants {
     default {
