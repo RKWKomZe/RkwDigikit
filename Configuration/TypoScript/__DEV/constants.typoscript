@@ -1,23 +1,5 @@
 plugin.tx_rkwdigikit {
     settings {
-        navigation {
-            #cat=plugin.tx_rkwdigikit/menu; type=int+; label= Root category id for DigiKit
-            rootCategoryId = 1
-        }
-        pages {
-            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Type (Use only if page not exists!!!)
-            loadPageType = 1
-            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Default Page Configuration for Fluid Template (Type 100)
-            loadDefaultPageConfiguration = 1
-            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Detail Configuration for Fluid Template (Type 200)
-            loadDetailPageConfiguration = 1
-            #cat=plugin.tx_rkwdigikit/pages; type=boolean; label= Load Page Application Configuration for Fluid Template (Type 300)
-            loadApplicationPageConfiguration = 1
-        }
-        contact {
-            #cat=plugin.tx_rkwdigikit/contact; type=int+; label= Contact Storage Pid
-            storage = 2
-        }
         develop {
             #cat=plugin.tx_rkwdigikit/dev; type=boolean; label= Is Develop System ?
             isDev = 1
