@@ -74,6 +74,13 @@
                 <source>Link</source>
             </trans-unit>
 
+            <trans-unit id="digikit_link_similar_title">
+                <source>Similar Link Title</source>
+            </trans-unit>
+            <trans-unit id="digikit_link_similar">
+                <source>Similar Link</source>
+            </trans-unit>
+
 		    <trans-unit id="digikit_download_title">
                 <source>Download Title</source>
             </trans-unit>
