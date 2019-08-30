@@ -149,6 +149,56 @@ class Page extends AbstractEntity
     protected $digikitLinkFive = '';
 
     /**
+     * @var string
+     */
+    protected $digikitLinkSimilarOneTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarTwoTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarThreeTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarFourTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarFiveTitle = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarOne = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarTwo = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarThree = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarFour = '';
+
+    /**
+     * @var string
+     */
+    protected $digikitLinkSimilarFive = '';
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $digikitDownloads = null;
@@ -542,6 +592,166 @@ class Page extends AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarOneTitle()
+    {
+        return $this->digikitLinkSimilarOneTitle;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarOneTitle
+     */
+    public function setDigikitLinkSimilarOneTitle(string $digikitLinkSimilarOneTitle)
+    {
+        $this->digikitLinkSimilarOneTitle = $digikitLinkSimilarOneTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarTwoTitle()
+    {
+        return $this->digikitLinkSimilarTwoTitle;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarTwoTitle
+     */
+    public function setDigikitLinkSimilarTwoTitle(string $digikitLinkSimilarTwoTitle)
+    {
+        $this->digikitLinkSimilarTwoTitle = $digikitLinkSimilarTwoTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarThreeTitle()
+    {
+        return $this->digikitLinkSimilarThreeTitle;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarThreeTitle
+     */
+    public function setDigikitLinkSimilarThreeTitle(string $digikitLinkSimilarThreeTitle)
+    {
+        $this->digikitLinkSimilarThreeTitle = $digikitLinkSimilarThreeTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarFourTitle()
+    {
+        return $this->digikitLinkSimilarFourTitle;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarFourTitle
+     */
+    public function setDigikitLinkSimilarFourTitle(string $digikitLinkSimilarFourTitle)
+    {
+        $this->digikitLinkSimilarFourTitle = $digikitLinkSimilarFourTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarFiveTitle()
+    {
+        return $this->digikitLinkSimilarFiveTitle;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarFiveTitle
+     */
+    public function setDigikitLinkSimilarFiveTitle(string $digikitLinkSimilarFiveTitle)
+    {
+        $this->digikitLinkSimilarFiveTitle = $digikitLinkSimilarFiveTitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarOne()
+    {
+        return $this->digikitLinkSimilarOne;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarOne
+     */
+    public function setDigikitLinkSimilarOne(string $digikitLinkSimilarOne)
+    {
+        $this->digikitLinkSimilarOne = $digikitLinkSimilarOne;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarTwo()
+    {
+        return $this->digikitLinkSimilarTwo;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarTwo
+     */
+    public function setDigikitLinkSimilarTwo(string $digikitLinkSimilarTwo)
+    {
+        $this->digikitLinkSimilarTwo = $digikitLinkSimilarTwo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarThree()
+    {
+        return $this->digikitLinkSimilarThree;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarThree
+     */
+    public function setDigikitLinkSimilarThree(string $digikitLinkSimilarThree)
+    {
+        $this->digikitLinkSimilarThree = $digikitLinkSimilarThree;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarFour()
+    {
+        return $this->digikitLinkSimilarFour;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarFour
+     */
+    public function setDigikitLinkSimilarFour(string $digikitLinkSimilarFour)
+    {
+        $this->digikitLinkSimilarFour = $digikitLinkSimilarFour;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDigikitLinkSimilarFive()
+    {
+        return $this->digikitLinkSimilarFive;
+    }
+
+    /**
+     * @param string $digikitLinkSimilarFive
+     */
+    public function setDigikitLinkSimilarFive(string $digikitLinkSimilarFive)
+    {
+        $this->digikitLinkSimilarFive = $digikitLinkSimilarFive;
+    }
+
+    /**
      * @return ObjectStorage
      */
     public function getDigikitDownloads()
@@ -694,6 +904,34 @@ class Page extends AbstractEntity
         }
         if ($this->digikitLinkFive !== '' && $this->digikitLinkFiveTitle !== '') {
             array_push($array, ['title' => $this->digikitLinkFiveTitle, 'url' => $this->digikitLinkFive]);
+        }
+
+        return (!empty($array)) ? $array : false;
+    }
+
+    /**
+     * Summarized properties
+     *
+     * @return array|boolean
+     */
+    public function getDigiKitLinksSimilar()
+    {
+        $array = [];
+
+        if ($this->digikitLinkSimilarOne !== '' && $this->digikitLinkSimilarOneTitle !== '') {
+            array_push($array, ['title' => $this->digikitLinkSimilarOneTitle, 'url' => $this->digikitLinkSimilarOne]);
+        }
+        if ($this->digikitLinkSimilarTwo !== '' && $this->digikitLinkSimilarTwoTitle !== '') {
+            array_push($array, ['title' => $this->digikitLinkSimilarTwoTitle, 'url' => $this->digikitLinkSimilarTwo]);
+        }
+        if ($this->digikitLinkSimilarThree !== '' && $this->digikitLinkSimilarThreeTitle !== '') {
+            array_push($array, ['title' => $this->digikitLinkSimilarThreeTitle, 'url' => $this->digikitLinkSimilarThree]);
+        }
+        if ($this->digikitLinkSimilarFour !== '' && $this->digikitLinkSimilarFourTitle !== '') {
+            array_push($array, ['title' => $this->digikitLinkSimilarFourTitle, 'url' => $this->digikitLinkSimilarFour]);
+        }
+        if ($this->digikitLinkSimilarFive !== '' && $this->digikitLinkSimilarFiveTitle !== '') {
+            array_push($array, ['title' => $this->digikitLinkSimilarFiveTitle, 'url' => $this->digikitLinkSimilarFive]);
         }
 
         return (!empty($array)) ? $array : false;

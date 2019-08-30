@@ -288,6 +288,141 @@ $additionalColumns = [
             'eval' => 'trim'
         ]
     ],
+    'digikit_link_similar_one_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_two_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_three_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_four_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_five_title' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar_title',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_one' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_two' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_three' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_four' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
+    'digikit_link_similar_five' => [
+        'exclude' => 1,
+        'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
+        'label' => $ll . 'digikit_link_similar',
+        'config' => [
+            'type' => 'input',
+            'renderType' => 'inputLink',
+            'fieldControl' => [
+                'linkPopup' => [
+                    'options' => [
+                        'blindLinkOptions' => 'file,mail,spec,folder,page'
+                    ]
+                ]
+            ],
+            'eval' => 'trim'
+        ]
+    ],
     'digikit_downloads' => [
         'exclude' => 1,
         'displayCond' => 'FIELD:doktype:=:' . \Bm\RkwDigiKit\Domain\Model\Page::DIGI_KIT_DOKTYPE,
@@ -429,6 +564,24 @@ $palettes = [
             digikit_link_five
         '
     ],
+    'DigiKitLinksSimilar' => [
+        'showitem' => '
+            digikit_link_similar_one_title,
+            digikit_link_similar_one,
+            --linebreak--,
+            digikit_link_similar_two_title,
+            digikit_link_similar_two,
+            --linebreak--,
+            digikit_link_similar_three_title,
+            digikit_link_similar_three,
+            --linebreak--,
+            digikit_link_similar_four_title,
+            digikit_link_similar_four,
+            --linebreak--,
+            digikit_link_similar_five_title,
+            digikit_link_similar_five
+        '
+    ],
     'DigiKitDownloads' => [
         'showitem' => '
             digikit_downloads
@@ -460,6 +613,7 @@ $GLOBALS['TCA']['pages']['palettes'] = array_merge($GLOBALS['TCA']['pages']['pal
         --palette--;Bind Page to navigation endpoint (Category Level 4);DigiKitMenu,
         --div--;DigiKit Links,
         --palette--;Links;DigiKitLinks,
+        --palette--;Links Similar;DigiKitLinksSimilar,
         --div--;DigiKit Downloads,
         --palette--;Downloads;DigiKitDownloads,
         --div--;DigiKit Videos,
@@ -475,6 +629,8 @@ $GLOBALS['TCA']['pages']['ctrl']['searchFields'] .= trim('
     ,digikit_meta_website,digikit_meta_map,digikit_category,digikit_main_header,digikit_main_subheader
     ,digikit_main_teaser,digikit_main_text,digikit_link_one_title,digikit_link_one,digikit_link_two_title
     ,digikit_link_two,digikit_link_three_title,digikit_link_three,digikit_link_four_title,digikit_link_four
+    ,digikit_link_similar_one_title,digikit_link_similar_one,digikit_link_similar_two_title,digikit_link_similar_two
+    ,digikit_link_similar_three_title,digikit_link_similar_three,digikit_link_similar_four_title,digikit_link_similar_four
     ,digikit_downloads
 ');
 

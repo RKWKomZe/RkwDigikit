@@ -294,6 +294,7 @@ class StructureService extends AbstractService
                     'metaContent' => $page->getDigiKitMetaInformation(),
                     'sliderImages' => $this->createImages($page->getDigikitSliderImages()),
                     'links' => $this->createLinks($page->getDigiKitLinks()),
+                    'linksSimilar' => $this->createLinks($page->getDigiKitLinksSimilar()),
                     'downloads' => $this->createDownloads($page->getDigikitDownloads()),
                     'videos' => $this->createVideos($page->getDigikitVideos()),
                     'parent' => $parent
