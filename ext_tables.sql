@@ -39,6 +39,16 @@ CREATE TABLE pages (
   digikit_link_three VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_link_four VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_link_five VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_one_title VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_two_title VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_three_title VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_four_title VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_five_title VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_one VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_two VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_three VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_four VARCHAR(255) DEFAULT '' NOT NULL,
+  digikit_link_similar_five VARCHAR(255) DEFAULT '' NOT NULL,
   digikit_downloads INT(11) unsigned DEFAULT '0' NOT NULL,
   digikit_videos INT(11) unsigned DEFAULT '0' NOT NULL
 );

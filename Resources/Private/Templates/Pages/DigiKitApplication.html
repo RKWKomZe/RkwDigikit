@@ -4,6 +4,7 @@
         <a href="#" class="bookmarks c-rkw-bookmark-modal__open" @click.prevent="toggleBookmarkModal" data-title="Ihre Merkliste" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
         <a href="#" class="c-rkw-tutorial" @click.prevent="toggleTutorial" data-title="Tutorial" v-on="{ mouseenter: showTooltip, mouseleave: hideTooltip, mousemove: moveMouse }"></a>
 
+
         <div class="c-rkw-navigation-wrapper" v-bind:class="[{'c-rkw-navigation-wrapper--open-left': isNavOpen === 'left'}, {'c-rkw-navigation-wrapper--open-right': isNavOpen === 'right'}]">
             <nav class="c-tile-nav o-grid">
                 <div is="nav-model" v-for="(item, itemKey, itemIndex) in digiKit.models" :item="item" :key="item.id" :index="itemIndex" :uid="item.id"></div>
@@ -17,7 +18,7 @@
     <application-tour></application-tour>
     <div class="o-grid c-rkw-footer c-rkw-footer--home">
         <div class="o-grid__col u-4/12 u-12/12@mobile">
-            <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW 2018 | BETA Version 1.0</p>
+            <p class="c-rkw-content__body c-rkw-footer__copyright c-rkw-footer__copyright--home">Copyright @ RKW <f:format.date date="now" format="Y" /></p>
         </div>
         <div class="o-grid__col u-8/12 u-12/12@mobile">
             <p class="c-rkw-content__body">
