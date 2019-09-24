@@ -49,6 +49,11 @@ class Page extends AbstractEntity
     protected $tstamp;
 
     /**
+     * @var string
+     */
+    protected $description;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $digikitSliderImages = null;
@@ -253,6 +258,22 @@ class Page extends AbstractEntity
     public function setTstamp($tstamp)
     {
         $this->tstamp = $tstamp;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     /**
@@ -877,7 +898,8 @@ class Page extends AbstractEntity
             'business' => $this->digikitMetaBusiness,
             'employee' => $this->digikitMetaEmployee,
             'place' => $this->digikitMetaPlace,
-            'website' => $this->digikitMetaWebsite
+            'website' => $this->digikitMetaWebsite,
+            'metaDescription' => $this->getDescription()
         ];
     }
 
